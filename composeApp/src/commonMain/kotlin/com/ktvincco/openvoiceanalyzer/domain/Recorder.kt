@@ -289,7 +289,38 @@ class Recorder (
 
 
     private fun updateSoundFilesList() {
+
+        // Get files list (List<String>)
         soundFilesList = database.getAllSoundFilesInThePublicStorage()
+
+        // Split files
+        val nonStandardFiles = soundFilesList.filterNot { it.startsWith("REC ") }
+        val standardFiles = soundFilesList.filter { it.startsWith("REC ") }
+
+        // Sort it alphabetically and by numbers (from newest to oldest)
+        val customComparator = Comparator<String> { a, b ->
+            fun mapChar(c: Char): Int {
+                return when {
+                    c.isLetter() -> c.code // A-Z
+                    c.isDigit() -> '9'.code - c.code // 9-0
+                    else -> c.code + 1000
+                }
+            }
+
+            val minLength = minOf(a.length, b.length)
+            for (i in 0 until minLength) {
+                val mappedA = mapChar(a[i])
+                val mappedB = mapChar(b[i])
+                if (mappedA != mappedB) return@Comparator mappedA - mappedB
+            }
+
+            a.length - b.length
+        }
+
+        // Sort and Combine
+        soundFilesList = nonStandardFiles.sorted() + standardFiles.sortedWith(customComparator)
+
+        // Sent to the UI
         modelData.setRecordingFileList(soundFilesList)
     }
 
