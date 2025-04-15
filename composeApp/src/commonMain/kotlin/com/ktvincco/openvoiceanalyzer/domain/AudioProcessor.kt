@@ -143,9 +143,9 @@ class AudioProcessor (
         val loudness = calculateLoudness(currentSample)
         measureCheckpoint("Loudness")
 
-        // Spectrum
+        // SpectrumInfo
         val spectrumInHz = getVoiceSpectrumInHz(currentSample)
-        measureCheckpoint("Spectrum")
+        measureCheckpoint("SpectrumInfo")
         val energySpectrumInHz = calculateEnergySpectrumInHz(spectrumInHz)
         measureCheckpoint("Energy Spectrum")
 

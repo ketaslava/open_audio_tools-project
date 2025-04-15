@@ -49,7 +49,7 @@ class ModelData {
 
     // Mode pages
     fun openAllInfoPage() { _currentPage.value = "AllInfo" }
-    fun openSpectrumPage() { _currentPage.value = "Spectrum" }
+    fun openSpectrumInfoPage() { _currentPage.value = "SpectrumInfo" }
     fun openReadingPage() { _currentPage.value = "Reading" }
     fun openSpeakerVoicePage() { _currentPage.value = "SpeakerVoice" }
     fun openSingingPage() { _currentPage.value = "Singing" }

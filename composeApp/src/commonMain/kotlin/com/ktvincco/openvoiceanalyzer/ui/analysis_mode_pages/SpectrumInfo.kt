@@ -13,10 +13,11 @@ import com.ktvincco.openvoiceanalyzer.presentation.ModelData
 import com.ktvincco.openvoiceanalyzer.presentation.UiEventHandler
 import com.ktvincco.openvoiceanalyzer.ui.Graph
 import com.ktvincco.openvoiceanalyzer.ui.Spectrogram
+import com.ktvincco.openvoiceanalyzer.ui.Spectrum
 import com.ktvincco.openvoiceanalyzer.ui.graphNameText
 
 
-class Spectrum (
+class SpectrumInfo (
     private val modelData: ModelData,
     private val uiEventHandler: UiEventHandler
 ) {
@@ -92,6 +93,21 @@ class Spectrum (
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
                 autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(500.dp)
+            )
+
+            // ======= Spectrum ======= //
+
+            graphNameText(modelData, "Spectrum")
+
+            Spectrum().Spectrum(
+                inputData = spectrogramData,
+                isUseLogScale = true,
+                xLabelMax = 4096F,
+                pointerPosition = pointerPosition,
+                isUpdateFromLastData = recordingState,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(500.dp)

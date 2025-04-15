@@ -29,7 +29,7 @@ import com.ktvincco.openvoiceanalyzer.ui.analysis_mode_pages.MaleVoiceResonance
 import com.ktvincco.openvoiceanalyzer.ui.analysis_mode_pages.PitchAndResonance
 import com.ktvincco.openvoiceanalyzer.ui.analysis_mode_pages.Singing
 import com.ktvincco.openvoiceanalyzer.ui.analysis_mode_pages.SpeakerVoice
-import com.ktvincco.openvoiceanalyzer.ui.analysis_mode_pages.Spectrum
+import com.ktvincco.openvoiceanalyzer.ui.analysis_mode_pages.SpectrumInfo
 import com.ktvincco.openvoiceanalyzer.ui.analysis_mode_pages.VoiceSmoothness
 import com.ktvincco.openvoiceanalyzer.ui.pages.Dashboard
 import com.ktvincco.openvoiceanalyzer.ui.pages.Reading
@@ -144,9 +144,9 @@ class UserInterface (
                             Page(modelData, uiEventHandler).draw(
                                 AllInfo(modelData, uiEventHandler).content())
                         }
-                        if (currentPage == "Spectrum") {
+                        if (currentPage == "SpectrumInfo") {
                             Page(modelData, uiEventHandler).draw(
-                                Spectrum(modelData, uiEventHandler).content())
+                                SpectrumInfo(modelData, uiEventHandler).content())
                         }
                         if (currentPage == "Reading") {
                             Reading(modelData, uiEventHandler).draw()

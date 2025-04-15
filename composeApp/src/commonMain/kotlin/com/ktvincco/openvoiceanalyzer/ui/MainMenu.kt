@@ -149,8 +149,8 @@ class MainMenu (private val modelData: ModelData, private val uiEventHandler: Ui
                     modelData.setMainMenuState(false)
                 }
 
-                menuItem("Spectrum") {
-                    modelData.openSpectrumPage()
+                menuItem("SpectrumInfo") {
+                    modelData.openSpectrumInfoPage()
                     modelData.setMainMenuState(false)
                 }
 

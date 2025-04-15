@@ -117,13 +117,8 @@ class Spectrogram {
         var isCurrentGestureCaptured by remember { mutableStateOf(false) }
         var isCurrentGestureHorizontal by remember { mutableStateOf(false) }
 
-        // Process
-
         // Create components
         val textMeasurer = rememberTextMeasurer()
-        val textLayoutResult = remember("|") {
-            textMeasurer.measure("|", style = TextStyle(fontSize = fontSize))
-        }
 
         // Check data -> reset graph when there is no data
         if (data.isEmpty() || data.size <= 1 || yLabelMin >= yLabelMax) {
@@ -309,16 +304,20 @@ class Spectrogram {
 
                     // Draw text
                     if (x - textLastDrawX > textMaximalDrawRes) {
-                        val text = (xLabelMin + (xLabelMax - xLabelMin) *
-                                (i / data.size)).toString()
-                        val textY = graphHeight - (textLayoutResult.size.height * 1.25F)
+                        val xValue = (xLabelMin + (xLabelMax - xLabelMin) *
+                                (i.toFloat() / data.size.toFloat())) // Interpolate X axis value
+                        val text = ((xValue * 10F).toInt().toFloat() / 10F).toString() // 0.0F
+                        val textLayout = textMeasurer.measure(
+                            text, style = TextStyle(fontSize = fontSize))
+                        val textY = graphHeight - (textLayout.size.height * 1.25F)
+                        val textX = x - textLayout.size.width
 
-                        if (x in 0F..graphWidth && textY in 0F..graphHeight) {
+                        if (textX in 0F..graphWidth && textY in 0F..graphHeight) {
                             drawText(
                                 text = text,
                                 textMeasurer = textMeasurer,
                                 topLeft = Offset(
-                                    x = x,
+                                    x = textX,
                                     y = textY
                                 ),
                                 style = TextStyle(
@@ -378,8 +377,10 @@ class Spectrogram {
 
                     // Text
                     val text = ((yValue * 10).roundToInt().toFloat() / 10F).toString()
-                    val textX = textLayoutResult.size.height.toFloat() * 0.5F
-                    val textY = yPosition - textLayoutResult.size.height
+                    val textLayout = textMeasurer.measure(
+                        text, style = TextStyle(fontSize = fontSize))
+                    val textX = textLayout.size.height.toFloat() * 0.5F
+                    val textY = yPosition - textLayout.size.height
 
                     if (textX > 0 && textX < graphWidth && textY > 0 && textY < graphHeight) {
                         drawText(

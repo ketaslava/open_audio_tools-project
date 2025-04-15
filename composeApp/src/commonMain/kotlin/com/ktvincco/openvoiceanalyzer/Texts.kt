@@ -1367,7 +1367,7 @@ class Texts (
 
         private val parameterDescriptionArray= arrayOf(
 
-            // Spectrum
+            // SpectrumInfo
 
             ParameterInfo(
                 "SpectrogramInHz",
@@ -1378,6 +1378,11 @@ class Texts (
                 "EnergySpectrogramInHz",
                 "Energy Spectrogram",
                 "A spectrogram highlighting the energy levels across different frequencies in the signal"
+            ),
+            ParameterInfo(
+                "Spectrum",
+                "Spectrum",
+                "A visual representation of the spectrum of frequencies in a sound"
             ),
 
             // Static
