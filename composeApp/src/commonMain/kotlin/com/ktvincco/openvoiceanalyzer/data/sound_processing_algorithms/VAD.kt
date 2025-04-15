@@ -7,7 +7,7 @@ fun calculateVAD(spectrumInHz: FloatArray): Float {
    val harmonicsCount = 8
    val voiceHzMin = 50
    val voiceHzMax = 500
-   val threshold = 0.5F
+   val threshold = 0.42F // Between 0.5 and 0.33
 
    // Optimization Settings
    val offsetStep = 4

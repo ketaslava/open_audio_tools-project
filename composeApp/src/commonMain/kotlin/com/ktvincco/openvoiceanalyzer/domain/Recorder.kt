@@ -42,12 +42,18 @@ class Recorder (
         audioRecorder, database, soundFile, audioPlayer)
 
 
-    // State
+    // Recording State
     private var isRecordingNow = false
     private var isPlayingNow = false
     private var pointerPosition = 0F
     private var playbackStartPosition = 0
 
+    // Preview State
+    private var isPlayingRecordingPreviewNow = false
+    private var recordingPreviewPointerPosition = 0F
+    private var recordingPreviewFileName = ""
+    private var recordingPreviewRawData: FloatArray = floatArrayOf(0F)
+    private var recordingPreviewPlaybackStartPosition = 0
 
     // Sound data
     private var rawData: FloatArray = floatArrayOf(0F)
@@ -77,11 +83,24 @@ class Recorder (
         // Audio player callback
         audioPlayer.setPositionCallback { isPlaying, position ->
             if(isPlaying) {
-                pointerPosition =
-                    (playbackStartPosition + position).toFloat() / (rawData.size).toFloat()
-                audioProcessor.rewindDisplaysTo(pointerPosition)
+
+                // Playback
+                if (rawData.isNotEmpty() && !isPlayingRecordingPreviewNow) {
+                    pointerPosition =
+                        (playbackStartPosition + position).toFloat() / (rawData.size).toFloat()
+                    audioProcessor.rewindDisplaysTo(pointerPosition)
+                }
+
+                // Recording Preview Playback
+                if (recordingPreviewRawData.isNotEmpty() && isPlayingRecordingPreviewNow) {
+                    recordingPreviewPointerPosition =
+                        (recordingPreviewPlaybackStartPosition + position).toFloat() /
+                                (recordingPreviewRawData.size).toFloat()
+                }
+
             } else {
                 isPlayingNow = false
+                isPlayingRecordingPreviewNow = false
                 modelData.setPlaybackState(false)
             }
             updateUi()
@@ -116,6 +135,18 @@ class Recorder (
             } else {
                 play()
             }
+        }
+        uiEventHandler.assignPlayFileButtonCallback { fileName ->
+            // One way realization cause it used only in recording preview controls
+            if (isPlayingNow) {
+                stopPlaying()
+            } else {
+                playRecordingPreview(fileName)
+            }
+        }
+        uiEventHandler.assignRewindToStartButtonCallback {
+            // One way realization cause it used only in recording preview controls
+            rewindRecordingPreviewToStart()
         }
         uiEventHandler.assignResetButtonCallback {
             reset()
@@ -242,9 +273,62 @@ class Recorder (
     }
 
 
+    private fun rewindRecordingPreviewToStart() {
+        // Stop playback
+        stopPlaying()
+
+        // Set state
+        recordingPreviewPointerPosition = 0F
+        recordingPreviewPlaybackStartPosition = 0
+    }
+
+
+    // Play file in preview mode (without loading)
+    private fun playRecordingPreview(fileName: String) {
+
+        // Stop playback
+        stopPlaying()
+
+        // Check for a new file
+        if (fileName != recordingPreviewFileName) {
+
+            // New file
+            // Lod data from the file
+            val filePath = database.getSoundFileDirectoryPath() + "/" + fileName
+            recordingPreviewRawData = soundFile.readSoundFromFile(
+                filePath, Settings.getSampleRate())
+
+            // Set state
+            recordingPreviewFileName = fileName
+            recordingPreviewPointerPosition = 0F
+        }
+
+        // Start playback
+
+        // Calculate playback start position
+        recordingPreviewPlaybackStartPosition = (
+                recordingPreviewRawData.size * recordingPreviewPointerPosition).toInt()
+
+        // Rewind to 0 if at the end
+        if (recordingPreviewPlaybackStartPosition !in recordingPreviewRawData.indices) {
+            recordingPreviewPointerPosition = 0F
+            recordingPreviewPlaybackStartPosition = 0
+        }
+
+        // Set data and run playback
+        val dataToPlay = recordingPreviewRawData.copyOfRange(
+            recordingPreviewPlaybackStartPosition, recordingPreviewRawData.size)
+        audioPlayer.playAudioFromRawData(dataToPlay)
+        isPlayingNow = true
+        isPlayingRecordingPreviewNow = true
+        modelData.setPlaybackState(true)
+    }
+
+
     private fun stopPlaying() {
         audioPlayer.stop()
         isPlayingNow = false
+        isPlayingRecordingPreviewNow = false
         modelData.setPlaybackState(false)
     }
 
@@ -264,7 +348,7 @@ class Recorder (
 
             // Lod data from the file
             val filePath = database.getSoundFileDirectoryPath() + "/" + fileName
-            rawData = soundFile.readSoundFromFile(filePath,44100)
+            rawData = soundFile.readSoundFromFile(filePath,Settings.getSampleRate())
 
             // Process all loaded data
             processRawData()

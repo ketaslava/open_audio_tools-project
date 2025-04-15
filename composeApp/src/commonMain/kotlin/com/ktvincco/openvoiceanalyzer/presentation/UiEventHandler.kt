@@ -17,11 +17,25 @@ class UiEventHandler {
     fun playButtonClicked() { playButtonCallback() }
 
 
+    // Play File Button
+    private var playFileButtonCallback: (fileName: String) -> Unit = {}
+    fun assignPlayFileButtonCallback(callback: (fileName: String) -> Unit) {
+        playFileButtonCallback = callback }
+    fun playFileButtonClicked(fileName: String) { playFileButtonCallback(fileName) }
+
+
     // Reset Button
     private var resetButtonCallback: () -> Unit = {}
     fun assignResetButtonCallback(callback: () -> Unit) {
         resetButtonCallback = callback }
     fun resetButtonClicked() { resetButtonCallback() }
+
+
+    // Rewind to start Button
+    private var rewindToStartButtonCallback: () -> Unit = {}
+    fun assignRewindToStartButtonCallback(callback: () -> Unit) {
+        rewindToStartButtonCallback = callback }
+    fun rewindToStartButtonClicked() { rewindToStartButtonCallback() }
 
 
     // Save Button

@@ -82,6 +82,8 @@ class Main (private val modelData: ModelData,
 
         if (isComplete) {
             modelData.openAllInfoPage()
+            // DEV
+            modelData.openRecordingsPage()
         } else {
             modelData.openFirstStartScreen {
                 database.saveString("IsFirstStartComplete", "Yes")

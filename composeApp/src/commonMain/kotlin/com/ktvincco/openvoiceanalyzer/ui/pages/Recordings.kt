@@ -38,6 +38,9 @@ import com.ktvincco.openvoiceanalyzer.ui.BaseComponents
 import openvoiceanalyzer.composeapp.generated.resources.Res
 import openvoiceanalyzer.composeapp.generated.resources.data_thresholding_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
 import openvoiceanalyzer.composeapp.generated.resources.delete_forever_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
+import openvoiceanalyzer.composeapp.generated.resources.first_page_96dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
+import openvoiceanalyzer.composeapp.generated.resources.pause_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
+import openvoiceanalyzer.composeapp.generated.resources.play_arrow_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
 import openvoiceanalyzer.composeapp.generated.resources.save_as_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
 import org.jetbrains.compose.resources.painterResource
 
@@ -137,86 +140,161 @@ class Recordings (private val modelData: ModelData, private val uiEventHandler: 
     }
 
 
+    // Screen bottom action bar to manipulate recordings
     @Composable
     fun actionBar(selectedFileName: String, resetSelection: () -> Unit) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Center,
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center,
             modifier = Modifier
                 .fillMaxWidth()
-                .height(64.dp)
         ) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.Center,
                 modifier = Modifier
-                    .weight(1F)
-                    .fillMaxHeight()
-                    .background(ColorPalette.getSoftRedColor())
-                    .clickable { // Open popup before deletion
-                        modelData.openPopup("Warning", "Delete $selectedFileName ?") {
-                            exitButtonType ->
-                            if (exitButtonType == "Ok") {
-                                uiEventHandler.deleteRecordingFile(selectedFileName)
-                                resetSelection.invoke()
-                            }
-                        }
-                    }
+                    .fillMaxWidth()
+                    .height(64.dp)
             ) {
-                Image(
-                    painterResource(
-                        Res.drawable.delete_forever_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24),
-                    null,
+                // Rewind to start button
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center,
                     modifier = Modifier
-                        .width(32.dp)
-                        .height(32.dp)
-                )
+                        .weight(1F)
+                        .fillMaxHeight()
+                        .background(ColorPalette.getSoftCyanColor())
+                        .clickable {
+                            uiEventHandler.rewindToStartButtonClicked()
+                        }
+                ) {
+                    Image(
+                        painterResource(
+                            Res.drawable.first_page_96dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
+                        ),
+                        null,
+                        modifier = Modifier
+                            .width(32.dp)
+                            .height(32.dp)
+                    )
+                }
+                // Play button
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center,
+                    modifier = Modifier
+                        .weight(1F)
+                        .fillMaxHeight()
+                        .background(ColorPalette.getSoftMagentaColor())
+                        .clickable {
+                            uiEventHandler.playFileButtonClicked(selectedFileName)
+                        }
+                ) {
+                    // Play-Pause
+                    val playbackState = modelData.playbackState.collectAsState().value
+                    val icon = if (playbackState) {
+                        Res.drawable.pause_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
+                    } else {
+                        Res.drawable.play_arrow_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
+                    }
+
+                    Image(
+                        painterResource(icon),
+                        null,
+                        modifier = Modifier
+                            .width(32.dp)
+                            .height(32.dp)
+                    )
+                }
             }
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.Center,
                 modifier = Modifier
-                    .weight(1F)
-                    .fillMaxHeight()
-                    .background(ColorPalette.getSoftYellowColor())
-                    .clickable {
-                        modelData.openPopupWithTextInput(
-                            "Rename") { exitButtonType, inputText ->
-                            if (exitButtonType == "Ok") {
-                                uiEventHandler.renameRecordingFile(selectedFileName, inputText)
-                                resetSelection()
+                    .fillMaxWidth()
+                    .height(64.dp)
+            ) {
+                // Delete button
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center,
+                    modifier = Modifier
+                        .weight(1F)
+                        .fillMaxHeight()
+                        .background(ColorPalette.getSoftRedColor())
+                        .clickable { // Open popup before deletion
+                            modelData.openPopup(
+                                "Warning",
+                                "Delete $selectedFileName ?"
+                            ) { exitButtonType ->
+                                if (exitButtonType == "Ok") {
+                                    uiEventHandler.deleteRecordingFile(selectedFileName)
+                                    resetSelection.invoke()
+                                }
                             }
                         }
-                    }
-            ) {
-                Image(
-                    painterResource(
-                        Res.drawable.save_as_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24),
-                    null,
+                ) {
+                    Image(
+                        painterResource(
+                            Res.drawable.delete_forever_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
+                        ),
+                        null,
+                        modifier = Modifier
+                            .width(32.dp)
+                            .height(32.dp)
+                    )
+                }
+                // Rename button
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center,
                     modifier = Modifier
-                        .width(32.dp)
-                        .height(32.dp)
-                )
-            }
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Center,
-                modifier = Modifier
-                    .weight(1F)
-                    .fillMaxHeight()
-                    .background(ColorPalette.getSoftGreenColor())
-                    .clickable {
-                        uiEventHandler.loadRecordingButtonClicked(selectedFileName)
-                    }
-            ) {
-                Image(
-                    painterResource(
-                        Res.drawable.data_thresholding_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24),
-                    null,
+                        .weight(1F)
+                        .fillMaxHeight()
+                        .background(ColorPalette.getSoftYellowColor())
+                        .clickable {
+                            modelData.openPopupWithTextInput(
+                                "Rename"
+                            ) { exitButtonType, inputText ->
+                                if (exitButtonType == "Ok") {
+                                    uiEventHandler.renameRecordingFile(selectedFileName, inputText)
+                                    resetSelection()
+                                }
+                            }
+                        }
+                ) {
+                    Image(
+                        painterResource(
+                            Res.drawable.save_as_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
+                        ),
+                        null,
+                        modifier = Modifier
+                            .width(32.dp)
+                            .height(32.dp)
+                    )
+                }
+                // Load button
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center,
                     modifier = Modifier
-                        .width(32.dp)
-                        .height(32.dp)
-                )
+                        .weight(1F)
+                        .fillMaxHeight()
+                        .background(ColorPalette.getSoftGreenColor())
+                        .clickable {
+                            uiEventHandler.loadRecordingButtonClicked(selectedFileName)
+                        }
+                ) {
+                    Image(
+                        painterResource(
+                            Res.drawable.data_thresholding_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
+                        ),
+                        null,
+                        modifier = Modifier
+                            .width(32.dp)
+                            .height(32.dp)
+                    )
+                }
             }
         }
     }

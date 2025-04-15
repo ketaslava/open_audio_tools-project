@@ -102,16 +102,24 @@ class ColorPalette {
             return Color.hsv(0F, 0.75F, 0.75F)
         }
 
+        fun getSoftYellowColor(): Color {
+            return Color.hsv(60F, 0.75F, 0.75F)
+        }
+
         fun getSoftGreenColor(): Color {
             return Color.hsv(120F, 0.5F, 0.75F)
+        }
+
+        fun getSoftCyanColor(): Color {
+            return Color.hsv(180F, 0.75F, 0.75F)
         }
 
         fun getSoftBlueColor(): Color {
             return Color.hsv(240F, 0.75F, 0.75F)
         }
 
-        fun getSoftYellowColor(): Color {
-            return Color.hsv(60F, 0.75F, 0.75F)
+        fun getSoftMagentaColor(): Color {
+            return Color.hsv(300F, 0.75F, 0.75F)
         }
 
         fun getSoftGrayColor(): Color {
