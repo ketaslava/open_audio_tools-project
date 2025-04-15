@@ -26,12 +26,12 @@ class MaleVoiceResonance (
     // Loudness
     // Pitch
     // VoiceWeight
-    // FirstFormant A
-    // SecondFormant A
-    // FirstFormant I
-    // SecondFormant I
-    // FirstFormant U
-    // SecondFormant U
+    // ActiveFirstFormant A
+    // ActiveSecondFormant A
+    // ActiveFirstFormant I
+    // ActiveSecondFormant I
+    // ActiveFirstFormant U
+    // ActiveSecondFormant U
 
     @Composable
     fun content(): @Composable ColumnScope.() -> Unit {
@@ -118,6 +118,10 @@ class MaleVoiceResonance (
                     .height(200.dp)
             )
 
+            // Get data
+            val activeFirstFormantGraph = modelData.getGraphData("ActiveFirstFormant")
+            val activeSecondFormantGraph = modelData.getGraphData("ActiveSecondFormant")
+
             // A
 
             // ======= Additional Displays ======= //
@@ -130,20 +134,19 @@ class MaleVoiceResonance (
                 isEnableDeadZoneLow = true, isEnableDeadZoneHigh = true)
 
             miniDisplayBox(modelData, uiEventHandler,
-                parameterId = "FirstFormant",
+                parameterId = "ActiveFirstFormant",
                 normalRangeMin = 500F, normalRangeMax = 700F,
                 isEnableDeadZoneLow = true, isEnableDeadZoneHigh = true,
-                d2ParameterId = "SecondFormant",
+                d2ParameterId = "ActiveSecondFormant",
                 d2NormalRangeMin = 900F, d2NormalRangeMax = 1200F,
                 d2IsEnableDeadZoneLow = true, d2IsEnableDeadZoneHigh = true
             )
 
-            // ======= First Formant ======= //
+            // ======= Active First Formant ======= //
 
-            val firstFormantGraph = modelData.getGraphData("FirstFormant")
-            graphNameText(modelData, "FirstFormant", nameAddition = " for >>A<< ")
+            graphNameText(modelData, "ActiveFirstFormant", nameAddition = " for >>A<< ")
             Graph().draw(
-                data = firstFormantGraph,
+                data = activeFirstFormantGraph,
                 xLabelMax = dataDurationSec,
                 yLabelMax = 4096F,
                 horizontalLinesCount = 16,
@@ -162,12 +165,11 @@ class MaleVoiceResonance (
                     .height(500.dp)
             )
 
-            // ======= Second Formant ======= //
+            // ======= Active Second Formant ======= //
 
-            val secondFormantGraph = modelData.getGraphData("SecondFormant")
-            graphNameText(modelData, "SecondFormant", nameAddition = " for >>A<< ")
+            graphNameText(modelData, "ActiveSecondFormant", nameAddition = " for >>A<< ")
             Graph().draw(
-                data = secondFormantGraph,
+                data = activeSecondFormantGraph,
                 xLabelMax = dataDurationSec,
                 yLabelMax = 4096F,
                 horizontalLinesCount = 16,
@@ -198,19 +200,19 @@ class MaleVoiceResonance (
                 isEnableDeadZoneLow = true, isEnableDeadZoneHigh = true)
 
             miniDisplayBox(modelData, uiEventHandler,
-                parameterId = "FirstFormant",
+                parameterId = "ActiveFirstFormant",
                 normalRangeMin = 150F, normalRangeMax = 350F,
                 isEnableDeadZoneLow = true, isEnableDeadZoneHigh = true,
-                d2ParameterId = "SecondFormant",
+                d2ParameterId = "ActiveSecondFormant",
                 d2NormalRangeMin = 1800F, d2NormalRangeMax = 2400F,
                 d2IsEnableDeadZoneLow = true, d2IsEnableDeadZoneHigh = true
             )
 
-            // ======= First Formant ======= //
+            // ======= Active First Formant ======= //
 
-            graphNameText(modelData, "FirstFormant", nameAddition = " for >>I<< ")
+            graphNameText(modelData, "ActiveFirstFormant", nameAddition = " for >>I<< ")
             Graph().draw(
-                data = firstFormantGraph,
+                data = activeFirstFormantGraph,
                 xLabelMax = dataDurationSec,
                 yLabelMax = 4096F,
                 horizontalLinesCount = 16,
@@ -229,11 +231,11 @@ class MaleVoiceResonance (
                     .height(500.dp)
             )
 
-            // ======= Second Formant ======= //
+            // ======= Active Second Formant ======= //
 
-            graphNameText(modelData, "SecondFormant", nameAddition = " for >>I<< ")
+            graphNameText(modelData, "ActiveSecondFormant", nameAddition = " for >>I<< ")
             Graph().draw(
-                data = secondFormantGraph,
+                data = activeSecondFormantGraph,
                 xLabelMax = dataDurationSec,
                 yLabelMax = 4096F,
                 horizontalLinesCount = 16,
@@ -264,19 +266,19 @@ class MaleVoiceResonance (
                 isEnableDeadZoneLow = true, isEnableDeadZoneHigh = true)
 
             miniDisplayBox(modelData, uiEventHandler,
-                parameterId = "FirstFormant",
+                parameterId = "ActiveFirstFormant",
                 normalRangeMin = 250F, normalRangeMax = 400F,
                 isEnableDeadZoneLow = true, isEnableDeadZoneHigh = true,
-                d2ParameterId = "SecondFormant",
+                d2ParameterId = "ActiveSecondFormant",
                 d2NormalRangeMin = 600F, d2NormalRangeMax = 900F,
                 d2IsEnableDeadZoneLow = true, d2IsEnableDeadZoneHigh = true
             )
 
-            // ======= First Formant ======= //
+            // ======= Active First Formant ======= //
 
-            graphNameText(modelData, "FirstFormant", nameAddition = " for >>U<< ")
+            graphNameText(modelData, "ActiveFirstFormant", nameAddition = " for >>U<< ")
             Graph().draw(
-                data = firstFormantGraph,
+                data = activeFirstFormantGraph,
                 xLabelMax = dataDurationSec,
                 yLabelMax = 4096F,
                 horizontalLinesCount = 16,
@@ -295,11 +297,11 @@ class MaleVoiceResonance (
                     .height(500.dp)
             )
 
-            // ======= Second Formant ======= //
+            // ======= Active Second Formant ======= //
 
-            graphNameText(modelData, "SecondFormant", nameAddition = " for >>U<< ")
+            graphNameText(modelData, "ActiveSecondFormant", nameAddition = " for >>U<< ")
             Graph().draw(
-                data = secondFormantGraph,
+                data = activeSecondFormantGraph,
                 xLabelMax = dataDurationSec,
                 yLabelMax = 4096F,
                 horizontalLinesCount = 16,

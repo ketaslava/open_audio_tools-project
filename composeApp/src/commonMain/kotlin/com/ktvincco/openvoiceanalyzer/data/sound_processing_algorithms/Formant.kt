@@ -19,11 +19,10 @@ fun calculateEnergySpectrumInHz(spectrumInHz: FloatArray): FloatArray {
 }
 
 
-fun calculateFirstAndSecondFormant(
-    energySpectrumInHz: FloatArray, vad: Float): Pair<Float, Float> {
+fun calculateFirstAndSecondFormant(energySpectrumInHz: FloatArray): Pair<Float, Float> {
 
     // Check
-    if (energySpectrumInHz.isEmpty() || vad < 0.5F) {
+    if (energySpectrumInHz.isEmpty()) {
         return Pair(-1F, -1F)
     }
 
@@ -52,6 +51,17 @@ fun calculateFirstAndSecondFormant(
         }
     }
     val firsAndSecondFormant = Pair(maxSumF1.toFloat(), maxSumF2.toFloat())
+
+    // Return a result
+    return firsAndSecondFormant
+}
+
+
+fun calculateActiveFirstAndSecondFormant(
+    firsAndSecondFormant: Pair<Float, Float>, vad: Float): Pair<Float, Float> {
+
+    // Check VAD
+    if (vad < 0.5F) { return Pair(-1F, -1F) }
 
     // Return a result
     return firsAndSecondFormant

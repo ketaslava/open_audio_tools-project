@@ -38,6 +38,10 @@ class AllInfo (
                 d2ParameterId = "SecondFormant", d2NormalRangeMax = 4096F)
 
             miniDisplayBox(modelData, uiEventHandler,
+                parameterId = "ActiveFirstFormant", normalRangeMax = 4096F,
+                d2ParameterId = "ActiveSecondFormant", d2NormalRangeMax = 4096F)
+
+            miniDisplayBox(modelData, uiEventHandler,
                 parameterId = "Energy",
                 d2ParameterId = "H1H2EnergyBalance",
                 d2IsEnableNegativeValues = true, d2NormalRangeMin = -1F)
@@ -138,6 +142,40 @@ class AllInfo (
             graphNameText(modelData, "SecondFormant")
             Graph().draw(
                 data = secondFormantGraph,
+                xLabelMax = dataDurationSec,
+                yLabelMax = 4096F,
+                horizontalLinesCount = 16,
+                pointerPosition = pointerPosition,
+                isEnableAutoScroll = recordingState,
+                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(500.dp)
+            )
+
+            // ======= Active First Formant ======= //
+
+            val activeFirstFormantGraph = modelData.getGraphData("ActiveFirstFormant")
+            graphNameText(modelData, "ActiveFirstFormant")
+            Graph().draw(
+                data = activeFirstFormantGraph,
+                xLabelMax = dataDurationSec,
+                yLabelMax = 4096F,
+                horizontalLinesCount = 16,
+                pointerPosition = pointerPosition,
+                isEnableAutoScroll = recordingState,
+                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(500.dp)
+            )
+
+            // ======= Active Second Formant ======= //
+
+            val activeSecondFormantGraph = modelData.getGraphData("ActiveSecondFormant")
+            graphNameText(modelData, "ActiveSecondFormant")
+            Graph().draw(
+                data = activeSecondFormantGraph,
                 xLabelMax = dataDurationSec,
                 yLabelMax = 4096F,
                 horizontalLinesCount = 16,

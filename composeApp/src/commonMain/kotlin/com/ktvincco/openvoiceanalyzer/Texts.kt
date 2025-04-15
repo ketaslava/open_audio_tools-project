@@ -1400,12 +1400,22 @@ class Texts (
             ParameterInfo(
                 "FirstFormant",
                 "First Formant",
-                "The first resonant frequency of the voice, also known as F1, critical for determining vowel quality"
+                "The first resonant frequency"
             ),
             ParameterInfo(
                 "SecondFormant",
                 "Second Formant",
-                "The second resonant frequency of the voice, also known as F2, important for distinguishing vowel sounds"
+                "The second resonant frequency"
+            ),
+            ParameterInfo(
+                "ActiveFirstFormant",
+                "AV First Formant",
+                "The first active resonant frequency of the voice, also known as F1, critical for determining vowel quality"
+            ),
+            ParameterInfo(
+                "ActiveSecondFormant",
+                "AV Second Formant",
+                "The second active resonant frequency of the voice, also known as F2, important for distinguishing vowel sounds"
             ),
             ParameterInfo(
                 "Energy",

@@ -7,6 +7,7 @@ import com.ktvincco.openvoiceanalyzer.data.Logger
 import com.ktvincco.openvoiceanalyzer.data.PermissionController
 import com.ktvincco.openvoiceanalyzer.data.SoundFile
 import com.ktvincco.openvoiceanalyzer.data.sound_processing_algorithms.RecordingQuality
+import com.ktvincco.openvoiceanalyzer.data.sound_processing_algorithms.calculateActiveFirstAndSecondFormant
 import com.ktvincco.openvoiceanalyzer.data.sound_processing_algorithms.calculateBandEnergyRatioHigh
 import com.ktvincco.openvoiceanalyzer.data.sound_processing_algorithms.calculateBandEnergyRatioLow
 import com.ktvincco.openvoiceanalyzer.data.sound_processing_algorithms.calculateBandEnergyRatioMedium
@@ -158,7 +159,9 @@ class AudioProcessor (
         measureCheckpoint("Pitch")
         val harmonicToNoiseRatio = calculateHarmonicToNoiseRatio(spectrumInHz)
         measureCheckpoint("HNR")
-        val firstAndSecondFormant = calculateFirstAndSecondFormant(energySpectrumInHz, vad)
+        val firstAndSecondFormant = calculateFirstAndSecondFormant(energySpectrumInHz)
+        val activeFirstAndSecondFormant = calculateActiveFirstAndSecondFormant(
+            firstAndSecondFormant, vad)
         measureCheckpoint("Formats")
         val energy = calculateVoiceEnergy(energySpectrumInHz, pitch, vad)
         measureCheckpoint("Energy")
@@ -186,7 +189,8 @@ class AudioProcessor (
         // Semi dynamic
         val jitter = calculateVoiceJitter(getGraphData("Pitch"))
         measureCheckpoint("Jitter")
-        val shimmer = calculateVoiceShimmer(getGraphData("Pitch"), getSpectrogramData("SpectrogramInHz"))
+        val shimmer = calculateVoiceShimmer(
+            getGraphData("Pitch"), getSpectrogramData("SpectrogramInHz"))
         measureCheckpoint("Shimmer")
 
         // Dynamic
@@ -194,7 +198,8 @@ class AudioProcessor (
         measureCheckpoint("Prosody")
         val rythm = calculateVoiceRythm(getGraphData("VAD"))
         measureCheckpoint("Rythm")
-        val clarity = calculateVoiceClarity(getGraphData("Loudness"), getGraphData("VAD"))
+        val clarity = calculateVoiceClarity(
+            getGraphData("Loudness"), getGraphData("VAD"))
         measureCheckpoint("Clarity")
         val pausesDuration = calculateVoicePausesDuration(getGraphData("VAD"))
         measureCheckpoint("Pauses Duration")
@@ -213,6 +218,8 @@ class AudioProcessor (
         addToGraphData("Pitch", pitch)
         addToGraphData("FirstFormant", firstAndSecondFormant.first)
         addToGraphData("SecondFormant", firstAndSecondFormant.second)
+        addToGraphData("ActiveFirstFormant", activeFirstAndSecondFormant.first)
+        addToGraphData("ActiveSecondFormant", activeFirstAndSecondFormant.second)
         addToGraphData("Energy", energy)
         addToGraphData("H1H2EnergyBalance", h1h2EnergyBalance)
         addToGraphData("HarmonicToNoiseRatio", harmonicToNoiseRatio)
