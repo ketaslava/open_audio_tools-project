@@ -32,6 +32,7 @@ import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ktvincco.openvoiceanalyzer.ColorPalette
+import com.ktvincco.openvoiceanalyzer.map
 import openvoiceanalyzer.composeapp.generated.resources.Res
 import openvoiceanalyzer.composeapp.generated.resources.arrow_back_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
 import openvoiceanalyzer.composeapp.generated.resources.arrow_forward_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
@@ -56,13 +57,6 @@ class GraphZone(
     fun getColor(): Color {
         return color
     }
-}
-
-
-private fun map(source: Float, minSource: Float, maxSource: Float,
-                minTarget: Float, maxTarget: Float): Float {
-    val s = (source - minSource) / (maxSource - minSource)
-    return minTarget + (maxTarget - minTarget) * s
 }
 
 

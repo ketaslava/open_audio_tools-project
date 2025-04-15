@@ -52,8 +52,8 @@ class MainMenu (private val modelData: ModelData, private val uiEventHandler: Ui
             if (text == "AllInfo") {
                 text = "All Info"
             }
-            if (text == "AboutApp") {
-                text = "About App"
+            if (text == "SpectrumInfo") {
+                text = "Spectrum"
             }
             if (text == "SpeakerVoice") {
                 text = "Speaker Voice"
@@ -149,7 +149,7 @@ class MainMenu (private val modelData: ModelData, private val uiEventHandler: Ui
                     modelData.setMainMenuState(false)
                 }
 
-                menuItem("SpectrumInfo") {
+                menuItem("Spectrum") {
                     modelData.openSpectrumInfoPage()
                     modelData.setMainMenuState(false)
                 }

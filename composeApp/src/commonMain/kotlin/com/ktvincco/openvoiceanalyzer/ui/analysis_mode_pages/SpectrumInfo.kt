@@ -62,7 +62,7 @@ class SpectrumInfo (
 
             Spectrogram().Spectrogram(
                 data = spectrogramData,
-                multiplyValue = 16F,
+                multiplyValue = 24F,
                 xLabelMin = 0F,
                 xLabelMax = dataDurationSec,
                 yLabelMin = 0F,
