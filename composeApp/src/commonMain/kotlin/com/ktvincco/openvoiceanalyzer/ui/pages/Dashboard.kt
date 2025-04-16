@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ktvincco.openvoiceanalyzer.ColorPalette
 import com.ktvincco.openvoiceanalyzer.Settings
+import com.ktvincco.openvoiceanalyzer.VersionInfo
 import com.ktvincco.openvoiceanalyzer.presentation.ModelData
 import com.ktvincco.openvoiceanalyzer.presentation.UiEventHandler
 import com.ktvincco.openvoiceanalyzer.ui.BaseComponents
@@ -64,6 +65,16 @@ class Dashboard (
                         .padding(horizontal = 16.dp, vertical = 24.dp)
                 )
 
+                Text(
+                    text = "V ${VersionInfo.VERSION}",
+                    color = ColorPalette.getTextColor(),
+                    fontSize = 16.sp,
+                    lineHeight = 24.sp,
+                    modifier = Modifier
+                        .padding(start = 16.dp, end = 16.dp, bottom = 24.dp)
+                        .fillMaxWidth()
+                )
+
                 BaseComponents().HorizontalDivider(
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp
                 )
@@ -86,7 +97,6 @@ class Dashboard (
                         .padding(start = 16.dp, end = 16.dp, bottom = 24.dp)
                         .fillMaxWidth()
                 )
-
 
                 Text(
                     text = "Main Features:\n\n" +

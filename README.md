@@ -13,6 +13,8 @@ $ ./gradlew run
 
 # Export for Linux Desktop
 
+* Check parameters "CHANGE BEFORE RELEASE" in build.gradle.kts (module)
+
 Deb Package (JVM):   
 $ ./gradlew packageDeb
 

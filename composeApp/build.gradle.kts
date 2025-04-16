@@ -77,6 +77,8 @@ kotlin {
     }
 }
 
+val version = "1.8.0" // == CHANGE BEFORE RELEASE (1/2) == //
+
 android {
     namespace = "com.ktvincco.openvoiceanalyzer"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
@@ -85,8 +87,8 @@ android {
         applicationId = "com.ktvincco.openvoiceanalyzer"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
-        versionCode = 11 // == CHANGE BEFORE RELEASE (1/3) ==
-        versionName = "1.7.9" // == CHANGE BEFORE RELEASE (2/3) ==
+        versionCode = 12 // == CHANGE BEFORE RELEASE (2/2) == //
+        versionName = version
     }
     packaging {
         resources {
@@ -141,7 +143,7 @@ compose.desktop {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi,
                 TargetFormat.Deb, TargetFormat.Rpm, TargetFormat.AppImage)
             packageName = "Open Voice Analyzer"
-            packageVersion = "1.7.9" // == CHANGE BEFORE RELEASE (3/3) ==
+            packageVersion = version
             jvmArgs.addAll(jvmArgsList)
             linux {
                 iconFile.set(project.file("src/commonMain/composeResources/drawable/icon.png"))
@@ -149,3 +151,19 @@ compose.desktop {
         }
     }
 }
+
+// Auto update app version in configs
+tasks.register("generateVersion") {
+    doLast {
+        val file = file("src/commonMain/kotlin/com/ktvincco/openvoiceanalyzer/Version.kt")
+        file.writeText("""
+            package com.ktvincco.openvoiceanalyzer
+            
+            object VersionInfo {
+                const val VERSION = "$version"
+            }
+        """.trimIndent())
+    }
+}
+tasks.getByName("preBuild").dependsOn("generateVersion")
+
