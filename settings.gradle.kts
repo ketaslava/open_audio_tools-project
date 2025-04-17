@@ -1,4 +1,4 @@
-rootProject.name = "OpenVoiceAnalyzer"
+rootProject.name = "openaudiotools"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
@@ -28,4 +28,6 @@ dependencyResolutionManagement {
     }
 }
 
-include(":composeApp")
+include(":common:openaudiotools")
+include(":app:openvoiceanalyzer")
+include(":app:openaudiorecorder")
