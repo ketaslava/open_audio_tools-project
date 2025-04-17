@@ -31,8 +31,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.ktvincco.openvoiceanalyzer.ColorPalette
-import com.ktvincco.openvoiceanalyzer.map
+import com.ktvincco.openaudiotools.ColorPalette
+import com.ktvincco.openaudiotools.map
 import openaudiotools.app.openvoiceanalyzer.generated.resources.Res
 import openaudiotools.app.openvoiceanalyzer.generated.resources.arrow_back_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
 import openaudiotools.app.openvoiceanalyzer.generated.resources.arrow_forward_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24

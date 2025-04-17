@@ -1,14 +1,16 @@
 package com.ktvincco.openvoiceanalyzer
 
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.window.ComposeViewport
-import com.ktvincco.openvoiceanalyzer.data.WasmAudioPlayer
-import com.ktvincco.openvoiceanalyzer.data.WasmAudioRecorder
-import com.ktvincco.openvoiceanalyzer.data.WasmDatabase
-import com.ktvincco.openvoiceanalyzer.data.WasmEnvironmentConnector
-import com.ktvincco.openvoiceanalyzer.data.WasmLogger
-import com.ktvincco.openvoiceanalyzer.data.WasmPermissionController
-import com.ktvincco.openvoiceanalyzer.data.WasmSoundFile
+import com.ktvincco.openaudiotools.data.WasmAudioPlayer
+import com.ktvincco.openaudiotools.data.WasmAudioRecorder
+import com.ktvincco.openaudiotools.data.WasmDatabase
+import com.ktvincco.openaudiotools.data.WasmEnvironmentConnector
+import com.ktvincco.openaudiotools.data.WasmLogger
+import com.ktvincco.openaudiotools.data.WasmPermissionController
+import com.ktvincco.openaudiotools.data.WasmSoundFile
 import kotlinx.browser.document
 
 
@@ -34,5 +36,17 @@ fun main() {
 
 
 actual fun epochMillis(): Long {
+    TODO("Not yet implemented")
+}
+
+
+@Composable
+actual fun getScreenSizeInDp(): Pair<Dp, Dp> {
+    TODO("Not yet implemented")
+}
+
+
+@Composable
+actual fun getScreenSizeInPx(): Pair<Int, Int> {
     TODO("Not yet implemented")
 }

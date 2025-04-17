@@ -3,13 +3,18 @@ package com.ktvincco.openvoiceanalyzer
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import com.ktvincco.openvoiceanalyzer.data.AndroidAudioPlayer
-import com.ktvincco.openvoiceanalyzer.data.AndroidAudioRecorder
-import com.ktvincco.openvoiceanalyzer.data.AndroidDatabase
-import com.ktvincco.openvoiceanalyzer.data.AndroidEnvironmentConnector
-import com.ktvincco.openvoiceanalyzer.data.AndroidLogger
-import com.ktvincco.openvoiceanalyzer.data.AndroidPermissionController
-import com.ktvincco.openvoiceanalyzer.data.AndroidSoundFile
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
+import com.ktvincco.openaudiotools.data.AndroidAudioPlayer
+import com.ktvincco.openaudiotools.data.AndroidAudioRecorder
+import com.ktvincco.openaudiotools.data.AndroidDatabase
+import com.ktvincco.openaudiotools.data.AndroidEnvironmentConnector
+import com.ktvincco.openaudiotools.data.AndroidLogger
+import com.ktvincco.openaudiotools.data.AndroidPermissionController
+import com.ktvincco.openaudiotools.data.AndroidSoundFile
 
 
 class MainActivity : ComponentActivity() {
@@ -59,3 +64,18 @@ class MainActivity : ComponentActivity() {
 
 
 actual fun epochMillis(): Long = System.currentTimeMillis()
+
+
+@Composable
+actual fun getScreenSizeInDp(): Pair<Dp, Dp> {
+    val conf = LocalConfiguration.current
+    return Pair(conf.screenWidthDp.dp, conf.screenHeightDp.dp)
+}
+
+
+@Composable
+actual fun getScreenSizeInPx(): Pair<Int, Int> {
+    val conf = LocalConfiguration.current
+    val density = LocalDensity.current.density
+    return Pair((conf.screenWidthDp * density).toInt(), (conf.screenHeightDp * density).toInt())
+}

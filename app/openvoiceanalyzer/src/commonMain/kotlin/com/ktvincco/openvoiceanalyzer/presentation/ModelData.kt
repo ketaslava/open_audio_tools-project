@@ -2,7 +2,7 @@ package com.ktvincco.openvoiceanalyzer.presentation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateMapOf
-import com.ktvincco.openvoiceanalyzer.data.sound_processing_algorithms.RecordingQuality
+import com.ktvincco.openaudiotools.data.sound_processing_algorithms.RecordingQuality
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 

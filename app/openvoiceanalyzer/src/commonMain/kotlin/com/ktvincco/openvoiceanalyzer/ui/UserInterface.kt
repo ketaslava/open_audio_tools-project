@@ -16,9 +16,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.Dp
-import com.ktvincco.openvoiceanalyzer.ColorPalette
-import com.ktvincco.openvoiceanalyzer.MainApplicationTheme
+import com.ktvincco.openaudiotools.ColorPalette
+import com.ktvincco.openaudiotools.MainApplicationTheme
 import com.ktvincco.openvoiceanalyzer.presentation.ModelData
 import com.ktvincco.openvoiceanalyzer.presentation.UiEventHandler
 import com.ktvincco.openvoiceanalyzer.ui.analysis_mode_pages.AllInfo
@@ -35,12 +34,6 @@ import com.ktvincco.openvoiceanalyzer.ui.pages.Dashboard
 import com.ktvincco.openvoiceanalyzer.ui.pages.Reading
 import com.ktvincco.openvoiceanalyzer.ui.pages.Recordings
 import com.ktvincco.openvoiceanalyzer.ui.pages.VoiceChangeGuidelines
-
-
-@Composable
-expect fun getScreenSizeInDp(): Pair<Dp, Dp>
-@Composable
-expect fun getScreenSizeInPx(): Pair<Int, Int>
 
 
 class UserInterface (

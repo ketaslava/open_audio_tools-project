@@ -13,7 +13,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import com.ktvincco.openvoiceanalyzer.ColorPalette
+import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openvoiceanalyzer.presentation.ModelData
 import com.ktvincco.openvoiceanalyzer.presentation.UiEventHandler
 

@@ -21,8 +21,8 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.ktvincco.openvoiceanalyzer.ColorPalette
-import com.ktvincco.openvoiceanalyzer.Texts
+import com.ktvincco.openaudiotools.ColorPalette
+import com.ktvincco.openaudiotools.Texts
 import com.ktvincco.openvoiceanalyzer.presentation.ModelData
 import com.ktvincco.openvoiceanalyzer.presentation.UiEventHandler
 import openaudiotools.app.openvoiceanalyzer.generated.resources.Res

@@ -19,8 +19,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.ktvincco.openvoiceanalyzer.ColorPalette
-import com.ktvincco.openvoiceanalyzer.Settings
+import com.ktvincco.openaudiotools.ColorPalette
+import com.ktvincco.openaudiotools.Settings
 import com.ktvincco.openvoiceanalyzer.presentation.ModelData
 import com.ktvincco.openvoiceanalyzer.presentation.UiEventHandler
 import openaudiotools.app.openvoiceanalyzer.generated.resources.Res

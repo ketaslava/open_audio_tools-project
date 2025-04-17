@@ -32,9 +32,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.ktvincco.openvoiceanalyzer.ColorPalette
-import com.ktvincco.openvoiceanalyzer.TextForReading
-import com.ktvincco.openvoiceanalyzer.Texts
+import com.ktvincco.openaudiotools.ColorPalette
+import com.ktvincco.openaudiotools.TextForReading
+import com.ktvincco.openaudiotools.Texts
 import com.ktvincco.openvoiceanalyzer.presentation.ModelData
 import com.ktvincco.openvoiceanalyzer.presentation.UiEventHandler
 import com.ktvincco.openvoiceanalyzer.ui.BaseComponents

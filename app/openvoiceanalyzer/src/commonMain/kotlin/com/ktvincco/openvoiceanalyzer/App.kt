@@ -1,21 +1,19 @@
 package com.ktvincco.openvoiceanalyzer
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.unit.Dp
 import com.ktvincco.openaudiotools.data.AudioPlayer
-import com.ktvincco.openvoiceanalyzer.data.AudioRecorder
-import com.ktvincco.openvoiceanalyzer.data.Database
-import com.ktvincco.openvoiceanalyzer.data.EnvironmentConnector
-import com.ktvincco.openvoiceanalyzer.data.Logger
-import com.ktvincco.openvoiceanalyzer.data.PermissionController
-import com.ktvincco.openvoiceanalyzer.data.SoundFile
+import com.ktvincco.openaudiotools.data.AudioRecorder
+import com.ktvincco.openaudiotools.data.Database
+import com.ktvincco.openaudiotools.data.EnvironmentConnector
+import com.ktvincco.openaudiotools.data.Logger
+import com.ktvincco.openaudiotools.data.PermissionController
+import com.ktvincco.openaudiotools.data.SoundFile
 import com.ktvincco.openvoiceanalyzer.domain.Main
 import com.ktvincco.openvoiceanalyzer.presentation.ModelData
 import com.ktvincco.openvoiceanalyzer.presentation.UiEventHandler
 import com.ktvincco.openvoiceanalyzer.ui.UserInterface
 import org.jetbrains.compose.ui.tooling.preview.Preview
-
-
-expect fun epochMillis(): Long
 
 
 @Composable
@@ -41,3 +39,12 @@ fun App(
     domainMain.setup()
     userInterface.draw()
 }
+
+
+expect fun epochMillis(): Long
+
+
+@Composable
+expect fun getScreenSizeInDp(): Pair<Dp, Dp>
+@Composable
+expect fun getScreenSizeInPx(): Pair<Int, Int>

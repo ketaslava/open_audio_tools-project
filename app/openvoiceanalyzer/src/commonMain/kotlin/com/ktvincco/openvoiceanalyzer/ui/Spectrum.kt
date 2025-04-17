@@ -26,11 +26,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.ktvincco.openvoiceanalyzer.ColorPalette
-import com.ktvincco.openvoiceanalyzer.amplitudeToDecibels
-import com.ktvincco.openvoiceanalyzer.getPlasmaColor
-import com.ktvincco.openvoiceanalyzer.map
-import com.ktvincco.openvoiceanalyzer.normalizeDecibels
+import com.ktvincco.openaudiotools.ColorPalette
+import com.ktvincco.openaudiotools.amplitudeToDecibels
+import com.ktvincco.openaudiotools.getPlasmaColor
+import com.ktvincco.openaudiotools.map
+import com.ktvincco.openaudiotools.normalizeDecibels
 import kotlin.math.roundToInt
 
 

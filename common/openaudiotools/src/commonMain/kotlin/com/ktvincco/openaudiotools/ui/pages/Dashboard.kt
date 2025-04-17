@@ -22,7 +22,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.Settings
-import com.ktvincco.openaudiotools.VersionInfo
 import com.ktvincco.openaudiotools.presentation.ModelData
 import com.ktvincco.openaudiotools.presentation.UiEventHandler
 import com.ktvincco.openaudiotools.ui.BaseComponents
@@ -65,7 +64,7 @@ class Dashboard (
                         .padding(horizontal = 16.dp, vertical = 24.dp)
                 )
 
-                Text(
+                /*Text(
                     text = "V ${VersionInfo.VERSION}",
                     color = ColorPalette.getTextColor(),
                     fontSize = 16.sp,
@@ -73,7 +72,7 @@ class Dashboard (
                     modifier = Modifier
                         .padding(start = 16.dp, end = 16.dp, bottom = 24.dp)
                         .fillMaxWidth()
-                )
+                )*/
 
                 BaseComponents().HorizontalDivider(
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp

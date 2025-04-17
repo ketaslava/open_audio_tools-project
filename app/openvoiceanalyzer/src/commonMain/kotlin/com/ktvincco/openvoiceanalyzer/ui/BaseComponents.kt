@@ -23,7 +23,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.ktvincco.openvoiceanalyzer.ColorPalette
+import com.ktvincco.openaudiotools.ColorPalette
 import openaudiotools.app.openvoiceanalyzer.generated.resources.Res
 import openaudiotools.app.openvoiceanalyzer.generated.resources.check_box_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
 import openaudiotools.app.openvoiceanalyzer.generated.resources.check_box_outline_blank_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24

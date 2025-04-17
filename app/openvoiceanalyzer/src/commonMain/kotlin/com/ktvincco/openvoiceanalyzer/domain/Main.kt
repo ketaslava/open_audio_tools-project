@@ -1,13 +1,13 @@
 package com.ktvincco.openvoiceanalyzer.domain
 
+import com.ktvincco.openaudiotools.Settings
 import com.ktvincco.openaudiotools.data.AudioPlayer
-import com.ktvincco.openvoiceanalyzer.Settings
-import com.ktvincco.openvoiceanalyzer.data.AudioRecorder
-import com.ktvincco.openvoiceanalyzer.data.Database
-import com.ktvincco.openvoiceanalyzer.data.EnvironmentConnector
-import com.ktvincco.openvoiceanalyzer.data.Logger
-import com.ktvincco.openvoiceanalyzer.data.PermissionController
-import com.ktvincco.openvoiceanalyzer.data.SoundFile
+import com.ktvincco.openaudiotools.data.AudioRecorder
+import com.ktvincco.openaudiotools.data.Database
+import com.ktvincco.openaudiotools.data.EnvironmentConnector
+import com.ktvincco.openaudiotools.data.Logger
+import com.ktvincco.openaudiotools.data.PermissionController
+import com.ktvincco.openaudiotools.data.SoundFile
 import com.ktvincco.openvoiceanalyzer.presentation.ModelData
 import com.ktvincco.openvoiceanalyzer.presentation.UiEventHandler
 
