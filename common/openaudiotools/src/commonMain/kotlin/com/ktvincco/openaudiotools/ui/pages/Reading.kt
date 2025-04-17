@@ -38,7 +38,6 @@ import com.ktvincco.openaudiotools.Texts
 import com.ktvincco.openaudiotools.presentation.ModelData
 import com.ktvincco.openaudiotools.presentation.UiEventHandler
 import com.ktvincco.openaudiotools.ui.BaseComponents
-import com.ktvincco.openaudiotools.ui.RecordingControl
 import openaudiotools.common.openaudiotools.generated.resources.Res
 import openaudiotools.common.openaudiotools.generated.resources.menu_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
 import org.jetbrains.compose.resources.painterResource
@@ -128,7 +127,7 @@ class Reading (
                         )
                     }
                 }
-                RecordingControl(modelData, uiEventHandler).draw()
+                //RecordingControl(modelData, uiEventHandler).draw()
             }
             AnimatedVisibility(isOpenTextSelectionMenu) {
                 textSelectionMenu (texts) { selectedTextId ->

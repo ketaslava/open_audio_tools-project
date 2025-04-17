@@ -44,7 +44,7 @@ class Page (
             )
 
             if(isEnableRecordingControl) {
-                RecordingControl(modelData, uiEventHandler).draw()
+                //RecordingControl(modelData, uiEventHandler).draw()
             }
         }
     }

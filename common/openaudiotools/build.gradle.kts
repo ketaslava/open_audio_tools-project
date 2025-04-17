@@ -28,7 +28,6 @@ dependencies {
     implementation(libs.androidx.ui.unit.android)
     implementation(libs.androidx.ui.text.android)
     implementation(libs.kotlinx.datetime)
-    implementation(project(":app:openvoiceanalyzer"))
     debugImplementation(compose.uiTooling)
     implementation(libs.kotlinx.coroutines.core)
 }
