@@ -1,7 +1,15 @@
-
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
+
+repositories {
+    google()
+    mavenCentral()
+    gradlePluginPortal()
+    maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
+}
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -9,6 +17,25 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
 }
+
+dependencies {
+    implementation(libs.androidx.foundation.layout.android)
+    implementation(libs.androidx.foundation.android)
+    implementation(libs.androidx.material3.android)
+    implementation(libs.androidx.ui.android)
+    implementation(libs.androidx.compose.material)
+    implementation(libs.androidx.runtime.android)
+    implementation(libs.androidx.ui.geometry.android)
+    implementation(libs.androidx.ui.unit.android)
+    implementation(libs.androidx.ui.text.android)
+    implementation(libs.kotlinx.datetime)
+    debugImplementation(compose.uiTooling)
+    implementation(libs.kotlinx.coroutines.core)
+}
+
+// Configs
+val version = "1.8.0" // == CHANGE BEFORE RELEASE (1/2) == //
+val androidVersionCode = 12 // == CHANGE BEFORE RELEASE (2/2) == //
 
 kotlin {
 
@@ -20,17 +47,6 @@ kotlin {
     }
 
     jvm("desktop")
-    
-    /*listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64()
-    ).forEach { iosTarget ->
-        iosTarget.binaries.framework {
-            baseName = "openvoiceanalyzer"
-            isStatic = true
-        }
-    }
     
     @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
@@ -50,36 +66,43 @@ kotlin {
             }
         }
         binaries.executable()
-    }*/
+    }
     
     sourceSets {
-        val desktopMain by getting
-
-        androidMain.dependencies {
-            implementation(compose.preview)
-            implementation(libs.androidx.activity.compose)
-            implementation(project(":common:openaudiotools"))
+        val androidMain by getting {
+            dependencies {
+                implementation(compose.preview)
+                implementation(libs.androidx.activity.compose)
+                implementation(project(":common:openaudiotools"))
+            }
         }
-        commonMain.dependencies {
-            implementation(compose.runtime)
-            implementation(compose.foundation)
-            implementation(compose.material)
-            implementation(compose.ui)
-            implementation(compose.components.resources)
-            implementation(compose.components.uiToolingPreview)
-            implementation(libs.androidx.lifecycle.viewmodel)
-            implementation(libs.androidx.lifecycle.runtime.compose)
-            implementation(project(":common:openaudiotools"))
+        val commonMain by getting {
+            dependencies {
+                implementation(compose.runtime)
+                implementation(compose.foundation)
+                implementation(compose.material)
+                implementation(compose.ui)
+                implementation(compose.components.resources)
+                implementation(compose.components.uiToolingPreview)
+                implementation(libs.androidx.lifecycle.viewmodel)
+                implementation(libs.androidx.lifecycle.runtime.compose)
+                implementation(project(":common:openaudiotools"))
+            }
         }
-        desktopMain.dependencies {
-            implementation(compose.desktop.currentOs)
-            implementation(libs.kotlinx.coroutines.swing)
-            implementation(project(":common:openaudiotools"))
+        val desktopMain by getting {
+            dependencies {
+                implementation(compose.desktop.currentOs)
+                implementation(libs.kotlinx.coroutines.swing)
+                implementation(project(":common:openaudiotools"))
+            }
+        }
+        val wasmJsMain by getting {
+            dependencies {
+                implementation(project(":common:openaudiotools"))
+            }
         }
     }
 }
-
-val version = "1.8.0" // == CHANGE BEFORE RELEASE (1/2) == //
 
 android {
     namespace = "com.ktvincco.openvoiceanalyzer"
@@ -89,7 +112,7 @@ android {
         applicationId = "com.ktvincco.openvoiceanalyzer"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
-        versionCode = 12 // == CHANGE BEFORE RELEASE (2/2) == //
+        versionCode = androidVersionCode
         versionName = version
     }
     packaging {
@@ -106,28 +129,6 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-}
-
-dependencies {
-    implementation(libs.androidx.foundation.layout.android)
-    implementation(libs.androidx.foundation.android)
-    implementation(libs.androidx.material3.android)
-    implementation(libs.androidx.ui.android)
-    implementation(libs.androidx.compose.material)
-    implementation(libs.androidx.runtime.android)
-    implementation(libs.androidx.ui.geometry.android)
-    implementation(libs.androidx.ui.unit.android)
-    implementation(libs.androidx.ui.text.android)
-    implementation(libs.kotlinx.datetime)
-    debugImplementation(compose.uiTooling)
-    implementation(libs.kotlinx.coroutines.core)
-}
-
-repositories {
-    google()
-    mavenCentral()
-    gradlePluginPortal()
-    maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
 }
 
 compose.desktop {

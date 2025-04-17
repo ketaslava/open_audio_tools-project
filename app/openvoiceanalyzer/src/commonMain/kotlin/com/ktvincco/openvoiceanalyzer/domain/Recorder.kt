@@ -1,7 +1,7 @@
 package com.ktvincco.openvoiceanalyzer.domain
 
+import com.ktvincco.openaudiotools.data.AudioPlayer
 import com.ktvincco.openvoiceanalyzer.Settings
-import com.ktvincco.openvoiceanalyzer.data.AudioPlayer
 import com.ktvincco.openvoiceanalyzer.data.AudioRecorder
 import com.ktvincco.openvoiceanalyzer.data.Database
 import com.ktvincco.openvoiceanalyzer.data.Logger

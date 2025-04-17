@@ -1,7 +1,7 @@
 package com.ktvincco.openvoiceanalyzer
 
 import androidx.compose.runtime.Composable
-import com.ktvincco.openvoiceanalyzer.data.AudioPlayer
+import com.ktvincco.openaudiotools.data.AudioPlayer
 import com.ktvincco.openvoiceanalyzer.data.AudioRecorder
 import com.ktvincco.openvoiceanalyzer.data.Database
 import com.ktvincco.openvoiceanalyzer.data.EnvironmentConnector
