@@ -18,7 +18,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 import com.ktvincco.openaudiotools.ColorPalette
-import com.ktvincco.openaudiotools.MainApplicationTheme
 import com.ktvincco.openaudiotools.presentation.ModelData
 import com.ktvincco.openaudiotools.presentation.UiEventHandler
 import com.ktvincco.openaudiotools.ui.analysis_mode_pages.AllInfo
@@ -35,6 +34,7 @@ import com.ktvincco.openaudiotools.ui.pages.Dashboard
 import com.ktvincco.openaudiotools.ui.pages.Reading
 import com.ktvincco.openaudiotools.ui.pages.Recordings
 import com.ktvincco.openaudiotools.ui.pages.VoiceChangeGuidelines
+import com.ktvincco.openvoiceanalyzer.MainApplicationTheme
 
 
 @Composable

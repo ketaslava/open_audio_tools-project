@@ -2,7 +2,6 @@ package com.ktvincco.openaudiotools.data
 
 import android.os.Environment
 import android.util.Log
-import com.ktvincco.openaudiotools.MainActivity
 import kotlinx.datetime.Clock
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
@@ -11,7 +10,7 @@ import java.io.IOException
 import java.util.Locale
 
 
-class AndroidDatabase (private val mainActivity: MainActivity): Database {
+class AndroidDatabase (): Database {
 
     companion object {
         const val LOG_TAG = "AndroidDatabase"
@@ -94,7 +93,9 @@ class AndroidDatabase (private val mainActivity: MainActivity): Database {
 
 
     private fun getAppPrivateDirectory(): File {
-        val dir = File(mainActivity.filesDir, "openaudiotools")
+        // DEV
+        //val dir = File(mainActivity.filesDir, "openaudiotools")
+        val dir = File("openaudiotools", "openaudiotools")
         if (!dir.exists()) {
             dir.mkdirs()
         }
