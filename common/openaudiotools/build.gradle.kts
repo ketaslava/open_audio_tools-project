@@ -37,7 +37,7 @@ android {
     compileSdk = 35
 
     defaultConfig {
-        minSdk = 32
+        minSdk = 28
     }
 
     compileOptions {
@@ -55,6 +55,8 @@ kotlin {
         }*/
     }
 
+    jvm("desktop")
+
     sourceSets {
         val commonMain by getting {
             dependencies {
@@ -70,11 +72,11 @@ kotlin {
                 implementation(libs.androidx.activity.compose)
             }
         }
-        /*val desktopMain by getting {
+        val desktopMain by getting {
             dependencies {
                 implementation(compose.desktop.currentOs)
             }
-        }*/
+        }
     }
 
     /*listOf(
@@ -87,8 +89,6 @@ kotlin {
             isStatic = true
         }
     }
-    
-    jvm("desktop")
     
     @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
