@@ -20,7 +20,7 @@ OpenAudioRecorder: $ ./gradlew :app:openaudiorecorder:run
 # Run (Android Device) (Debug)
 
 OpenVoiceAnalyzer: $ ./gradlew :app:openvoiceanalyzer:installDebug
-OpenAudioRecorder: $./gradlew :app:openaudiorecorder:installDebug
+OpenAudioRecorder: $ ./gradlew :app:openaudiorecorder:installDebug
 
 # Export (Linux)
 

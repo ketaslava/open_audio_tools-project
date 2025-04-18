@@ -197,6 +197,9 @@ class NoteGraph {
                                             offsetY = maxOffset
                                             continue
                                         }
+
+                                        // Consume input if limit was not reached
+                                        pointer.consume()
                                     }
 
                                 } else {
