@@ -1,6 +1,3 @@
-import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
-import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
-
 repositories {
     google()
     mavenCentral()
@@ -36,6 +33,7 @@ kotlin {
 
     jvm("desktop")
 
+    /* // DEV // Disabled
     @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
         moduleName = "openaudiotools"
@@ -54,7 +52,7 @@ kotlin {
             }
         }
         binaries.executable()
-    }
+    }*/
 
     sourceSets {
         val androidMain by getting {
@@ -76,10 +74,16 @@ kotlin {
                 implementation(compose.desktop.currentOs)
             }
         }
-        val wasmJsMain by getting {
+        /*val wasmJsMain by getting {
             dependencies {}
-        }
+        }*/
     }
+}
+
+compose.resources {
+    publicResClass = true
+    generateResClass =
+        org.jetbrains.compose.resources.ResourcesExtension.ResourceClassGeneration.Always
 }
 
 android {

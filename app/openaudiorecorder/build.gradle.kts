@@ -1,8 +1,7 @@
+
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
-import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
 repositories {
     google()
@@ -50,7 +49,8 @@ kotlin {
     }
 
     jvm("desktop")
-    
+
+    /* // DEV // Disabled
     @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
         moduleName = "openaudiorecorder"
@@ -69,8 +69,8 @@ kotlin {
             }
         }
         binaries.executable()
-    }
-    
+    }*/
+
     sourceSets {
         val androidMain by getting {
             dependencies {
@@ -99,11 +99,11 @@ kotlin {
                 implementation(project(":common:openaudiotools"))
             }
         }
-        val wasmJsMain by getting {
+        /*val wasmJsMain by getting {
             dependencies {
                 implementation(project(":common:openaudiotools"))
             }
-        }
+        }*/
     }
 }
 

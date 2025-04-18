@@ -26,8 +26,8 @@ import com.ktvincco.openaudiotools.Texts
 import com.ktvincco.openaudiotools.ui.charts.MiniDisplay
 import com.ktvincco.openaudiorecorder.presentation.ModelData
 import com.ktvincco.openaudiorecorder.presentation.UiEventHandler
-import openaudiotools.app.openaudiorecorder.generated.resources.Res
-import openaudiotools.app.openaudiorecorder.generated.resources.developer_guide_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
+import openaudiotools.common.openaudiotools.generated.resources.Res
+import openaudiotools.common.openaudiotools.generated.resources.developer_guide_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
 import org.jetbrains.compose.resources.painterResource
 
 

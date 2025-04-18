@@ -26,8 +26,8 @@ import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.ui.basics.BaseComponents
 import com.ktvincco.openvoiceanalyzer.presentation.ModelData
 import com.ktvincco.openvoiceanalyzer.presentation.UiEventHandler
-import openaudiotools.app.openvoiceanalyzer.generated.resources.Res
-import openaudiotools.app.openvoiceanalyzer.generated.resources.menu_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
+import openaudiotools.common.openaudiotools.generated.resources.Res
+import openaudiotools.common.openaudiotools.generated.resources.menu_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
 import org.jetbrains.compose.resources.painterResource
 
 class MainMenu (private val modelData: ModelData, private val uiEventHandler: UiEventHandler) {
