@@ -170,9 +170,12 @@ class Recorder (
         // Process data
         while (rawData.size - processedLength > sampleLength) {
             audioProcessor.processData(rawData.copyOfRange(processedLength,
-                processedLength + sampleLength), isRecordingNow)
+                processedLength + sampleLength))
             processedLength += sampleLength
         }
+
+        // Update UI
+        audioProcessor.updateUi()
 
         // Update data duration
         val processedDataDurationSec = (processedLength / sampleLength) *

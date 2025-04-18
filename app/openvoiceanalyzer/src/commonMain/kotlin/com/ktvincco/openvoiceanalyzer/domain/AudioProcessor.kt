@@ -114,6 +114,7 @@ class AudioProcessor (
         modelData.setGraphData(graphData)
 
         // Update displays
+        updateDisplaysData()
         updateDisplaysUi()
 
         // Quality
@@ -135,7 +136,8 @@ class AudioProcessor (
     // Public
 
 
-    fun processData(currentSample: FloatArray, isUpdateUi: Boolean) {
+    fun processData(currentSample: FloatArray) {
+        // ! You need no call updateUi() to send a new data to UI
 
         // Calculate data
         measureCheckpoint("Loop")
@@ -244,13 +246,6 @@ class AudioProcessor (
 
         // Update state
         dataSize += 1
-
-        // Update UI
-
-        if (isUpdateUi) {
-            updateDisplaysData()
-            updateUi()
-        }
     }
 
 
