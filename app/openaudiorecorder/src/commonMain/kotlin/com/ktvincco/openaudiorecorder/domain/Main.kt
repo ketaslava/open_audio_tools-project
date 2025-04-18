@@ -1,15 +1,16 @@
 package com.ktvincco.openaudiorecorder.domain
 
-import com.ktvincco.openaudiorecorder.Settings
-import com.ktvincco.openaudiorecorder.data.AudioPlayer
-import com.ktvincco.openaudiorecorder.data.AudioRecorder
-import com.ktvincco.openaudiorecorder.data.Database
-import com.ktvincco.openaudiorecorder.data.EnvironmentConnector
-import com.ktvincco.openaudiorecorder.data.Logger
-import com.ktvincco.openaudiorecorder.data.PermissionController
-import com.ktvincco.openaudiorecorder.data.SoundFile
+import com.ktvincco.openaudiorecorder.AppInfo
 import com.ktvincco.openaudiorecorder.presentation.ModelData
 import com.ktvincco.openaudiorecorder.presentation.UiEventHandler
+import com.ktvincco.openaudiotools.Settings
+import com.ktvincco.openaudiotools.data.AudioPlayer
+import com.ktvincco.openaudiotools.data.AudioRecorder
+import com.ktvincco.openaudiotools.data.Database
+import com.ktvincco.openaudiotools.data.EnvironmentConnector
+import com.ktvincco.openaudiotools.data.Logger
+import com.ktvincco.openaudiotools.data.PermissionController
+import com.ktvincco.openaudiotools.data.SoundFile
 
 class Main (private val modelData: ModelData,
             private val uiEventHandler: UiEventHandler,
@@ -33,6 +34,10 @@ class Main (private val modelData: ModelData,
 
 
     fun setup() {
+
+        // Info
+        modelData.setAppInfo("Name", AppInfo.NAME)
+        modelData.setAppInfo("Version", AppInfo.VERSION)
 
         // Callbacks
         uiEventHandler.assignOpenAppPermissionSettingsButtonCallback {

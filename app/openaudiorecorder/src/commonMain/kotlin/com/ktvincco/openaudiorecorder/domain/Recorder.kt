@@ -1,12 +1,12 @@
 package com.ktvincco.openaudiorecorder.domain
 
-import com.ktvincco.openaudiorecorder.Settings
-import com.ktvincco.openaudiorecorder.data.AudioPlayer
-import com.ktvincco.openaudiorecorder.data.AudioRecorder
-import com.ktvincco.openaudiorecorder.data.Database
-import com.ktvincco.openaudiorecorder.data.Logger
-import com.ktvincco.openaudiorecorder.data.PermissionController
-import com.ktvincco.openaudiorecorder.data.SoundFile
+import com.ktvincco.openaudiotools.Settings
+import com.ktvincco.openaudiotools.data.AudioPlayer
+import com.ktvincco.openaudiotools.data.AudioRecorder
+import com.ktvincco.openaudiotools.data.Database
+import com.ktvincco.openaudiotools.data.Logger
+import com.ktvincco.openaudiotools.data.PermissionController
+import com.ktvincco.openaudiotools.data.SoundFile
 import com.ktvincco.openaudiorecorder.presentation.ModelData
 import com.ktvincco.openaudiorecorder.presentation.UiEventHandler
 import kotlinx.coroutines.CoroutineScope
@@ -170,9 +170,12 @@ class Recorder (
         // Process data
         while (rawData.size - processedLength > sampleLength) {
             audioProcessor.processData(rawData.copyOfRange(processedLength,
-                processedLength + sampleLength), isRecordingNow)
+                processedLength + sampleLength))
             processedLength += sampleLength
         }
+
+        // Update UI
+        audioProcessor.updateUi()
 
         // Update data duration
         val processedDataDurationSec = (processedLength / sampleLength) *

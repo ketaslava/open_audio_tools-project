@@ -1,4 +1,4 @@
-package com.ktvincco.openaudiorecorder.ui
+package com.ktvincco.openaudiorecorder.ui.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollState
@@ -22,7 +22,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.ktvincco.openaudiorecorder.ColorPalette
+import com.ktvincco.openaudiotools.ColorPalette
+import com.ktvincco.openaudiotools.ui.basics.BaseComponents
 import com.ktvincco.openaudiorecorder.presentation.ModelData
 import com.ktvincco.openaudiorecorder.presentation.UiEventHandler
 import openaudiotools.app.openaudiorecorder.generated.resources.Res

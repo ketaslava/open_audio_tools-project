@@ -1,4 +1,4 @@
-package com.ktvincco.openaudiorecorder.ui
+package com.ktvincco.openaudiorecorder.ui.components
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
@@ -31,7 +31,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
-import com.ktvincco.openaudiorecorder.ColorPalette
+import com.ktvincco.openaudiotools.ColorPalette
+import com.ktvincco.openaudiorecorder.getScreenSizeInPx
 import com.ktvincco.openaudiorecorder.presentation.ModelData
 import com.ktvincco.openaudiorecorder.presentation.UiEventHandler
 import openaudiotools.app.openaudiorecorder.generated.resources.Res

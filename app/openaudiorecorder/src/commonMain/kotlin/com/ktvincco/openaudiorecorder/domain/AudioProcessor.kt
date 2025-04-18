@@ -1,37 +1,37 @@
 package com.ktvincco.openaudiorecorder.domain
 
-import com.ktvincco.openaudiorecorder.data.AudioPlayer
-import com.ktvincco.openaudiorecorder.data.AudioRecorder
-import com.ktvincco.openaudiorecorder.data.Database
-import com.ktvincco.openaudiorecorder.data.Logger
-import com.ktvincco.openaudiorecorder.data.PermissionController
-import com.ktvincco.openaudiorecorder.data.SoundFile
-import com.ktvincco.openaudiorecorder.data.sound_processing_algorithms.RecordingQuality
-import com.ktvincco.openaudiorecorder.data.sound_processing_algorithms.calculateActiveFirstAndSecondFormant
-import com.ktvincco.openaudiorecorder.data.sound_processing_algorithms.calculateBandEnergyRatioHigh
-import com.ktvincco.openaudiorecorder.data.sound_processing_algorithms.calculateBandEnergyRatioLow
-import com.ktvincco.openaudiorecorder.data.sound_processing_algorithms.calculateBandEnergyRatioMedium
-import com.ktvincco.openaudiorecorder.data.sound_processing_algorithms.calculateEnergySpectrumInHz
-import com.ktvincco.openaudiorecorder.data.sound_processing_algorithms.calculateFirstAndSecondFormant
-import com.ktvincco.openaudiorecorder.data.sound_processing_algorithms.calculateH1H2EnergyBalance
-import com.ktvincco.openaudiorecorder.data.sound_processing_algorithms.calculateHLRatio
-import com.ktvincco.openaudiorecorder.data.sound_processing_algorithms.calculateHarmonicToNoiseRatio
-import com.ktvincco.openaudiorecorder.data.sound_processing_algorithms.calculateLoudness
-import com.ktvincco.openaudiorecorder.data.sound_processing_algorithms.calculatePitch
-import com.ktvincco.openaudiorecorder.data.sound_processing_algorithms.calculateRecordingQuality
-import com.ktvincco.openaudiorecorder.data.sound_processing_algorithms.calculateSpectralCentroid
-import com.ktvincco.openaudiorecorder.data.sound_processing_algorithms.calculateSpectralSpread
-import com.ktvincco.openaudiorecorder.data.sound_processing_algorithms.calculateSpectralTilt
-import com.ktvincco.openaudiorecorder.data.sound_processing_algorithms.calculateVAD
-import com.ktvincco.openaudiorecorder.data.sound_processing_algorithms.calculateVoiceClarity
-import com.ktvincco.openaudiorecorder.data.sound_processing_algorithms.calculateVoiceEnergy
-import com.ktvincco.openaudiorecorder.data.sound_processing_algorithms.calculateVoiceJitter
-import com.ktvincco.openaudiorecorder.data.sound_processing_algorithms.calculateVoicePausesDuration
-import com.ktvincco.openaudiorecorder.data.sound_processing_algorithms.calculateVoiceProsody
-import com.ktvincco.openaudiorecorder.data.sound_processing_algorithms.calculateVoiceRythm
-import com.ktvincco.openaudiorecorder.data.sound_processing_algorithms.calculateVoiceShimmer
-import com.ktvincco.openaudiorecorder.data.sound_processing_algorithms.calculateVoiceWeight
-import com.ktvincco.openaudiorecorder.data.sound_processing_algorithms.getVoiceSpectrumInHz
+import com.ktvincco.openaudiotools.data.AudioPlayer
+import com.ktvincco.openaudiotools.data.AudioRecorder
+import com.ktvincco.openaudiotools.data.Database
+import com.ktvincco.openaudiotools.data.Logger
+import com.ktvincco.openaudiotools.data.PermissionController
+import com.ktvincco.openaudiotools.data.SoundFile
+import com.ktvincco.openaudiotools.data.sound_processing_algorithms.RecordingQuality
+import com.ktvincco.openaudiotools.data.sound_processing_algorithms.calculateActiveFirstAndSecondFormant
+import com.ktvincco.openaudiotools.data.sound_processing_algorithms.calculateBandEnergyRatioHigh
+import com.ktvincco.openaudiotools.data.sound_processing_algorithms.calculateBandEnergyRatioLow
+import com.ktvincco.openaudiotools.data.sound_processing_algorithms.calculateBandEnergyRatioMedium
+import com.ktvincco.openaudiotools.data.sound_processing_algorithms.calculateEnergySpectrumInHz
+import com.ktvincco.openaudiotools.data.sound_processing_algorithms.calculateFirstAndSecondFormant
+import com.ktvincco.openaudiotools.data.sound_processing_algorithms.calculateH1H2EnergyBalance
+import com.ktvincco.openaudiotools.data.sound_processing_algorithms.calculateHLRatio
+import com.ktvincco.openaudiotools.data.sound_processing_algorithms.calculateHarmonicToNoiseRatio
+import com.ktvincco.openaudiotools.data.sound_processing_algorithms.calculateLoudness
+import com.ktvincco.openaudiotools.data.sound_processing_algorithms.calculatePitch
+import com.ktvincco.openaudiotools.data.sound_processing_algorithms.calculateRecordingQuality
+import com.ktvincco.openaudiotools.data.sound_processing_algorithms.calculateSpectralCentroid
+import com.ktvincco.openaudiotools.data.sound_processing_algorithms.calculateSpectralSpread
+import com.ktvincco.openaudiotools.data.sound_processing_algorithms.calculateSpectralTilt
+import com.ktvincco.openaudiotools.data.sound_processing_algorithms.calculateVAD
+import com.ktvincco.openaudiotools.data.sound_processing_algorithms.calculateVoiceClarity
+import com.ktvincco.openaudiotools.data.sound_processing_algorithms.calculateVoiceEnergy
+import com.ktvincco.openaudiotools.data.sound_processing_algorithms.calculateVoiceJitter
+import com.ktvincco.openaudiotools.data.sound_processing_algorithms.calculateVoicePausesDuration
+import com.ktvincco.openaudiotools.data.sound_processing_algorithms.calculateVoiceProsody
+import com.ktvincco.openaudiotools.data.sound_processing_algorithms.calculateVoiceRythm
+import com.ktvincco.openaudiotools.data.sound_processing_algorithms.calculateVoiceShimmer
+import com.ktvincco.openaudiotools.data.sound_processing_algorithms.calculateVoiceWeight
+import com.ktvincco.openaudiotools.data.sound_processing_algorithms.getVoiceSpectrumInHz
 import com.ktvincco.openaudiorecorder.presentation.ModelData
 import com.ktvincco.openaudiorecorder.presentation.UiEventHandler
 
@@ -114,6 +114,7 @@ class AudioProcessor (
         modelData.setGraphData(graphData)
 
         // Update displays
+        updateDisplaysData()
         updateDisplaysUi()
 
         // Quality
@@ -135,7 +136,8 @@ class AudioProcessor (
     // Public
 
 
-    fun processData(currentSample: FloatArray, isUpdateUi: Boolean) {
+    fun processData(currentSample: FloatArray) {
+        // ! You need no call updateUi() to send a new data to UI
 
         // Calculate data
         measureCheckpoint("Loop")
@@ -244,13 +246,6 @@ class AudioProcessor (
 
         // Update state
         dataSize += 1
-
-        // Update UI
-
-        if (isUpdateUi) {
-            updateDisplaysData()
-            updateUi()
-        }
     }
 
 

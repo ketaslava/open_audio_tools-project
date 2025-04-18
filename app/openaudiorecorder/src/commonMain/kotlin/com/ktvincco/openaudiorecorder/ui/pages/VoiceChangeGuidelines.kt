@@ -15,10 +15,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.ktvincco.openaudiorecorder.ColorPalette
+import com.ktvincco.openaudiotools.ColorPalette
+import com.ktvincco.openaudiotools.ui.basics.BaseComponents
 import com.ktvincco.openaudiorecorder.presentation.ModelData
 import com.ktvincco.openaudiorecorder.presentation.UiEventHandler
-import com.ktvincco.openaudiorecorder.ui.BaseComponents
 
 
 class VoiceChangeGuidelines (

@@ -1,4 +1,4 @@
-package com.ktvincco.openaudiorecorder.ui
+package com.ktvincco.openaudiorecorder.ui.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -13,7 +13,7 @@ import com.ktvincco.openaudiorecorder.presentation.ModelData
 import com.ktvincco.openaudiorecorder.presentation.UiEventHandler
 
 
-class Page (
+class PageWithBottomControls (
     private val modelData: ModelData,
     private val uiEventHandler: UiEventHandler
 ) {

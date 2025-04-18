@@ -22,7 +22,7 @@ import java.awt.Toolkit
 fun main() = application {
 
     Window(
-        title = "Open Voice Analyzer",
+        title = AppInfo.NAME,
         icon = painterResource(Res.drawable.icon),
         onCloseRequest = ::exitApplication,
     ) {

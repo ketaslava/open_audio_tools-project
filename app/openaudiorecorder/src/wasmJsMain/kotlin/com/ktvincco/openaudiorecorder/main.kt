@@ -1,14 +1,16 @@
 package com.ktvincco.openaudiorecorder
 
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.window.ComposeViewport
-import com.ktvincco.openaudiorecorder.data.WasmAudioPlayer
-import com.ktvincco.openaudiorecorder.data.WasmAudioRecorder
-import com.ktvincco.openaudiorecorder.data.WasmDatabase
-import com.ktvincco.openaudiorecorder.data.WasmEnvironmentConnector
-import com.ktvincco.openaudiorecorder.data.WasmLogger
-import com.ktvincco.openaudiorecorder.data.WasmPermissionController
-import com.ktvincco.openaudiorecorder.data.WasmSoundFile
+import com.ktvincco.openaudiotools.data.WasmAudioPlayer
+import com.ktvincco.openaudiotools.data.WasmAudioRecorder
+import com.ktvincco.openaudiotools.data.WasmDatabase
+import com.ktvincco.openaudiotools.data.WasmEnvironmentConnector
+import com.ktvincco.openaudiotools.data.WasmLogger
+import com.ktvincco.openaudiotools.data.WasmPermissionController
+import com.ktvincco.openaudiotools.data.WasmSoundFile
 import kotlinx.browser.document
 
 
@@ -20,7 +22,7 @@ fun main() {
         val wasmLogger = WasmLogger()
         val wasmPermissionController = WasmPermissionController()
         val wasmAudioRecorder = WasmAudioRecorder()
-        val wasmDatabase = WasmDatabase()
+        val wasmDatabase = WasmDatabase(AppInfo.NAME)
         val wasmSoundFile = WasmSoundFile()
         val wasmAudioPlayer = WasmAudioPlayer()
         val wasmEnvironmentConnector = WasmEnvironmentConnector()
@@ -34,5 +36,17 @@ fun main() {
 
 
 actual fun epochMillis(): Long {
+    TODO("Not yet implemented")
+}
+
+
+@Composable
+actual fun getScreenSizeInDp(): Pair<Dp, Dp> {
+    TODO("Not yet implemented")
+}
+
+
+@Composable
+actual fun getScreenSizeInPx(): Pair<Int, Int> {
     TODO("Not yet implemented")
 }

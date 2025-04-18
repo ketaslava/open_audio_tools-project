@@ -1,4 +1,4 @@
-package com.ktvincco.openaudiorecorder.ui
+package com.ktvincco.openaudiorecorder.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -25,8 +25,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.ktvincco.openaudiorecorder.ColorPalette
-import com.ktvincco.openaudiorecorder.Texts
+import com.ktvincco.openaudiotools.ColorPalette
+import com.ktvincco.openaudiotools.Texts
 import com.ktvincco.openaudiorecorder.presentation.ModelData
 import com.ktvincco.openaudiorecorder.presentation.UiEventHandler
 

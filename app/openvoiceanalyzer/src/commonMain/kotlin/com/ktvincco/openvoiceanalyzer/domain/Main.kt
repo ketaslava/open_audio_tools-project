@@ -36,6 +36,7 @@ class Main (private val modelData: ModelData,
     fun setup() {
 
         // Info
+        modelData.setAppInfo("Name", AppInfo.NAME)
         modelData.setAppInfo("Version", AppInfo.VERSION)
 
         // Callbacks

@@ -56,7 +56,7 @@ class Dashboard (
                     .verticalScroll(state = scrollState)
             ) {
                 Text(
-                    text = "Open Voice Analyzer",
+                    text = basicModelData.getAppInfo("Name"),
                     color = ColorPalette.getTextColor(),
                     fontSize = 28.sp,
                     lineHeight = 36.sp,

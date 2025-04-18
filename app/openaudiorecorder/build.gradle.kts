@@ -33,8 +33,11 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
 }
 
+// Settings
+val appName = "OpenAudioRecorder"
+
 // Configs
-val version = "1.8.0" // == CHANGE BEFORE RELEASE (1/2) == //
+val version = "1.8.2" // == CHANGE BEFORE RELEASE (1/2) == //
 val androidVersionCode = 12 // == CHANGE BEFORE RELEASE (2/2) == //
 
 kotlin {
@@ -45,7 +48,7 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_11)
         }
     }
-    
+
     jvm("desktop")
     
     @OptIn(ExperimentalWasmDsl::class)
@@ -67,7 +70,7 @@ kotlin {
         }
         binaries.executable()
     }
-
+    
     sourceSets {
         val androidMain by getting {
             dependencies {
@@ -145,7 +148,7 @@ compose.desktop {
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi,
                 TargetFormat.Deb, TargetFormat.Rpm, TargetFormat.AppImage)
-            packageName = "Open Audio Recorder"
+            packageName = name
             packageVersion = version
             jvmArgs.addAll(jvmArgsList)
             linux {
@@ -158,11 +161,12 @@ compose.desktop {
 // Auto update app version in configs
 tasks.register("generateVersion") {
     doLast {
-        val file = file("src/commonMain/kotlin/com/ktvincco/openaudiorecorder/Version.kt")
+        val file = file("src/commonMain/kotlin/com/ktvincco/openaudiorecorder/AppInfo.kt")
         file.writeText("""
             package com.ktvincco.openaudiorecorder
             
-            object VersionInfo {
+            object AppInfo {
+                const val NAME = "$appName"
                 const val VERSION = "$version"
             }
         """.trimIndent())
