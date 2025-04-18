@@ -28,20 +28,13 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import com.ktvincco.openaudiotools.ColorPalette
+import com.ktvincco.openaudiotools.map
 import com.ktvincco.openaudiotools.presentation.BasicModelData
 import com.ktvincco.openaudiotools.presentation.BasicUiEventHandler
 import openaudiotools.common.openaudiotools.generated.resources.Res
 import openaudiotools.common.openaudiotools.generated.resources.triangle_pointer
 import org.jetbrains.compose.resources.painterResource
 import kotlin.math.abs
-
-
-private fun map(source: Float, minSource: Float, maxSource: Float,
-                minTarget: Float, maxTarget: Float): Float {
-    val s = (source - minSource) / (maxSource - minSource)
-    return minTarget + (maxTarget - minTarget) * s
-}
-
 
 class MiniDisplay (
     private val basicModelData: BasicModelData,
