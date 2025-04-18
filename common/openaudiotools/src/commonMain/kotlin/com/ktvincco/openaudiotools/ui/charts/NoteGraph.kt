@@ -121,6 +121,31 @@ class NoteGraph {
         var autoOffsetNoteIndex by remember { mutableStateOf(0) }
         var lastCanvasHeight by remember { mutableStateOf(0F) }
 
+        // Scroll
+        var isDragging by remember { mutableStateOf(false) }
+        var inertiaY by remember { mutableStateOf(0f) }
+        var lastUpdateTime by remember { mutableStateOf(0L) }
+        val inertiaDrag = 1F
+        val nowMs = System.currentTimeMillis()
+        if (!isDragging && inertiaY != 0F) {
+            val deltaTime = (nowMs - lastUpdateTime).toFloat()
+            val change = inertiaY * (inertiaDrag * (deltaTime / 1000F))
+            inertiaY -= change
+            offsetY += inertiaY
+
+            if (offsetY < 0) {
+                offsetY = 0F
+                inertiaY = 0F
+            }
+            val maxOffset = (horizontalElementHeightProportion *
+                    lastCanvasHeight * notesCount) - lastCanvasHeight
+            if (offsetY > maxOffset) {
+                offsetY = maxOffset
+                inertiaY = 0F
+            }
+        }
+        lastUpdateTime = nowMs
+
         // Process
 
         // Create components
@@ -173,6 +198,14 @@ class NoteGraph {
                                         isCurrentGestureHorizontal = abs(delta.x) > abs(delta.y)
                                     }
 
+                                    // Detect hold gesture
+                                    if (!isCurrentGestureCaptured && delta == Offset.Zero) {
+
+                                        // Stop drag
+                                        inertiaY = 0F
+                                        isDragging = true
+                                    }
+
                                     // Detect horizontal gesture
                                     if (isCurrentGestureCaptured && isCurrentGestureHorizontal) {
 
@@ -192,11 +225,16 @@ class NoteGraph {
                                             offsetY = 0F
                                             continue
                                         }
-                                        val maxOffset = (horizontalElementHeightProportion * lastCanvasHeight * notesCount) - lastCanvasHeight
+                                        val maxOffset = (horizontalElementHeightProportion *
+                                                lastCanvasHeight * notesCount) - lastCanvasHeight
                                         if (offsetY > maxOffset) {
                                             offsetY = maxOffset
                                             continue
                                         }
+
+                                        // Set scroll state
+                                        isDragging = true
+                                        inertiaY = delta.y
 
                                         // Consume input if limit was not reached
                                         pointer.consume()
@@ -205,6 +243,9 @@ class NoteGraph {
                                 } else {
                                     // Release gesture
                                     isCurrentGestureCaptured = false
+
+                                    // Set scroll state
+                                    isDragging = false
                                 }
                             }
                         }
