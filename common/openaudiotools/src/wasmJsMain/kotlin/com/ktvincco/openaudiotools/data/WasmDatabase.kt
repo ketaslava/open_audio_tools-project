@@ -1,7 +1,7 @@
 package com.ktvincco.openaudiotools.data
 
 
-class WasmDatabase: Database {
+class WasmDatabase (private val appName: String): Database {
 
     override fun getSoundFileDirectoryPath(): String {
         TODO("Not yet implemented")

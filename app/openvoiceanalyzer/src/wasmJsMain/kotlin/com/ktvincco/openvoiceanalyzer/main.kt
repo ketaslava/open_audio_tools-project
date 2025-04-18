@@ -22,7 +22,7 @@ fun main() {
         val wasmLogger = WasmLogger()
         val wasmPermissionController = WasmPermissionController()
         val wasmAudioRecorder = WasmAudioRecorder()
-        val wasmDatabase = WasmDatabase()
+        val wasmDatabase = WasmDatabase(AppInfo.NAME)
         val wasmSoundFile = WasmSoundFile()
         val wasmAudioPlayer = WasmAudioPlayer()
         val wasmEnvironmentConnector = WasmEnvironmentConnector()

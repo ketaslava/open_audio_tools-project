@@ -33,6 +33,9 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
 }
 
+// Settings
+val appName = "OpenVoiceAnalyzer"
+
 // Configs
 val version = "1.8.2" // == CHANGE BEFORE RELEASE (1/2) == //
 val androidVersionCode = 12 // == CHANGE BEFORE RELEASE (2/2) == //
@@ -145,7 +148,7 @@ compose.desktop {
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi,
                 TargetFormat.Deb, TargetFormat.Rpm, TargetFormat.AppImage)
-            packageName = "Open Voice Analyzer"
+            packageName = name
             packageVersion = version
             jvmArgs.addAll(jvmArgsList)
             linux {
@@ -158,11 +161,12 @@ compose.desktop {
 // Auto update app version in configs
 tasks.register("generateVersion") {
     doLast {
-        val file = file("src/commonMain/kotlin/com/ktvincco/openvoiceanalyzer/Version.kt")
+        val file = file("src/commonMain/kotlin/com/ktvincco/openvoiceanalyzer/AppInfo.kt")
         file.writeText("""
             package com.ktvincco.openvoiceanalyzer
             
-            object VersionInfo {
+            object AppInfo {
+                const val NAME = "$appName"
                 const val VERSION = "$version"
             }
         """.trimIndent())
