@@ -8,6 +8,7 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.core.view.WindowCompat.setDecorFitsSystemWindows
 import com.ktvincco.openaudiotools.data.AndroidAudioPlayer
 import com.ktvincco.openaudiotools.data.AndroidAudioRecorder
 import com.ktvincco.openaudiotools.data.AndroidDatabase
@@ -32,6 +33,9 @@ class MainActivity : ComponentActivity() {
     // On Create
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Enable edge-to-edge UI layout
+        setDecorFitsSystemWindows(window, false)
 
         // Launch common app
         setContent {

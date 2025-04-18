@@ -35,8 +35,8 @@ dependencies {
 val appName = "OpenVoiceAnalyzer"
 
 // Configs
-val version = "1.8.2" // == CHANGE BEFORE RELEASE (1/2) == //
-val androidVersionCode = 12 // == CHANGE BEFORE RELEASE (2/2) == //
+val version = "1.8.9" // == CHANGE BEFORE RELEASE (1/2) == //
+val androidVersionCode = 13 // == CHANGE BEFORE RELEASE (2/2) == //
 
 kotlin {
 
