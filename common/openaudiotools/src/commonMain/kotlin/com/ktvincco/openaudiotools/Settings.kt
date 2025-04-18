@@ -12,7 +12,7 @@ class Settings {
         }
 
         fun getAudioBufferSize(): Int {
-            return 4096 // 1024
+            return 4096 // 4096
         }
 
         fun getProcessingSampleDurationSec(): Float {

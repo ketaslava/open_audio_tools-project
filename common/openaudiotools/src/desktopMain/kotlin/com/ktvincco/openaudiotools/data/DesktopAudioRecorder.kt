@@ -26,17 +26,33 @@ class DesktopAudioRecorder : AudioRecorder {
             true,
             true
         )
-
         val info = DataLine.Info(TargetDataLine::class.java, format)
+
+        // Calculate the line buffer size (not the read buffer)
+        val sampleRate = Settings.getSampleRate().toFloat()
+        val bytesPerSample = 2F  // 16‑bit = 2 bytes
+        val channels       = 1F
+        val bufferMs       = 200F
+        val lineBufferSize = (sampleRate * channels * bytesPerSample * (bufferMs / 1000F)).toInt()
 
         // Choose the source
         val line = getTargetDataLine(info, format)
 
-        line.open(format)
+        // Open the line
+        line.open(format, lineBufferSize)
         line.start()
 
+        // throw away any already‑queued samples
+        val available = line.available()
+        if (available > 0) {
+            val tmp = ByteArray(available.coerceAtMost(lineBufferSize))
+            line.read(tmp, 0, tmp.size)
+        }
+
+        // Set state
         isRecording = true
 
+        // Run listener thread
         Thread {
             val buffer = ByteArray(Settings.getAudioBufferSize())
             while (isRecording) {
