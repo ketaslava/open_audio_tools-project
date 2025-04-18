@@ -1,5 +1,7 @@
 package com.ktvincco.openaudiotools.presentation
 
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateMapOf
 import com.ktvincco.openaudiotools.data.sound_processing_algorithms.RecordingQuality
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -13,6 +15,17 @@ open class BasicModelData {
     val isShowUi: StateFlow<Boolean> = _isShowUi
     fun setIsShowUi(newValue: Boolean) {
         _isShowUi.value = newValue
+    }
+
+
+    // App Info
+    private val _appInfo = mutableStateMapOf<String, String>()
+    fun setAppInfo(key: String, value: String) {
+        _appInfo[key] = value
+    }
+    @Composable
+    fun getAppInfo(key: String): String {
+        return _appInfo[key] ?: ""
     }
 
 

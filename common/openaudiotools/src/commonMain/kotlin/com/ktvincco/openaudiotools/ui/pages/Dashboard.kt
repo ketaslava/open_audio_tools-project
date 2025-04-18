@@ -64,15 +64,15 @@ class Dashboard (
                         .padding(horizontal = 16.dp, vertical = 24.dp)
                 )
 
-                /*Text(
-                    text = "V ${VersionInfo.VERSION}",
+                Text(
+                    text = "V ${basicModelData.getAppInfo("Version")}",
                     color = ColorPalette.getTextColor(),
                     fontSize = 16.sp,
                     lineHeight = 24.sp,
                     modifier = Modifier
                         .padding(start = 16.dp, end = 16.dp, bottom = 24.dp)
                         .fillMaxWidth()
-                )*/
+                )
 
                 BaseComponents().HorizontalDivider(
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp

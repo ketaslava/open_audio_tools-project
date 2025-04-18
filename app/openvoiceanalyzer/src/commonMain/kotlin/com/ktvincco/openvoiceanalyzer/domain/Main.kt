@@ -8,6 +8,7 @@ import com.ktvincco.openaudiotools.data.EnvironmentConnector
 import com.ktvincco.openaudiotools.data.Logger
 import com.ktvincco.openaudiotools.data.PermissionController
 import com.ktvincco.openaudiotools.data.SoundFile
+import com.ktvincco.openvoiceanalyzer.VersionInfo
 import com.ktvincco.openvoiceanalyzer.presentation.ModelData
 import com.ktvincco.openvoiceanalyzer.presentation.UiEventHandler
 
@@ -33,6 +34,9 @@ class Main (private val modelData: ModelData,
 
 
     fun setup() {
+
+        // Info
+        modelData.setAppInfo("Version", VersionInfo.VERSION)
 
         // Callbacks
         uiEventHandler.assignOpenAppPermissionSettingsButtonCallback {
