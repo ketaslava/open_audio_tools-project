@@ -18,6 +18,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.MainApplicationTheme
+import com.ktvincco.openaudiotools.ui.basics.Page
+import com.ktvincco.openaudiotools.ui.basics.Popup
+import com.ktvincco.openaudiotools.ui.pages.Dashboard
+import com.ktvincco.openaudiotools.ui.pages.Recordings
+import com.ktvincco.openaudiotools.ui.screens.AccessDeniedScreen
+import com.ktvincco.openaudiotools.ui.screens.FirstStartScreen
+import com.ktvincco.openaudiotools.ui.screens.LegalInfoScreen
+import com.ktvincco.openaudiotools.ui.screens.LoadingScreenOverlay
 import com.ktvincco.openvoiceanalyzer.presentation.ModelData
 import com.ktvincco.openvoiceanalyzer.presentation.UiEventHandler
 import com.ktvincco.openvoiceanalyzer.ui.analysis_mode_pages.AllInfo
@@ -30,9 +38,9 @@ import com.ktvincco.openvoiceanalyzer.ui.analysis_mode_pages.Singing
 import com.ktvincco.openvoiceanalyzer.ui.analysis_mode_pages.SpeakerVoice
 import com.ktvincco.openvoiceanalyzer.ui.analysis_mode_pages.SpectrumInfo
 import com.ktvincco.openvoiceanalyzer.ui.analysis_mode_pages.VoiceSmoothness
-import com.ktvincco.openvoiceanalyzer.ui.pages.Dashboard
+import com.ktvincco.openvoiceanalyzer.ui.components.HelpMenu
+import com.ktvincco.openvoiceanalyzer.ui.components.MainMenu
 import com.ktvincco.openvoiceanalyzer.ui.pages.Reading
-import com.ktvincco.openvoiceanalyzer.ui.pages.Recordings
 import com.ktvincco.openvoiceanalyzer.ui.pages.VoiceChangeGuidelines
 
 

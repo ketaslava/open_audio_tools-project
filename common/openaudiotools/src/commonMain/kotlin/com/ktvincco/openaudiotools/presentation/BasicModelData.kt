@@ -1,14 +1,11 @@
-package com.ktvincco.openaudiorecorder.presentation
+package com.ktvincco.openaudiotools.presentation
 
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateMapOf
-import com.ktvincco.openaudiorecorder.data.sound_processing_algorithms.RecordingQuality
-import com.ktvincco.openaudiotools.presentation.BasicModelData
+import com.ktvincco.openaudiotools.data.sound_processing_algorithms.RecordingQuality
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
 
-class ModelData: BasicModelData {
+open class BasicModelData {
 
 
     // Ui switch
@@ -35,31 +32,18 @@ class ModelData: BasicModelData {
 
 
     // Current page
-    private val _currentPage = MutableStateFlow("Dashboard")
+    val _currentPage = MutableStateFlow("Dashboard")
     val currentPage: StateFlow<String> = _currentPage
     fun openFirstStartScreen(callback: () -> Unit) {
         firstStartScreenClosedCallback = callback
         _currentPage.value = "FirstStartScreen"
     }
 
+
     // Default pages
     fun openDashboardPage() { _currentPage.value = "Dashboard" }
-    fun openVoiceChangeGuidelinesPage() { _currentPage.value = "VoiceChangeGuidelines" }
     fun openRecordingsPage() { _currentPage.value = "Recordings" }
     fun openAccessDeniedScreen() { _currentPage.value = "AccessDeniedScreen" }
-
-    // Mode pages
-    fun openAllInfoPage() { _currentPage.value = "AllInfo" }
-    fun openSpectrumInfoPage() { _currentPage.value = "SpectrumInfo" }
-    fun openReadingPage() { _currentPage.value = "Reading" }
-    fun openSpeakerVoicePage() { _currentPage.value = "SpeakerVoice" }
-    fun openSingingPage() { _currentPage.value = "Singing" }
-    fun openPitchAndResonancePage() { _currentPage.value = "PitchAndResonance" }
-    fun openVoiceSmoothnessPage() { _currentPage.value = "VoiceSmoothness" }
-    fun openFemaleVoicePage() { _currentPage.value = "FemaleVoice" }
-    fun openFemaleVoiceResonancePage() { _currentPage.value = "FemaleVoiceResonance" }
-    fun openMaleVoicePage() { _currentPage.value = "MaleVoice" }
-    fun openMaleVoiceResonancePage() { _currentPage.value = "MaleVoiceResonance" }
 
 
     // Legal Info Screen
@@ -95,26 +79,6 @@ class ModelData: BasicModelData {
     val playbackState: StateFlow<Boolean> = _playbackState
     fun setPlaybackState(newValue: Boolean) {
         _playbackState.value = newValue
-    }
-
-
-    // Recording control layout
-    private val _recordingControlLayout = MutableStateFlow("ReadyToRecording")
-    val recordingControlLayout: StateFlow<String> = _recordingControlLayout
-    fun setRecordingControlLayoutAsReadyToRecording() {
-        _recordingControlLayout.value = "ReadyToRecording"
-    }
-
-    fun setRecordingControlLayoutAsRecording() {
-        _recordingControlLayout.value = "Recording"
-    }
-
-    fun setRecordingControlLayoutAsDeleteSaveOrPlay() {
-        _recordingControlLayout.value = "DeleteSaveOrPlay"
-    }
-
-    fun setRecordingControlLayoutAsPlayer() {
-        _recordingControlLayout.value = "Player"
     }
 
 
@@ -191,54 +155,5 @@ class ModelData: BasicModelData {
     fun closePopupWithTextInput(exitButtonType: String, inputText: String) {
         _isPopupWithTextInputOpened.value = false
         popupWithTextInputCallback.invoke(exitButtonType, inputText)
-    }
-
-
-    // Spectrogram Data
-    private val _spectrogramData = mutableStateMapOf<String, Array<FloatArray>>()
-    fun setSpectrogramData(newValue: Map<String, Array<FloatArray>>) {
-        _spectrogramData.clear()
-        _spectrogramData.putAll(newValue)
-    }
-    @Composable
-    fun getSpectrogramData(name: String): Array<FloatArray> {
-        return _spectrogramData[name] ?: arrayOf()
-    }
-
-
-    // Graphs Data
-    private val _graphData = mutableStateMapOf<String, FloatArray>()
-    fun setGraphData(newValue: Map<String, FloatArray>) {
-        _graphData.clear()
-        _graphData.putAll(newValue)
-    }
-    @Composable
-    fun getGraphData(name: String): FloatArray {
-        return _graphData[name] ?: floatArrayOf()
-    }
-
-
-    // Displays Data
-    private val _displayData = mutableStateMapOf<String, Float>()
-    fun setDisplayData(newValue: Map<String, Float>) {
-        _displayData.clear()
-        _displayData.putAll(newValue)
-    }
-    @Composable
-    fun getDisplayData(name: String): Float {
-        return _displayData[name] ?: 0f
-    }
-
-
-    // Help menu
-    private val _helpMenuState = MutableStateFlow(false)
-    val helpMenuState: StateFlow<Boolean> = _helpMenuState
-    fun setHelpMenuState(newValue: Boolean) {
-        _helpMenuState.value = newValue
-    }
-    private val _helpMenuParameterId = MutableStateFlow("Pitch")
-    val helpMenuParameterId: StateFlow<String> = _helpMenuParameterId
-    fun setHelpMenuParameterId(newValue: String) {
-        _helpMenuParameterId.value = newValue
     }
 }

@@ -22,9 +22,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.Settings
-import com.ktvincco.openaudiotools.presentation.ModelData
-import com.ktvincco.openaudiotools.presentation.UiEventHandler
-import com.ktvincco.openaudiotools.ui.BaseComponents
+import com.ktvincco.openaudiotools.presentation.BasicModelData
+import com.ktvincco.openaudiotools.presentation.BasicUiEventHandler
+import com.ktvincco.openaudiotools.ui.basics.BaseComponents
 import openaudiotools.common.openaudiotools.generated.resources.Res
 import openaudiotools.common.openaudiotools.generated.resources.ktvincco_logo_full_tp
 import openaudiotools.common.openaudiotools.generated.resources.ktvincco_logo_mini_tp
@@ -32,8 +32,8 @@ import org.jetbrains.compose.resources.painterResource
 
 
 class Dashboard (
-    private val modelData: ModelData,
-    private val uiEventHandler: UiEventHandler
+    private val basicModelData: BasicModelData,
+    private val basicUiEventHandler: BasicUiEventHandler
 ) {
 
     @Composable
@@ -323,7 +323,7 @@ class Dashboard (
                     color = ColorPalette.getTextColor(),
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clickable { uiEventHandler.openWebLinkButtonCallbackClicked(
+                        .clickable { basicUiEventHandler.openWebLinkButtonCallbackClicked(
                             Settings.getTermsOfUseWebLink()) }
                         .padding(horizontal = 16.dp, vertical = 12.dp)
                 )
@@ -335,7 +335,7 @@ class Dashboard (
                     color = ColorPalette.getTextColor(),
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clickable { uiEventHandler.openWebLinkButtonCallbackClicked(
+                        .clickable { basicUiEventHandler.openWebLinkButtonCallbackClicked(
                             Settings.getPrivacyPolicyWebLink()) }
                         .padding(horizontal = 16.dp, vertical = 12.dp)
                 )
@@ -347,7 +347,7 @@ class Dashboard (
                     color = ColorPalette.getTextColor(),
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clickable { modelData.setLegalInfoScreenState(true) }
+                        .clickable { basicModelData.setLegalInfoScreenState(true) }
                         .padding(horizontal = 16.dp, vertical = 12.dp)
                 )
 

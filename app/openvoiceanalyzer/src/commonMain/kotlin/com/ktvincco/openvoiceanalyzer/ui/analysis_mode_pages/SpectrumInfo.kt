@@ -9,12 +9,12 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.ktvincco.openaudiotools.Settings
+import com.ktvincco.openaudiotools.ui.charts.Graph
+import com.ktvincco.openaudiotools.ui.charts.Spectrogram
+import com.ktvincco.openaudiotools.ui.charts.Spectrum
 import com.ktvincco.openvoiceanalyzer.presentation.ModelData
 import com.ktvincco.openvoiceanalyzer.presentation.UiEventHandler
-import com.ktvincco.openvoiceanalyzer.ui.Graph
-import com.ktvincco.openvoiceanalyzer.ui.Spectrogram
-import com.ktvincco.openvoiceanalyzer.ui.Spectrum
-import com.ktvincco.openvoiceanalyzer.ui.graphNameText
+import com.ktvincco.openvoiceanalyzer.ui.components.graphNameText
 
 
 class SpectrumInfo (

@@ -32,9 +32,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ktvincco.openaudiotools.ColorPalette
-import com.ktvincco.openaudiotools.presentation.ModelData
-import com.ktvincco.openaudiotools.presentation.UiEventHandler
-import com.ktvincco.openaudiotools.ui.BaseComponents
+import com.ktvincco.openaudiotools.presentation.BasicModelData
+import com.ktvincco.openaudiotools.presentation.BasicUiEventHandler
+import com.ktvincco.openaudiotools.ui.basics.BaseComponents
 import openaudiotools.common.openaudiotools.generated.resources.Res
 import openaudiotools.common.openaudiotools.generated.resources.data_thresholding_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
 import openaudiotools.common.openaudiotools.generated.resources.delete_forever_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
@@ -45,13 +45,13 @@ import openaudiotools.common.openaudiotools.generated.resources.save_as_24dp_E8E
 import org.jetbrains.compose.resources.painterResource
 
 
-class Recordings (private val modelData: ModelData, private val uiEventHandler: UiEventHandler) {
+class Recordings (private val basicModelData: BasicModelData, private val basicUiEventHandler: BasicUiEventHandler) {
 
 
     @Composable
     fun draw() {
 
-        val recordingFileList = modelData.recordingFileList.collectAsState().value
+        val recordingFileList = basicModelData.recordingFileList.collectAsState().value
         var currentSelectionId by remember { mutableStateOf(-1) }
 
         Column(
@@ -165,7 +165,7 @@ class Recordings (private val modelData: ModelData, private val uiEventHandler: 
                         .fillMaxHeight()
                         .background(ColorPalette.getSoftCyanColor())
                         .clickable {
-                            uiEventHandler.rewindToStartButtonClicked()
+                            basicUiEventHandler.rewindToStartButtonClicked()
                         }
                 ) {
                     Image(
@@ -187,11 +187,11 @@ class Recordings (private val modelData: ModelData, private val uiEventHandler: 
                         .fillMaxHeight()
                         .background(ColorPalette.getSoftMagentaColor())
                         .clickable {
-                            uiEventHandler.playFileButtonClicked(selectedFileName)
+                            basicUiEventHandler.playFileButtonClicked(selectedFileName)
                         }
                 ) {
                     // Play-Pause
-                    val playbackState = modelData.playbackState.collectAsState().value
+                    val playbackState = basicModelData.playbackState.collectAsState().value
                     val icon = if (playbackState) {
                         Res.drawable.pause_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
                     } else {
@@ -223,12 +223,12 @@ class Recordings (private val modelData: ModelData, private val uiEventHandler: 
                         .fillMaxHeight()
                         .background(ColorPalette.getSoftRedColor())
                         .clickable { // Open popup before deletion
-                            modelData.openPopup(
+                            basicModelData.openPopup(
                                 "Warning",
                                 "Delete $selectedFileName ?"
                             ) { exitButtonType ->
                                 if (exitButtonType == "Ok") {
-                                    uiEventHandler.deleteRecordingFile(selectedFileName)
+                                    basicUiEventHandler.deleteRecordingFile(selectedFileName)
                                     resetSelection.invoke()
                                 }
                             }
@@ -253,11 +253,11 @@ class Recordings (private val modelData: ModelData, private val uiEventHandler: 
                         .fillMaxHeight()
                         .background(ColorPalette.getSoftYellowColor())
                         .clickable {
-                            modelData.openPopupWithTextInput(
+                            basicModelData.openPopupWithTextInput(
                                 "Rename"
                             ) { exitButtonType, inputText ->
                                 if (exitButtonType == "Ok") {
-                                    uiEventHandler.renameRecordingFile(selectedFileName, inputText)
+                                    basicUiEventHandler.renameRecordingFile(selectedFileName, inputText)
                                     resetSelection()
                                 }
                             }
@@ -282,7 +282,7 @@ class Recordings (private val modelData: ModelData, private val uiEventHandler: 
                         .fillMaxHeight()
                         .background(ColorPalette.getSoftGreenColor())
                         .clickable {
-                            uiEventHandler.loadRecordingButtonClicked(selectedFileName)
+                            basicUiEventHandler.loadRecordingButtonClicked(selectedFileName)
                         }
                 ) {
                     Image(

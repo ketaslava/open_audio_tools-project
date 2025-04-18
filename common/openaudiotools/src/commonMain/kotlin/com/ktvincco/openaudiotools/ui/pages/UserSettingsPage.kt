@@ -7,13 +7,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.ktvincco.openaudiotools.ColorPalette
-import com.ktvincco.openaudiotools.presentation.ModelData
-import com.ktvincco.openaudiotools.presentation.UiEventHandler
+import com.ktvincco.openaudiotools.presentation.BasicModelData
+import com.ktvincco.openaudiotools.presentation.BasicUiEventHandler
 
 
 class UserSettingsPage (
-    private val modelData: ModelData,
-    private val uiEventHandler: UiEventHandler
+    private val basicModelData: BasicModelData,
+    private val basicUiEventHandler: BasicUiEventHandler
 ) {
 
     @Composable
