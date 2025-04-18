@@ -23,7 +23,7 @@ class MainActivity : ComponentActivity() {
     private val androidLogger = AndroidLogger()
     private val permissionController = AndroidPermissionController(this)
     private val audioRecorder = AndroidAudioRecorder()
-    private val androidDatabase = AndroidDatabase(this)
+    private val androidDatabase = AndroidDatabase(this, "OpenVoiceAnalyzer")
     private val androidSoundFile = AndroidSoundFile()
     private val androidAudioPlayer = AndroidAudioPlayer()
     private val environmentConnector = AndroidEnvironmentConnector(this)

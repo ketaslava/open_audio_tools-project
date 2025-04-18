@@ -64,7 +64,7 @@ class Spectrum {
         val fontSize = 10.sp
 
         // Optimization
-        val graphXMaximalResolution = 0.005F
+        val graphXMaximalResolution = 0.0075F
 
         // Variables
 
@@ -76,9 +76,6 @@ class Spectrum {
 
         // Get data
         var data = floatArrayOf()
-
-        println(pointerPosition)
-        println(isUpdateFromLastData)
 
         if (inputData.isNotEmpty() && inputData.size > 1) {
             if (isUpdateFromLastData) {

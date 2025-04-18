@@ -1,4 +1,4 @@
-package com.ktvincco.openaudiotools.ui.basics
+package com.ktvincco.openvoiceanalyzer.ui.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -9,13 +9,13 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.ktvincco.openaudiotools.presentation.BasicModelData
-import com.ktvincco.openaudiotools.presentation.BasicUiEventHandler
+import com.ktvincco.openvoiceanalyzer.presentation.ModelData
+import com.ktvincco.openvoiceanalyzer.presentation.UiEventHandler
 
 
-class Page (
-    private val basicModelData: BasicModelData,
-    private val basicUiEventHandler: BasicUiEventHandler
+class PageWithBottomControls (
+    private val modelData: ModelData,
+    private val uiEventHandler: UiEventHandler
 ) {
 
     @Composable
@@ -44,7 +44,7 @@ class Page (
             )
 
             if(isEnableRecordingControl) {
-                //RecordingControl(basicModelData, basicUiEventHandler).draw()
+                RecordingControl(modelData, uiEventHandler).draw()
             }
         }
     }

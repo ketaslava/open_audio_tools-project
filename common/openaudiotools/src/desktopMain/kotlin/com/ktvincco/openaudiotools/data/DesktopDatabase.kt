@@ -7,7 +7,7 @@ import java.time.format.DateTimeFormatter
 import java.util.Locale
 
 
-class DesktopDatabase: Database {
+class DesktopDatabase (private val appName: String): Database {
 
     companion object {
         const val LOG_TAG = "DesktopDatabase"
@@ -16,7 +16,7 @@ class DesktopDatabase: Database {
 
     // Program folder path (in the public storage)
     private fun getSoundFileDirectory(): File {
-        val dir = File(System.getProperty("user.home"), "openaudiotools")
+        val dir = File(System.getProperty("user.home"), appName.replace(" ", ""))
         if (!dir.exists()) {
             dir.mkdirs()
         }

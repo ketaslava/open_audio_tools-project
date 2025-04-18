@@ -18,7 +18,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.MainApplicationTheme
-import com.ktvincco.openaudiotools.ui.basics.Page
 import com.ktvincco.openaudiotools.ui.basics.Popup
 import com.ktvincco.openaudiotools.ui.pages.Dashboard
 import com.ktvincco.openaudiotools.ui.pages.Recordings
@@ -40,6 +39,7 @@ import com.ktvincco.openvoiceanalyzer.ui.analysis_mode_pages.SpectrumInfo
 import com.ktvincco.openvoiceanalyzer.ui.analysis_mode_pages.VoiceSmoothness
 import com.ktvincco.openvoiceanalyzer.ui.components.HelpMenu
 import com.ktvincco.openvoiceanalyzer.ui.components.MainMenu
+import com.ktvincco.openvoiceanalyzer.ui.components.PageWithBottomControls
 import com.ktvincco.openvoiceanalyzer.ui.pages.Reading
 import com.ktvincco.openvoiceanalyzer.ui.pages.VoiceChangeGuidelines
 
@@ -137,16 +137,17 @@ class UserInterface (
                             Dashboard(modelData, uiEventHandler).draw()
                         }
                         if (currentPage == "VoiceChangeGuidelines") {
-                            Page(modelData, uiEventHandler).draw(VoiceChangeGuidelines
+                            PageWithBottomControls(
+                                modelData, uiEventHandler).draw(VoiceChangeGuidelines
                                 (modelData, uiEventHandler).content(), false)
                         }
 
                         if (currentPage == "AllInfo") {
-                            Page(modelData, uiEventHandler).draw(
+                            PageWithBottomControls(modelData, uiEventHandler).draw(
                                 AllInfo(modelData, uiEventHandler).content())
                         }
                         if (currentPage == "SpectrumInfo") {
-                            Page(modelData, uiEventHandler).draw(
+                            PageWithBottomControls(modelData, uiEventHandler).draw(
                                 SpectrumInfo(modelData, uiEventHandler).content())
                         }
                         if (currentPage == "Reading") {
@@ -157,38 +158,38 @@ class UserInterface (
                         }
 
                         if (currentPage == "SpeakerVoice") {
-                            Page(modelData, uiEventHandler).draw(
+                            PageWithBottomControls(modelData, uiEventHandler).draw(
                                 SpeakerVoice(modelData, uiEventHandler).content())
                         }
 
                         if (currentPage == "Singing") {
-                            Page(modelData, uiEventHandler).draw(
+                            PageWithBottomControls(modelData, uiEventHandler).draw(
                                 Singing(modelData, uiEventHandler).content())
                         }
 
                         if (currentPage == "PitchAndResonance") {
-                            Page(modelData, uiEventHandler).draw(
+                            PageWithBottomControls(modelData, uiEventHandler).draw(
                                 PitchAndResonance(modelData, uiEventHandler).content())
                         }
                         if (currentPage == "VoiceSmoothness") {
-                            Page(modelData, uiEventHandler).draw(
+                            PageWithBottomControls(modelData, uiEventHandler).draw(
                                 VoiceSmoothness(modelData, uiEventHandler).content())
                         }
 
                         if (currentPage == "FemaleVoice") {
-                            Page(modelData, uiEventHandler).draw(
+                            PageWithBottomControls(modelData, uiEventHandler).draw(
                                 FemaleVoice(modelData, uiEventHandler).content())
                         }
                         if (currentPage == "FemaleVoiceResonance") {
-                            Page(modelData, uiEventHandler).draw(
+                            PageWithBottomControls(modelData, uiEventHandler).draw(
                                 FemaleVoiceResonance(modelData, uiEventHandler).content())
                         }
                         if (currentPage == "MaleVoice") {
-                            Page(modelData, uiEventHandler).draw(
+                            PageWithBottomControls(modelData, uiEventHandler).draw(
                                 MaleVoice(modelData, uiEventHandler).content())
                         }
                         if (currentPage == "MaleVoiceResonance") {
-                            Page(modelData, uiEventHandler).draw(
+                            PageWithBottomControls(modelData, uiEventHandler).draw(
                                 MaleVoiceResonance(modelData, uiEventHandler).content())
                         }
 

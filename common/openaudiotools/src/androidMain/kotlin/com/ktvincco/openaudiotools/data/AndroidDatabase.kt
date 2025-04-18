@@ -11,7 +11,7 @@ import java.io.IOException
 import java.util.Locale
 
 
-class AndroidDatabase (private val activity: Activity): Database {
+class AndroidDatabase (private val activity: Activity, private val appName: String): Database {
 
     companion object {
         const val LOG_TAG = "AndroidDatabase"
@@ -21,7 +21,7 @@ class AndroidDatabase (private val activity: Activity): Database {
     // Program folder path (in the public storage)
     private fun getSoundFileDirectory(): File {
         val dir = File(Environment.getExternalStoragePublicDirectory(
-            Environment.DIRECTORY_MUSIC), "openaudiotools/")
+            Environment.DIRECTORY_MUSIC), "${appName.replace(" ", "")}/")
         if (!dir.exists()) { dir.mkdirs() }
         return dir
     }
@@ -94,7 +94,7 @@ class AndroidDatabase (private val activity: Activity): Database {
 
 
     private fun getAppPrivateDirectory(): File {
-        val dir = File(activity.filesDir, "openaudiotools")
+        val dir = File(activity.filesDir, appName.replace(" ", "").lowercase())
         if (!dir.exists()) {
             dir.mkdirs()
         }
