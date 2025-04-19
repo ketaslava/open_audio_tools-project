@@ -147,7 +147,7 @@ compose.desktop {
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi,
                 TargetFormat.Deb, TargetFormat.Rpm, TargetFormat.AppImage)
-            packageName = name
+            packageName = appName
             packageVersion = version
             jvmArgs.addAll(jvmArgsList)
             linux {
