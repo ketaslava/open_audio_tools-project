@@ -5,8 +5,10 @@ Android IDE Kotlin Multi Platform Compose UI project
 
 # Links, Developers, Contacts, Licenses
 
-All information here: [Project Headline Repository](https://github.com/ketaslava/open_voice_analyzer)  
-= Only technical information in current repository =
+= Only technical information in this repository =
+
+All app-related information here:
+OpenVoiceAnalyzer: [OVA Headline Repository](https://github.com/ketaslava/open_voice_analyzer)
 
 # BEFORE RELEASE checklist
 
