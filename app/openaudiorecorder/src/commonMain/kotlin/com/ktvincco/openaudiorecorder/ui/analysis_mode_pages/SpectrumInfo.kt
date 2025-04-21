@@ -8,13 +8,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.ktvincco.openaudiorecorder.presentation.ModelData
+import com.ktvincco.openaudiorecorder.presentation.UiEventHandler
+import com.ktvincco.openaudiorecorder.ui.components.graphNameText
 import com.ktvincco.openaudiotools.Settings
 import com.ktvincco.openaudiotools.ui.charts.Graph
 import com.ktvincco.openaudiotools.ui.charts.Spectrogram
 import com.ktvincco.openaudiotools.ui.charts.Spectrum
-import com.ktvincco.openaudiorecorder.presentation.ModelData
-import com.ktvincco.openaudiorecorder.presentation.UiEventHandler
-import com.ktvincco.openaudiorecorder.ui.components.graphNameText
 
 
 class SpectrumInfo (
@@ -108,6 +108,7 @@ class SpectrumInfo (
                 xLabelMax = 4096F,
                 pointerPosition = pointerPosition,
                 isUpdateFromLastData = recordingState,
+                isDisableAutoResetByDataStructure = recordingState,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(500.dp)

@@ -108,6 +108,7 @@ class SpectrumInfo (
                 xLabelMax = 4096F,
                 pointerPosition = pointerPosition,
                 isUpdateFromLastData = recordingState,
+                isDisableAutoResetByDataStructure = recordingState,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(500.dp)

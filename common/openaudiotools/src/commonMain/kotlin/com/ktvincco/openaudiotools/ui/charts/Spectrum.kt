@@ -49,6 +49,7 @@ class Spectrum {
         graphZones: List<GraphZone> = listOf(),
         pointerPosition: Float = -1F,
         isUpdateFromLastData: Boolean = false,
+        isDisableAutoResetByDataStructure: Boolean = false,
         modifier: Modifier = Modifier
     ) {
 
@@ -103,7 +104,7 @@ class Spectrum {
                 val graphHeight = size.height
 
                 // Maximums
-                if (maximumsData.size != data.size) {
+                if (maximumsData.size != data.size && !isDisableAutoResetByDataStructure) {
                     maximumsData = data.copyOf()
                 }
                 if (data.size > 1 && maximumsData.size == data.size) {
