@@ -28,6 +28,4 @@ dependencyResolutionManagement {
     }
 }
 
-include(":common:openaudiotools")
-include(":app:openvoiceanalyzer")
-include(":app:openaudiorecorder")
+include(":app:openaudiotools")
