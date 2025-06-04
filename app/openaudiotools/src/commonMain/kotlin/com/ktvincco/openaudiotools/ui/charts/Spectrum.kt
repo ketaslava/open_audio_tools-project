@@ -114,6 +114,9 @@ class Spectrum {
                         }
                     }
                 }
+                if (maximumsData.size < data.size) {
+                    maximumsData = data
+                }
 
                 // Background
                 drawRect(
