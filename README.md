@@ -1,5 +1,5 @@
 
-# Open Voice Analyzer
+# OpenAudioTools
 
 Android IDE Kotlin Multi Platform Compose UI project
 
@@ -9,7 +9,7 @@ Android IDE Kotlin Multi Platform Compose UI project
 
 All app-related information here:
 
-OpenVoiceAnalyzer: [OVA Headline Repository](https://github.com/ketaslava/open_voice_analyzer)
+OpenAudioTools: [OAT Headline Repository](https://github.com/ketaslava/open_audio_tools)
 
 # BEFORE RELEASE checklist
 
@@ -17,36 +17,30 @@ OpenVoiceAnalyzer: [OVA Headline Repository](https://github.com/ketaslava/open_v
 
 # Run (Desktop)
 
-OpenVoiceAnalyzer: $ ./gradlew :app:openvoiceanalyzer:run
-OpenAudioRecorder: $ ./gradlew :app:openaudiorecorder:run
+$ ./gradlew run
 
 # Run (Android Device) (Debug)
 
-OpenVoiceAnalyzer: $ ./gradlew :app:openvoiceanalyzer:installDebug
-OpenAudioRecorder: $ ./gradlew :app:openaudiorecorder:installDebug
+$ ./gradlew installDebug
 
 # Export (Linux)
 
 Deb Package (JVM):
-OpenVoiceAnalyzer: $ ./gradlew :app:openvoiceanalyzer:packageDeb
-OpenAudioRecorder: $ ./gradlew :app:openaudiorecorder:packageDeb
+$ ./gradlew packageDeb
 
 Rpm Package (JVM):     
-OpenVoiceAnalyzer: $ ./gradlew :app:openvoiceanalyzer:packageRpm
-OpenAudioRecorder: $ ./gradlew :app:openaudiorecorder:packageRpm
+$ ./gradlew packageRpm
 
-* Output in: /app/"module name"/build/compose/binaries/main/deb/
+* Output in: /app/openaudiotools/build/compose/binaries/main/deb/
 
 # Export (Android) (Debug) (APK)
 
-OpenVoiceAnalyzer: $ ./gradlew :app:openvoiceanalyzer:assembleDebug
-OpenAudioRecorder: $ ./gradlew :app:openaudiorecorder:assembleDebug
+$ ./gradlew assembleDebug
 
-* Output in: app/"module name"/build/outputs/apk/debug/
+* Output in: app/openaudiotools/build/outputs/apk/debug/
 
 # Export (Android) (Release) (AAB)
 
-OpenVoiceAnalyzer: $ ./gradlew :app:openvoiceanalyzer:bundleRelease
-OpenAudioRecorder: $ ./gradlew :app:openaudiorecorder:bundleRelease
+$ ./gradlew bundleRelease
 
-* Output in: app/"module name"/build/outputs/aab/release/
+* Output in: app/openaudiotools/build/outputs/aab/release/

@@ -34,19 +34,19 @@ class Settings {
         // Legal info
 
         fun getTermsOfUseWebLink(): String {
-            return "https://sites.google.com/view/openaudiotoolstermsofuse/home"
+            return "https://ktvincco.com/openaudiotools/termsofuse/"
         }
 
         fun getPrivacyPolicyWebLink(): String {
-            return "https://sites.google.com/view/openaudiotoolsprivacypolicy/home"
+            return "https://ktvincco.com/openaudiotools/privacypolicy/"
         }
 
         fun getUserAgreementVersion(): Int {
-            return 1 // If version will change, new user agreement screen will be shown
+            return 2 // If version will change, new user agreement screen will be shown
         }
 
         fun getSourceCodeWebLink(): String {
-            return "https://github.com/ketaslava/open_voice_analyzer"
+            return "https://github.com/ketaslava/open_audio_tools"
         }
 
         fun getLicenseWebLink(): String {
