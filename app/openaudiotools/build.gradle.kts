@@ -29,6 +29,7 @@ dependencies {
     implementation(libs.kotlinx.datetime)
     debugImplementation(compose.uiTooling)
     implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.androidx.activity.ktx)
 }
 
 // Settings
