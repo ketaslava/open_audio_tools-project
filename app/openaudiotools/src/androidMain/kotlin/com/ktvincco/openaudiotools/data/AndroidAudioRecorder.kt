@@ -12,17 +12,25 @@ class AndroidAudioRecorder: AudioRecorder {
     // Settings
     private val sampleRate = Settings.getSampleRate()
 
-
     // Variables
     private var audioRecord: AudioRecord? = null
     private var isRecording = false
-    private val bufferSize = AudioRecord.getMinBufferSize(
+    private var bufferSize = AudioRecord.getMinBufferSize(
         sampleRate,
         AudioFormat.CHANNEL_IN_MONO,
         AudioFormat.ENCODING_PCM_16BIT
     )
+    // bufferSize ≈ sampleRate × channels × bytesPerSample × 0.2
+    private var buffer200ms = (sampleRate.toFloat() * 1F * 2F * 0.2F).toInt()
     private var recordingThread: Thread? = null
     private var dataCallback: (value: ShortArray) -> Unit = {}
+
+    // Buffer size override in care of getMinBufferSize error
+    init {
+        if (bufferSize <= 0) {
+            bufferSize = buffer200ms
+        }
+    }
 
 
     override fun setDataCallback(callback: (value: ShortArray) -> Unit) {

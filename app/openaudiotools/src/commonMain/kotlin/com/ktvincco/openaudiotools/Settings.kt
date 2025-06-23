@@ -8,7 +8,7 @@ class Settings {
     companion object {
 
         fun getSampleRate(): Int {
-            return 44100 // 44100
+            return 48000 // 48000
         }
 
         fun getAudioBufferSize(): Int {

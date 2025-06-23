@@ -220,7 +220,7 @@ class Recorder (
         modelData.setRecordingState(false)
 
         // Check if data is too short (< 2s) -> reset
-        if (rawData.size < 44100 * 2) {
+        if (rawData.size < Settings.getSampleRate() * 2) {
 
             // Reset all data
             reset()
@@ -238,7 +238,7 @@ class Recorder (
     private fun saveData() {
         val fileName = "/REC" + database.getYYYYMMDDHHMMSSString() + ".wav"
         val filePath = database.getSoundFileDirectoryPath() + fileName
-        soundFile.writeSoundToFile(filePath, rawData,44100)
+        soundFile.writeSoundToFile(filePath, rawData, Settings.getSampleRate())
         updateSoundFilesList()
         modelData.setRecordingControlLayoutAsPlayer()
     }
