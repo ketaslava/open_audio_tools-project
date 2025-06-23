@@ -15,6 +15,11 @@ OpenAudioTools: [OAT Headline Repository](https://github.com/ketaslava/open_audi
 
 1. Check parameters "CHANGE BEFORE RELEASE" in build.gradle.kts in :app:module
 
+# ADDITIONAL BUILD OUTPUT (ANDROID)
+
+mapping.txt: build/outputs/mapping/release/mapping.txt
+native debug symbols: build/intermediates/merged_native_debug_symbols/release/out/
+
 # Run (Desktop)
 
 $ ./gradlew run

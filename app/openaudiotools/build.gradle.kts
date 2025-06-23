@@ -36,8 +36,8 @@ dependencies {
 val appName = "OpenAudioTools"
 
 // Configs
-val version = "2.0.2" // == CHANGE BEFORE RELEASE (1/2) == //
-val androidVersionCode = 2 // == CHANGE BEFORE RELEASE (2/2) == //
+val version = "2.0.4" // == CHANGE BEFORE RELEASE (1/2) == //
+val androidVersionCode = 4 // == CHANGE BEFORE RELEASE (2/2) == //
 
 kotlin {
 
@@ -120,8 +120,19 @@ android {
         }
     }
     buildTypes {
-        getByName("release") {
-            isMinifyEnabled = false
+        release {
+
+            // Mapping
+            isMinifyEnabled = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+
+            // Debug symbols
+            ndk {
+                debugSymbolLevel = "FULL"
+            }
         }
     }
     compileOptions {
