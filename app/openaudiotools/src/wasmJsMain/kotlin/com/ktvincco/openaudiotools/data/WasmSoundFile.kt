@@ -7,7 +7,7 @@ class WasmSoundFile: SoundFile {
         TODO("Not yet implemented")
     }
 
-    override fun readSoundFromFile(filePath: String, sampleRate: Int): FloatArray {
+    override fun readSoundFromFile(filePath: String, targetSampleRate: Int): FloatArray {
         TODO("Not yet implemented")
     }
 

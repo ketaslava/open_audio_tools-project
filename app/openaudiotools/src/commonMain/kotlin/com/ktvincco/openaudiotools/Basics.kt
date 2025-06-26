@@ -2,6 +2,7 @@ package com.ktvincco.openaudiotools
 
 import androidx.compose.ui.graphics.Color
 import kotlin.math.log10
+import kotlin.math.min
 
 
 fun map(source: Float, minSource: Float, maxSource: Float,
@@ -18,6 +19,24 @@ fun amplitudeToDecibels(amplitude: Float, epsilon: Float = 1e-6f): Float {
 
 fun normalizeDecibels(decibel: Float, minDb: Float = -120f, maxDb: Float = 0f): Float {
     return (decibel - minDb) / (maxDb - minDb)
+}
+
+
+fun resampleAudioData(input: FloatArray, sourceRate: Int, targetRate: Int): FloatArray {
+    val ratio = targetRate.toDouble() / sourceRate
+    val outputLength = (input.size * ratio).toInt()
+    val output = FloatArray(outputLength)
+
+    for (i in output.indices) {
+        val srcIndex = i / ratio
+        val i0 = srcIndex.toInt()
+        val i1 = min(i0 + 1, input.lastIndex)
+        val t = srcIndex - i0
+
+        output[i] = (1 - t).toFloat() * input[i0] + t.toFloat() * input[i1]
+    }
+
+    return output
 }
 
 

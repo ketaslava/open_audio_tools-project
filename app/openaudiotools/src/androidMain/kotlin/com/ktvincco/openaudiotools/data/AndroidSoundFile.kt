@@ -1,9 +1,11 @@
 package com.ktvincco.openaudiotools.data
 
+import com.ktvincco.openaudiotools.resampleAudioData
 import java.io.File
 import java.io.RandomAccessFile
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
+import kotlin.math.min
 
 
 class AndroidSoundFile: SoundFile {
@@ -52,31 +54,27 @@ class AndroidSoundFile: SoundFile {
     }
 
 
-    override fun readSoundFromFile(filePath: String, sampleRate: Int): FloatArray {
+    override fun readSoundFromFile(filePath: String, targetSampleRate: Int): FloatArray {
 
-        // Configure
+        // Open file
         val file = RandomAccessFile(filePath, "r")
         val fileChannel = file.channel
 
-        // Read WAV header
+        // Read WAV header (first 44 bytes)
         val headerBuffer = ByteBuffer.allocate(44).apply { order(ByteOrder.LITTLE_ENDIAN) }
         fileChannel.read(headerBuffer)
         headerBuffer.flip()
 
-        // Check
-        /*val chunkId = ByteArray(4).apply { headerBuffer.get(this) }
-        require(String(chunkId) == "RIFF") { "Invalid WAV file: RIFF header missing" }
+        // Check RIFF/WAVE signature
+        val riff = ByteArray(4).also { headerBuffer.get(it) }
+        if (!riff.contentEquals("RIFF".toByteArray())) throw IllegalArgumentException("Invalid WAV file")
 
-        headerBuffer.position(22) // Skip to NumChannels
-        val numChannels = headerBuffer.short
-        require(numChannels == 1.toShort()) { "Only mono audio is supported" }
+        // Get sample rate
+        headerBuffer.position(24)
+        val sourceSampleRate = headerBuffer.int
 
-        val fileSampleRate = headerBuffer.int
-        require(fileSampleRate == sampleRate) {
-            "Sample rate mismatch: expected $sampleRate, found $fileSampleRate" }*/
-
-        // Configure reader
-        headerBuffer.position(40) // Skip to Sub chunk 2 Size
+        // Get data size
+        headerBuffer.position(40)
         val dataSize = headerBuffer.int
 
         // Read PCM data
@@ -84,8 +82,20 @@ class AndroidSoundFile: SoundFile {
         fileChannel.read(pcmBuffer)
         pcmBuffer.flip()
 
-        // Convert (PCM 16-bit) ShortArray to (0.0 - 1.0) FloatArray
+        // Transform PCM 16 bit to FloatArray
         val shortArray = ShortArray(dataSize / 2) { pcmBuffer.short }
-        return shortArray.map { it.toFloat() / Short.MAX_VALUE }.toFloatArray()
+        val floatArray = shortArray.map { it.toFloat() / Short.MAX_VALUE }.toFloatArray()
+
+        // Close file
+        file.close()
+
+        // If sample rate is equal to working sample rate, we gonna use it like this
+        if (sourceSampleRate == targetSampleRate) {
+            return floatArray
+        }
+
+        // Or else we gonna resample the data
+        return resampleAudioData(floatArray, sourceSampleRate, targetSampleRate)
     }
+
 }

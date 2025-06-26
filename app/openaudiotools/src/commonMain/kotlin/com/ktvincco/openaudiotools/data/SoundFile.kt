@@ -6,5 +6,5 @@ interface SoundFile {
     fun writeSoundToFile(
         filePath: String, audioData: FloatArray, sampleRate: Int = Settings.getSampleRate())
     fun readSoundFromFile(
-        filePath: String, sampleRate: Int = Settings.getSampleRate()): FloatArray
+        filePath: String, targetSampleRate: Int = Settings.getSampleRate()): FloatArray
 }

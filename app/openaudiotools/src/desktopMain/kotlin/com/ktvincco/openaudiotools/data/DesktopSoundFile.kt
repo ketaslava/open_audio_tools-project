@@ -1,5 +1,6 @@
 package com.ktvincco.openaudiotools.data
 
+import com.ktvincco.openaudiotools.resampleAudioData
 import java.io.File
 import java.io.RandomAccessFile
 import java.nio.ByteBuffer
@@ -52,39 +53,46 @@ class DesktopSoundFile : SoundFile {
     }
 
 
-    override fun readSoundFromFile(filePath: String, sampleRate: Int): FloatArray {
+    override fun readSoundFromFile(filePath: String, targetSampleRate: Int): FloatArray {
         RandomAccessFile(filePath, "r").use { file ->
             val fileChannel = file.channel
 
-            // Read WAV header
+            // Read WAV header (first 44 bytes)
             val headerBuffer = ByteBuffer.allocate(44).apply { order(ByteOrder.LITTLE_ENDIAN) }
             fileChannel.read(headerBuffer)
             headerBuffer.flip()
 
-            // Check
-            /*val chunkId = ByteArray(4).apply { headerBuffer.get(this) }
-            require(String(chunkId) == "RIFF") { "Invalid WAV file: RIFF header missing" }
+            // Validate file header
+            val riff = ByteArray(4).also { headerBuffer.get(it) }
+            if (!riff.contentEquals("RIFF".toByteArray())) {
+                throw IllegalArgumentException("Invalid WAV file: Missing 'RIFF'")
+            }
 
-            headerBuffer.position(22)
-            val numChannels = headerBuffer.short
-            require(numChannels == 1.toShort()) { "Only mono audio is supported" }
+            // Extract original sample rate from WAV header
+            headerBuffer.position(24)
+            val sourceSampleRate = headerBuffer.int
 
-            val fileSampleRate = headerBuffer.int
-            require(fileSampleRate == sampleRate) {
-                "Sample rate mismatch: expected $sampleRate, found $fileSampleRate" }*/
-
-            // Configure reader
-            headerBuffer.position(40) // Skip to Sub chunk 2 Size
+            // Read PCM data size
+            headerBuffer.position(40)
             val dataSize = headerBuffer.int
 
-            // Read PCM data
+            // Read raw PCM data
             val pcmBuffer = ByteBuffer.allocate(dataSize).apply { order(ByteOrder.LITTLE_ENDIAN) }
             fileChannel.read(pcmBuffer)
             pcmBuffer.flip()
 
-            // Convert (PCM 16-bit) ShortArray to (0.0 - 1.0) FloatArray
+            // Convert PCM 16-bit (short) to normalized FloatArray (-1.0 to 1.0)
             val shortArray = ShortArray(dataSize / 2) { pcmBuffer.short }
-            return shortArray.map { it.toFloat() / Short.MAX_VALUE }.toFloatArray()
+            val floatArray = shortArray.map { it.toFloat() / Short.MAX_VALUE }.toFloatArray()
+
+            // Return raw data if sample rates match
+            if (sourceSampleRate == targetSampleRate) {
+                return floatArray
+            }
+
+            // Otherwise, resample to the target rate
+            return resampleAudioData(floatArray, sourceSampleRate, targetSampleRate)
         }
     }
+
 }
