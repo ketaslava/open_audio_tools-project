@@ -21,6 +21,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ktvincco.openaudiotools.ColorPalette
+import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.Settings
 import com.ktvincco.openaudiotools.presentation.ModelData
 import com.ktvincco.openaudiotools.presentation.UiEventHandler
@@ -55,8 +56,9 @@ class Dashboard (
                     .fillMaxWidth()
                     .verticalScroll(state = scrollState)
             ) {
-                Text(
+                DynamicText(
                     text = modelData.getAppInfo("Name"),
+                    modelData = modelData,
                     color = ColorPalette.getTextColor(),
                     fontSize = 28.sp,
                     lineHeight = 36.sp,
@@ -64,8 +66,9 @@ class Dashboard (
                         .padding(horizontal = 16.dp, vertical = 24.dp)
                 )
 
-                Text(
+                DynamicText(
                     text = "V ${modelData.getAppInfo("Version")}",
+                    modelData = modelData,
                     color = ColorPalette.getTextColor(),
                     fontSize = 16.sp,
                     lineHeight = 24.sp,
@@ -78,8 +81,9 @@ class Dashboard (
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp
                 )
 
-                Text(
+                DynamicText(
                     text = "Measure everything",
+                    modelData = modelData,
                     color = ColorPalette.getTextColor(),
                     fontSize = 20.sp,
                     lineHeight = 30.sp,
@@ -87,8 +91,9 @@ class Dashboard (
                         .padding(horizontal = 16.dp, vertical = 24.dp)
                 )
 
-                Text(
+                DynamicText(
                     text = "Open Audio Tools is designed to provide objective real-time feedback on your voice, helping you understand and improve it according to your needs.",
+                    modelData = modelData,
                     color = ColorPalette.getTextColor(),
                     fontSize = 16.sp,
                     lineHeight = 24.sp,
@@ -97,7 +102,7 @@ class Dashboard (
                         .fillMaxWidth()
                 )
 
-                Text(
+                DynamicText(
                     text = "Main Features:\n\n" +
                             "* Real-Time Feedback: Get instant results on pitch, resonance, and more\n\n" +
                             "* Historical Tracking: Save and review past recordings to monitor progress over time\n\n" +
@@ -105,6 +110,7 @@ class Dashboard (
                             "* Gender Voice Tuning: Modify your voice to match desired gender characteristics\n\n" +
                             "* Vocal Confidence Analysis: Measure speed, intonation, rhythm, breath while speech\n\n" +
                             "* Scientific research: do experiments",
+                    modelData = modelData,
                     color = ColorPalette.getTextColor(),
                     fontSize = 16.sp,
                     lineHeight = 24.sp,
@@ -119,8 +125,9 @@ class Dashboard (
                 )
 
 
-                Text(
+                DynamicText(
                     text = "About Open Audio Tools",
+                    modelData = modelData,
                     color = ColorPalette.getTextColor(),
                     fontSize = 20.sp,
                     lineHeight = 30.sp,
@@ -128,13 +135,14 @@ class Dashboard (
                         .padding(horizontal = 16.dp, vertical = 24.dp)
                 )
 
-                Text(
+                DynamicText(
                     text = "Who is this for?\n\n" +
                             "This app is built for anyone looking to analyze and adjust their voice—whether you're learning to sing, aiming to sound more confident, or exploring vocal transformation. Open Audio Tools caters to everyone interested in gaining deeper insight into their voice.\n" +
                             "\nHow does it work?\n\n" +
                             "The app records your voice and uses advanced algorithms to analyze key vocal patterns, offering detailed feedback and recommendations.\n" +
                             "\nWhy choose Open Audio Tools?\n\n" +
                             "Our cutting-edge approach combines innovative algorithms and user-friendly features to provide an unparalleled voice analysis experience. Whether you're a professional vocalist or simply curious about your voice, this app can help.",
+                    modelData = modelData,
                     color = ColorPalette.getTextColor(),
                     fontSize = 16.sp,
                     lineHeight = 24.sp,
@@ -148,8 +156,9 @@ class Dashboard (
                 )
 
 
-                Text(
+                DynamicText(
                     text = "Getting Started",
+                    modelData = modelData,
                     color = ColorPalette.getTextColor(),
                     fontSize = 20.sp,
                     lineHeight = 30.sp,
@@ -157,10 +166,11 @@ class Dashboard (
                         .padding(horizontal = 16.dp, vertical = 24.dp)
                 )
 
-                Text(
+                DynamicText(
                     text = "* Open the Main Menu\n" +
                             "* Select your goal\n" +
                             "* Tap \"Record\"",
+                    modelData = modelData,
                     color = ColorPalette.getTextColor(),
                     fontSize = 16.sp,
                     lineHeight = 24.sp,
@@ -173,8 +183,9 @@ class Dashboard (
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp
                 )
 
-                Text(
+                DynamicText(
                     text = "Developers",
+                    modelData = modelData,
                     color = ColorPalette.getTextColor(),
                     fontSize = 20.sp,
                     lineHeight = 30.sp,
@@ -208,10 +219,11 @@ class Dashboard (
                     )
                 }
 
-                Text(
+                DynamicText(
                     text = "Open Audio Tools is developed by:\n\n" +
                             "   * Ketaslava Ket\n" +
                             "   * KTVINCCO Team",
+                    modelData = modelData,
                     color = ColorPalette.getTextColor(),
                     fontSize = 16.sp,
                     lineHeight = 24.sp,
@@ -223,8 +235,9 @@ class Dashboard (
                 BaseComponents().HorizontalDivider(
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
-                Text(
+                DynamicText(
                     text = "Suggestions & Feedback",
+                    modelData = modelData,
                     color = ColorPalette.getTextColor(),
                     fontSize = 20.sp,
                     lineHeight = 30.sp,
@@ -232,8 +245,9 @@ class Dashboard (
                         .padding(horizontal = 16.dp, vertical = 24.dp)
                 )
 
-                Text(
+                DynamicText(
                     text = "Got an idea or feature request? We're always looking for ways to improve! Send your suggestions to us!",
+                    modelData = modelData,
                     color = ColorPalette.getTextColor(),
                     fontSize = 16.sp,
                     lineHeight = 24.sp,
@@ -244,8 +258,9 @@ class Dashboard (
                 BaseComponents().HorizontalDivider(
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
-                Text(
+                DynamicText(
                     text = "Contact Us",
+                    modelData = modelData,
                     color = ColorPalette.getTextColor(),
                     fontSize = 20.sp,
                     lineHeight = 30.sp,
@@ -253,7 +268,7 @@ class Dashboard (
                         .padding(horizontal = 16.dp, vertical = 24.dp)
                 )
 
-                Text(
+                DynamicText(
                     text = "Official Communication:\n\n" +
                             "   * Email: ktvincco@gmail.com\n\n" +
                             "Preferred Communication:\n\n" +
@@ -262,6 +277,7 @@ class Dashboard (
                             "   * YouTube: @ketaslava, @ktvincco_production\n" +
                             "   * Instagram: @ketaslava, @ktvincco\n" +
                             "   * Telegram: @ketaslavaket, @ktvincco_production",
+                    modelData = modelData,
                     color = ColorPalette.getTextColor(),
                     fontSize = 16.sp,
                     lineHeight = 24.sp,
@@ -273,8 +289,9 @@ class Dashboard (
                 BaseComponents().HorizontalDivider(
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
-                Text(
+                DynamicText(
                     text = "DISCLAIMER",
+                    modelData = modelData,
                     color = ColorPalette.getTextColor(),
                     fontSize = 20.sp,
                     lineHeight = 30.sp,
@@ -282,8 +299,9 @@ class Dashboard (
                         .padding(horizontal = 16.dp, vertical = 24.dp)
                 )
 
-                Text(
+                DynamicText(
                     text = "This application is provided \"AS IS\" and does not provide any guarantees. The authors of the application does not bear any responsibility for its use. The application does not provide any medical advice",
+                    modelData = modelData,
                     color = ColorPalette.getTextColor(),
                     fontSize = 16.sp,
                     lineHeight = 24.sp,
@@ -295,8 +313,9 @@ class Dashboard (
                 BaseComponents().HorizontalDivider(
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
-                Text(
+                DynamicText(
                     text = "User agreement",
+                    modelData = modelData,
                     textAlign = TextAlign.Center,
                     fontSize = 20.sp,
                     lineHeight = 30.sp,
@@ -305,8 +324,9 @@ class Dashboard (
                         .padding(horizontal = 16.dp, vertical = 24.dp)
                 )
 
-                Text(
+                DynamicText(
                     text = "By using this application, you agree with our Terms Of Use and Privacy Policy",
+                    modelData = modelData,
                     color = ColorPalette.getTextColor(),
                     fontSize = 16.sp,
                     lineHeight = 24.sp,
@@ -315,8 +335,9 @@ class Dashboard (
                         .fillMaxWidth()
                 )
 
-                Text(
+                DynamicText(
                     text = "[Terms Of Use]",
+                    modelData = modelData,
                     textAlign = TextAlign.Start,
                     fontSize = 16.sp,
                     lineHeight = 16.sp,
@@ -327,8 +348,9 @@ class Dashboard (
                             Settings.getTermsOfUseWebLink()) }
                         .padding(horizontal = 16.dp, vertical = 12.dp)
                 )
-                Text(
+                DynamicText(
                     text = "[Privacy Policy]",
+                    modelData = modelData,
                     textAlign = TextAlign.Start,
                     fontSize = 16.sp,
                     lineHeight = 16.sp,
@@ -339,8 +361,9 @@ class Dashboard (
                             Settings.getPrivacyPolicyWebLink()) }
                         .padding(horizontal = 16.dp, vertical = 12.dp)
                 )
-                Text(
+                DynamicText(
                     text = "[Legal Info]",
+                    modelData = modelData,
                     textAlign = TextAlign.Start,
                     fontSize = 16.sp,
                     lineHeight = 16.sp,

@@ -22,6 +22,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ktvincco.openaudiotools.ColorPalette
+import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.Texts
 import com.ktvincco.openaudiotools.ui.charts.MiniDisplay
 import com.ktvincco.openaudiotools.presentation.ModelData
@@ -48,8 +49,9 @@ fun graphNameText(modelData: ModelData, parameterId: String, nameAddition: Strin
             )
             .padding(horizontal = 24.dp, vertical = 24.dp)
     ) {
-        Text(
+        DynamicText(
             text = Texts.getParameterDescription(parameterId).getParameterName() + nameAddition,
+            modelData = modelData,
             color = ColorPalette.getTextColor(),
             fontSize = 22.sp,
             lineHeight = 22.sp
@@ -70,7 +72,7 @@ fun graphNameText(modelData: ModelData, parameterId: String, nameAddition: Strin
 
 
 @Composable
-fun graphColorDescriptionBlock(color: Color, text: String) {
+fun graphColorDescriptionBlock(color: Color, text: String, modelData: ModelData) {
 
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -88,8 +90,9 @@ fun graphColorDescriptionBlock(color: Color, text: String) {
 
         Spacer(modifier = Modifier.width(24.dp))
 
-        Text(
+        DynamicText(
             text = text,
+            modelData = modelData,
             color = ColorPalette.getTextColor(),
             fontSize = 16.sp,
             lineHeight = 24.sp,

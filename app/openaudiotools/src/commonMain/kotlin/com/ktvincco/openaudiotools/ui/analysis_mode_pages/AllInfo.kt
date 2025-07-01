@@ -92,6 +92,7 @@ class AllInfo (
             graphNameText(modelData, "Loudness")
             Graph().draw(
                 data = loudnessData,
+                modelData = modelData,
                 pointerPosition = pointerPosition,
                 xLabelMax = dataDurationSec,
                 isEnableAutoScroll = recordingState,
@@ -107,6 +108,7 @@ class AllInfo (
             graphNameText(modelData, "Pitch")
             Graph().draw(
                 data = pitchData,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 yLabelMin = 50F,
                 yLabelMax = 500F,
@@ -125,6 +127,7 @@ class AllInfo (
             graphNameText(modelData, "FirstFormant")
             Graph().draw(
                 data = firstFormantGraph,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 yLabelMax = 4096F,
                 horizontalLinesCount = 16,
@@ -142,6 +145,7 @@ class AllInfo (
             graphNameText(modelData, "SecondFormant")
             Graph().draw(
                 data = secondFormantGraph,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 yLabelMax = 4096F,
                 horizontalLinesCount = 16,
@@ -159,6 +163,7 @@ class AllInfo (
             graphNameText(modelData, "ActiveFirstFormant")
             Graph().draw(
                 data = activeFirstFormantGraph,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 yLabelMax = 4096F,
                 horizontalLinesCount = 16,
@@ -176,6 +181,7 @@ class AllInfo (
             graphNameText(modelData, "ActiveSecondFormant")
             Graph().draw(
                 data = activeSecondFormantGraph,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 yLabelMax = 4096F,
                 horizontalLinesCount = 16,
@@ -193,6 +199,7 @@ class AllInfo (
             graphNameText(modelData, "Energy")
             Graph().draw(
                 data = energy,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
@@ -208,6 +215,7 @@ class AllInfo (
             graphNameText(modelData, "H1H2EnergyBalance")
             Graph().draw(
                 data = h1h2EnergyBalance,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 yLabelMin = -1F,
                 yLabelMax = 1F,
@@ -225,6 +233,7 @@ class AllInfo (
             graphNameText(modelData, "HarmonicToNoiseRatio")
             Graph().draw(
                 data = harmonicToNoiseRatio,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
@@ -240,6 +249,7 @@ class AllInfo (
             graphNameText(modelData, "BandEnergyRatioLow")
             Graph().draw(
                 data = bandEnergyRatioLow,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
@@ -257,6 +267,7 @@ class AllInfo (
             graphNameText(modelData, "BandEnergyRatioMedium")
             Graph().draw(
                 data = bandEnergyRatioMedium,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
@@ -274,6 +285,7 @@ class AllInfo (
             graphNameText(modelData, "BandEnergyRatioHigh")
             Graph().draw(
                 data = bandEnergyRatioHigh,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
@@ -289,6 +301,7 @@ class AllInfo (
             graphNameText(modelData, "HLRatio")
             Graph().draw(
                 data = hlRatio,
+                modelData = modelData,
                 yLabelMin = -1F,
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
@@ -315,6 +328,7 @@ class AllInfo (
             }*/
             Graph().draw(
                 data = vad,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
@@ -330,6 +344,7 @@ class AllInfo (
             graphNameText(modelData, "SpectralCentroid")
             Graph().draw(
                 data = spectralCentroid,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 yLabelMin = 0F,
                 yLabelMax = 4096F,
@@ -348,6 +363,7 @@ class AllInfo (
             graphNameText(modelData, "SpectralTilt")
             Graph().draw(
                 data = spectralTilt,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 yLabelMin = -1F,
                 yLabelMax = 1F,
@@ -365,6 +381,7 @@ class AllInfo (
             graphNameText(modelData, "SpectralSpread")
             Graph().draw(
                 data = spectralSpread,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
@@ -380,6 +397,7 @@ class AllInfo (
             graphNameText(modelData, "Jitter")
             Graph().draw(
                 data = jitter,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
@@ -395,6 +413,7 @@ class AllInfo (
             graphNameText(modelData, "Shimmer")
             Graph().draw(
                 data = shimmer,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
@@ -410,6 +429,7 @@ class AllInfo (
             graphNameText(modelData, "Prosody")
             Graph().draw(
                 data = prosody,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
@@ -425,6 +445,7 @@ class AllInfo (
             graphNameText(modelData, "Rythm")
             Graph().draw(
                 data = rythm,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 yLabelMin = 0F,
                 yLabelMax = 600F,
@@ -443,6 +464,7 @@ class AllInfo (
             graphNameText(modelData, "Clarity")
             Graph().draw(
                 data = clarity,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
@@ -458,6 +480,7 @@ class AllInfo (
             graphNameText(modelData, "PausesDuration")
             Graph().draw(
                 data = pausesDuration,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,

@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.ktvincco.openaudiotools.ColorPalette
+import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.presentation.ModelData
 import com.ktvincco.openaudiotools.presentation.UiEventHandler
 
@@ -18,8 +19,9 @@ class UserSettingsPage (
 
     @Composable
     fun draw() {
-        Text(
+        DynamicText(
             text = "Settings",
+            modelData = modelData,
             color = ColorPalette.getTextColor(),
             modifier = Modifier
                 .padding(16.dp),

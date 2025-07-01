@@ -20,6 +20,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ktvincco.openaudiotools.ColorPalette
+import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.Settings
 import com.ktvincco.openaudiotools.presentation.ModelData
 import com.ktvincco.openaudiotools.presentation.UiEventHandler
@@ -68,8 +69,9 @@ class LegalInfoScreen (
 
             // Content
 
-            Text(
+            DynamicText(
                 text = "Legal Info",
+                modelData = modelData,
                 color = ColorPalette.getTextColor(),
                 fontSize = 28.sp,
                 lineHeight = 36.sp,
@@ -80,8 +82,9 @@ class LegalInfoScreen (
             BaseComponents().HorizontalDivider(
                 color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
-            Text(
+            DynamicText(
                 text = "DISCLAIMER",
+                modelData = modelData,
                 color = ColorPalette.getTextColor(),
                 fontSize = 20.sp,
                 lineHeight = 30.sp,
@@ -89,8 +92,9 @@ class LegalInfoScreen (
                     .padding(horizontal = 16.dp, vertical = 24.dp)
             )
 
-            Text(
+            DynamicText(
                 text = "This application is provided \"AS IS\" and does not provide any guarantees. The authors of the application does not bear any responsibility for its use. The application does not provide any medical advice",
+                modelData = modelData,
                 color = ColorPalette.getTextColor(),
                 fontSize = 16.sp,
                 lineHeight = 24.sp,
@@ -102,8 +106,9 @@ class LegalInfoScreen (
             BaseComponents().HorizontalDivider(
                 color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
-            Text(
+            DynamicText(
                 text = "Contact Us",
+                modelData = modelData,
                 color = ColorPalette.getTextColor(),
                 fontSize = 20.sp,
                 lineHeight = 30.sp,
@@ -111,9 +116,10 @@ class LegalInfoScreen (
                     .padding(horizontal = 16.dp, vertical = 24.dp)
             )
 
-            Text(
+            DynamicText(
                 text = "Official Communication:\n\n" +
                         "   * Email: ktvincco@gmail.com",
+                modelData = modelData,
                 color = ColorPalette.getTextColor(),
                 fontSize = 16.sp,
                 lineHeight = 24.sp,
@@ -125,8 +131,9 @@ class LegalInfoScreen (
             BaseComponents().HorizontalDivider(
                 color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
-            Text(
+            DynamicText(
                 text = "User agreement",
+                modelData = modelData,
                 textAlign = TextAlign.Center,
                 fontSize = 20.sp,
                 lineHeight = 30.sp,
@@ -135,8 +142,9 @@ class LegalInfoScreen (
                     .padding(horizontal = 16.dp, vertical = 24.dp)
             )
 
-            Text(
+            DynamicText(
                 text = "By using this application, you agree with our Terms Of Use and Privacy Policy",
+                modelData = modelData,
                 color = ColorPalette.getTextColor(),
                 fontSize = 16.sp,
                 lineHeight = 24.sp,
@@ -145,8 +153,9 @@ class LegalInfoScreen (
                     .fillMaxWidth()
             )
 
-            Text(
+            DynamicText(
                 text = "[Terms Of Use]",
+                modelData = modelData,
                 textAlign = TextAlign.Start,
                 fontSize = 16.sp,
                 lineHeight = 16.sp,
@@ -157,8 +166,9 @@ class LegalInfoScreen (
                         Settings.getTermsOfUseWebLink()) }
                     .padding(horizontal = 16.dp, vertical = 12.dp)
             )
-            Text(
+            DynamicText(
                 text = "[Privacy Policy]",
+                modelData = modelData,
                 textAlign = TextAlign.Start,
                 fontSize = 16.sp,
                 lineHeight = 16.sp,
@@ -175,8 +185,9 @@ class LegalInfoScreen (
             BaseComponents().HorizontalDivider(
                 color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
-            Text(
+            DynamicText(
                 text = "License NOTICE",
+                modelData = modelData,
                 color = ColorPalette.getTextColor(),
                 fontSize = 20.sp,
                 lineHeight = 30.sp,
@@ -184,9 +195,10 @@ class LegalInfoScreen (
                     .padding(horizontal = 16.dp, vertical = 24.dp)
             )
 
-            Text(
+            DynamicText(
                 text = "This application was developed by Ketaslava Ket and KTVINCCO Team\n\n" +
                         "The application is distributed under GNU GENERAL PUBLIC LICENSE Version 3.0",
+                modelData = modelData,
                 color = ColorPalette.getTextColor(),
                 fontSize = 16.sp,
                 lineHeight = 24.sp,
@@ -195,8 +207,9 @@ class LegalInfoScreen (
                     .fillMaxWidth()
             )
 
-            Text(
+            DynamicText(
                 text = "[License]",
+                modelData = modelData,
                 textAlign = TextAlign.Start,
                 fontSize = 16.sp,
                 lineHeight = 16.sp,
@@ -208,8 +221,9 @@ class LegalInfoScreen (
                     .padding(horizontal = 16.dp, vertical = 12.dp)
             )
 
-            Text(
+            DynamicText(
                 text = "[Source Code]",
+                modelData = modelData,
                 textAlign = TextAlign.Start,
                 fontSize = 16.sp,
                 lineHeight = 16.sp,
@@ -221,9 +235,10 @@ class LegalInfoScreen (
                     .padding(horizontal = 16.dp, vertical = 12.dp)
             )
 
-            Text(
+            DynamicText(
                 text = "This app contains:\n\n" +
                     "    * Google icons (Apache License Version 2.0)",
+                modelData = modelData,
                 color = ColorPalette.getTextColor(),
                 fontSize = 16.sp,
                 lineHeight = 24.sp,

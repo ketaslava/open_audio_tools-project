@@ -27,10 +27,12 @@ import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ktvincco.openaudiotools.ColorPalette
+import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.amplitudeToDecibels
 import com.ktvincco.openaudiotools.getPlasmaColor
 import com.ktvincco.openaudiotools.map
 import com.ktvincco.openaudiotools.normalizeDecibels
+import com.ktvincco.openaudiotools.presentation.ModelData
 import kotlin.math.roundToInt
 
 
@@ -39,6 +41,7 @@ class Spectrum {
     @Composable
     fun Spectrum(
         inputData: Array<FloatArray>,
+        modelData: ModelData,
         isNormalizeValues: Boolean = false,
         isUseLogScale: Boolean = false,
         multiplyValue: Float = 1F,
@@ -343,8 +346,9 @@ class Spectrum {
                         maximumsData = floatArrayOf()
                     }
             ) {
-                Text(
+                DynamicText(
                     text = "Reset",
+                    modelData = modelData,
                     color = ColorPalette.getTextColor(),
                     modifier = Modifier
                         .alpha(0.5F)

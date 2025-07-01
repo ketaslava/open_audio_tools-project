@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import com.ktvincco.openaudiotools.ColorPalette
+import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.getScreenSizeInPx
 import com.ktvincco.openaudiotools.presentation.ModelData
 import com.ktvincco.openaudiotools.presentation.UiEventHandler
@@ -77,8 +78,9 @@ class RecordingControl (
                         .background(ColorPalette.getSoftGreenColor())
                         .clickable { uiEventHandler.recordButtonClicked() }
                 ) {
-                    Text(
+                    DynamicText(
                         text = "Start recording",
+                        modelData = modelData,
                         textAlign = TextAlign.Center,
                         lineHeight = TextUnit(28F, TextUnitType.Sp),
                         fontSize = TextUnit(18F, TextUnitType.Sp),
@@ -112,8 +114,9 @@ class RecordingControl (
                         .background(buttonColor)
                         .clickable { uiEventHandler.recordButtonClicked() }
                 ) {
-                    Text(
+                    DynamicText(
                         text = text,
+                        modelData = modelData,
                         textAlign = TextAlign.Center,
                         lineHeight = TextUnit(28F, TextUnitType.Sp),
                         fontSize = TextUnit(18F, TextUnitType.Sp),
@@ -349,8 +352,9 @@ class RecordingControl (
                         .alpha(0.32F)
                 )
 
-                Text(
+                DynamicText(
                     text = "Scroll",
+                    modelData = modelData,
                     color = ColorPalette.getTextColor(),
                     modifier = Modifier
                         .alpha(0.5F)

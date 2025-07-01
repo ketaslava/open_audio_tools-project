@@ -32,6 +32,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.ktvincco.openaudiotools.ColorPalette
+import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.presentation.ModelData
 import com.ktvincco.openaudiotools.presentation.UiEventHandler
 
@@ -68,7 +69,7 @@ class Popup (private val modelData: ModelData, private val uiEventHandler: UiEve
                     .align(Alignment.Center),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text(
+                DynamicText(
                     text = popupHeadline,
                     style = MaterialTheme.typography.h6,
                     color = ColorPalette.getTextColor()
@@ -76,7 +77,7 @@ class Popup (private val modelData: ModelData, private val uiEventHandler: UiEve
 
                 Spacer(Modifier.height(42.dp))
 
-                Text(
+                DynamicText(
                     text = popupText,
                     style = MaterialTheme.typography.body1,
                     textAlign = TextAlign.Center,
@@ -100,7 +101,7 @@ class Popup (private val modelData: ModelData, private val uiEventHandler: UiEve
                             .weight(1F)
                             .clickable { modelData.closePopup("Cancel") }
                     ) {
-                        Text(
+                        DynamicText(
                             text = "Cancel",
                             color = ColorPalette.getTextColor()
                         )
@@ -120,7 +121,7 @@ class Popup (private val modelData: ModelData, private val uiEventHandler: UiEve
                             .weight(1F)
                             .clickable { modelData.closePopup("Ok") }
                     ) {
-                        Text(
+                        DynamicText(
                             text = "Ok",
                             color = ColorPalette.getTextColor()
                         )
@@ -163,7 +164,7 @@ class Popup (private val modelData: ModelData, private val uiEventHandler: UiEve
                     .align(Alignment.Center),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text(
+                DynamicText(
                     text = popupHeadline,
                     style = MaterialTheme.typography.h6,
                     color = ColorPalette.getTextColor()
@@ -207,7 +208,7 @@ class Popup (private val modelData: ModelData, private val uiEventHandler: UiEve
                                 textInput = ""
                             }
                     ) {
-                        Text(
+                        DynamicText(
                             text = "Cancel",
                             color = ColorPalette.getTextColor()
                         )
@@ -230,7 +231,7 @@ class Popup (private val modelData: ModelData, private val uiEventHandler: UiEve
                                 textInput = ""
                             }
                     ) {
-                        Text(
+                        DynamicText(
                             text = "Ok",
                             color = ColorPalette.getTextColor()
                         )

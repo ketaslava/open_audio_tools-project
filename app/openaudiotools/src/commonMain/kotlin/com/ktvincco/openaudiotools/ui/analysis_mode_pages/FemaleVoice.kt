@@ -67,6 +67,7 @@ class FemaleVoice (
             graphNameText(modelData, "Loudness")
             Graph().draw(
                 data = loudnessData,
+                modelData = modelData,
                 pointerPosition = pointerPosition,
                 xLabelMax = dataDurationSec,
                 isEnableAutoScroll = recordingState,
@@ -82,6 +83,7 @@ class FemaleVoice (
             graphNameText(modelData, "Pitch")
             Graph().draw(
                 data = pitchData,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 yLabelMin = 50F,
                 yLabelMax = 500F,
@@ -107,6 +109,7 @@ class FemaleVoice (
             graphNameText(modelData, "Prosody")
             Graph().draw(
                 data = prosody,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 graphZones = listOf(
@@ -129,6 +132,7 @@ class FemaleVoice (
             graphNameText(modelData, "HarmonicToNoiseRatio")
             Graph().draw(
                 data = harmonicToNoiseRatio,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 graphZones = listOf(
@@ -151,6 +155,7 @@ class FemaleVoice (
             graphNameText(modelData, "Rythm")
             Graph().draw(
                 data = rythm,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 yLabelMin = 0F,
                 yLabelMax = 600F,
@@ -169,6 +174,7 @@ class FemaleVoice (
             graphNameText(modelData, "PausesDuration")
             Graph().draw(
                 data = pausesDuration,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,

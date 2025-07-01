@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import com.ktvincco.openaudiotools.ColorPalette
+import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.map
 import com.ktvincco.openaudiotools.presentation.ModelData
 import com.ktvincco.openaudiotools.presentation.UiEventHandler
@@ -109,8 +110,12 @@ class MiniDisplay (
             val valueText = if (normalRangeMax < 10) { " ${(currentValue * 10).toInt() / 10F}"
             } else { " ${currentValue.toInt()}" }
 
-            Text(
-                text = text + valueText,
+            DynamicText(
+                textByParts = listOf(
+                    text,
+                    valueText
+                ),
+                modelData = modelData,
                 color = ColorPalette.getTextColor(),
                 fontSize = TextUnit(15F, TextUnitType.Sp),
                 lineHeight = TextUnit(15F, TextUnitType.Sp),

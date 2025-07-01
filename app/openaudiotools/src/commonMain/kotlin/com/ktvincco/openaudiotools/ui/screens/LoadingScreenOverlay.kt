@@ -14,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.ktvincco.openaudiotools.ColorPalette
+import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.presentation.ModelData
 import com.ktvincco.openaudiotools.presentation.UiEventHandler
 
@@ -36,8 +37,9 @@ class LoadingScreenOverlay (
                     interactionSource = remember { MutableInteractionSource() }
                 )
         ) {
-            Text(
+            DynamicText(
                 text = "Loading...",
+                modelData = modelData,
                 color = ColorPalette.getTextColor()
             )
         }

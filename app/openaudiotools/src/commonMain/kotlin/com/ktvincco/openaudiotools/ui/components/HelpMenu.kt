@@ -26,6 +26,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.ktvincco.openaudiotools.ColorPalette
+import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.Texts
 import com.ktvincco.openaudiotools.presentation.ModelData
 import com.ktvincco.openaudiotools.presentation.UiEventHandler
@@ -62,16 +63,18 @@ class HelpMenu (
                     .align(Alignment.Center),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text(
+                DynamicText(
                     text = parameterDescription.getParameterName(),
+                    modelData = modelData,
                     style = MaterialTheme.typography.h6,
                     color = ColorPalette.getTextColor()
                 )
 
                 Spacer(Modifier.height(42.dp))
 
-                Text(
+                DynamicText(
                     text = parameterDescription.getDescription(),
+                    modelData = modelData,
                     style = MaterialTheme.typography.body1,
                     textAlign = TextAlign.Center,
                     color = ColorPalette.getTextColor()
@@ -94,8 +97,9 @@ class HelpMenu (
                             .weight(1F)
                             .clickable { modelData.setHelpMenuState(false) }
                     ) {
-                        Text(
+                        DynamicText(
                             text = "Ok",
+                            modelData = modelData,
                             color = ColorPalette.getTextColor()
                         )
                     }

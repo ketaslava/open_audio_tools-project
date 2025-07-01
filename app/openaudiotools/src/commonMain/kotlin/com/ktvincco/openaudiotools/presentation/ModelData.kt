@@ -28,6 +28,14 @@ class ModelData {
     }
 
 
+    // Language code
+    private val _languageCode = MutableStateFlow("ru")
+    val languageCode: StateFlow<String> = _languageCode
+    fun setLanguageCode(newValue: String) {
+        _languageCode.value = newValue
+    }
+
+
     // Loading screen overlay
     private val _isShowLoadingScreenOverlay = MutableStateFlow(false)
     val isShowLoadingScreenOverlay: StateFlow<Boolean> = _isShowLoadingScreenOverlay

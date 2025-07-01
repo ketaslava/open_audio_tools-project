@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ktvincco.openaudiotools.ColorPalette
+import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.Settings
 import com.ktvincco.openaudiotools.presentation.ModelData
 import com.ktvincco.openaudiotools.presentation.UiEventHandler
@@ -72,8 +73,9 @@ class FirstStartScreen (
                             .fillMaxWidth()
                             .verticalScroll(state = scrollState)
                     ) {
-                        Text(
+                        DynamicText(
                             text = "Open Audio Tools",
+                            modelData = modelData,
                             color = ColorPalette.getTextColor(),
                             fontSize = 24.sp,
                             lineHeight = 24.sp,
@@ -84,10 +86,11 @@ class FirstStartScreen (
                         BaseComponents().HorizontalDivider(
                             color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
-                        Text(
+                        DynamicText(
                             text = "To use this application\n" +
                                     "you need to read and agree with our\n" +
                                     "Terms Of Use and Privacy Policy",
+                            modelData = modelData,
                             textAlign = TextAlign.Center,
                             lineHeight = TextUnit(24F, TextUnitType.Sp),
                             fontSize = TextUnit(16F, TextUnitType.Sp),
@@ -101,8 +104,9 @@ class FirstStartScreen (
 
                         Spacer(modifier = Modifier.height(12.dp))
 
-                        Text(
+                        DynamicText(
                             text = "Terms Of Use",
+                            modelData = modelData,
                             textAlign = TextAlign.Start,
                             fontSize = 16.sp,
                             lineHeight = 16.sp,
@@ -113,8 +117,9 @@ class FirstStartScreen (
                                         Settings.getTermsOfUseWebLink()) }
                                 .padding(horizontal = 16.dp, vertical = 12.dp)
                         )
-                        Text(
+                        DynamicText(
                             text = "Privacy Policy",
+                            modelData = modelData,
                             textAlign = TextAlign.Start,
                             fontSize = 16.sp,
                             lineHeight = 16.sp,
@@ -125,8 +130,9 @@ class FirstStartScreen (
                                     Settings.getPrivacyPolicyWebLink()) }
                                 .padding(horizontal = 16.dp, vertical = 12.dp)
                         )
-                        Text(
+                        DynamicText(
                             text = "Legal Info",
+                            modelData = modelData,
                             textAlign = TextAlign.Start,
                             fontSize = 16.sp,
                             lineHeight = 16.sp,
@@ -182,8 +188,9 @@ class FirstStartScreen (
                                 isCheckboxTermsOfUseChecked, isCheckboxPrivacyPolicyChecked)
                         }
                 ) {
-                    Text(
+                    DynamicText(
                         text = "Continue",
+                        modelData = modelData,
                         color = textColor,
                     )
                 }

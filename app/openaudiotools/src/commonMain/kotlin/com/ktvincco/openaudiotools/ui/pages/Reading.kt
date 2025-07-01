@@ -33,6 +33,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ktvincco.openaudiotools.ColorPalette
+import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.TextForReading
 import com.ktvincco.openaudiotools.Texts
 import com.ktvincco.openaudiotools.ui.basics.BaseComponents
@@ -94,8 +95,9 @@ class Reading (
                             .clickable { isOpenTextSelectionMenu = !isOpenTextSelectionMenu}
                             .padding(horizontal = 30.dp)
                     ) {
-                        Text(
+                        DynamicText(
                             text = texts[currentTextId].getHeadline(),
+                            modelData = modelData,
                             color = ColorPalette.getTextColor(),
                             modifier = Modifier
                                 .align(Alignment.CenterVertically)
@@ -120,8 +122,9 @@ class Reading (
                             .padding(30.dp)
                             .verticalScroll(state = textScrollState)
                     ) {
-                        Text(
+                        DynamicText(
                             text = texts[currentTextId].getText(),
+                            modelData = modelData,
                             color = ColorPalette.getTextColor(),
                             fontSize = 16.sp,
                             lineHeight = 28.sp,
@@ -155,8 +158,9 @@ class Reading (
         ) {
             Spacer(modifier = Modifier.height(16.dp))
 
-            Text(
+            DynamicText(
                 text = "Select the text",
+                modelData = modelData,
                 color = ColorPalette.getTextColor(),
                 fontSize = 24.sp,
                 lineHeight = 24.sp,
@@ -205,8 +209,9 @@ class Reading (
                 .clip(shape = RoundedCornerShape(5.dp))
                 .clickable { callback.invoke() }
         ) {
-            Text(
+            DynamicText(
                 text = text,
+                modelData = modelData,
                 color = ColorPalette.getTextColor(),
                 style = MaterialTheme.typography.body1
             )

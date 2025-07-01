@@ -32,6 +32,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ktvincco.openaudiotools.ColorPalette
+import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.presentation.ModelData
 import com.ktvincco.openaudiotools.presentation.UiEventHandler
 import com.ktvincco.openaudiotools.ui.basics.BaseComponents
@@ -72,8 +73,9 @@ class Recordings (private val modelData: ModelData, private val uiEventHandler: 
             ) {
                 Spacer(modifier = Modifier.height(16.dp))
 
-                Text(
+                DynamicText(
                     text = "Recordings",
+                    modelData = modelData,
                     color = ColorPalette.getTextColor(),
                     fontSize = 24.sp,
                     lineHeight = 24.sp,
@@ -132,8 +134,9 @@ class Recordings (private val modelData: ModelData, private val uiEventHandler: 
                 .background(color)
                 .clickable { callback.invoke(id) }
         ) {
-            Text(
+            DynamicText(
                 text = text,
+                modelData = modelData,
                 color = ColorPalette.getTextColor()
             )
         }

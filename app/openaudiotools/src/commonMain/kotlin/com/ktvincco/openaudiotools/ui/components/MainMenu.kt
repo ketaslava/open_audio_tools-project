@@ -23,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ktvincco.openaudiotools.ColorPalette
+import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.ui.basics.BaseComponents
 import com.ktvincco.openaudiotools.presentation.ModelData
 import com.ktvincco.openaudiotools.presentation.UiEventHandler
@@ -78,8 +79,9 @@ class MainMenu (private val modelData: ModelData, private val uiEventHandler: Ui
                 text = "Male Voice Resonance"
             }
 
-            Text(
+            DynamicText(
                 text = text,
+                modelData = modelData,
                 color = ColorPalette.getTextColor(),
                 modifier = Modifier
                     .align(Alignment.CenterVertically)
@@ -109,8 +111,9 @@ class MainMenu (private val modelData: ModelData, private val uiEventHandler: Ui
         ) {
             Spacer(modifier = Modifier.height(16.dp))
 
-            Text(
+            DynamicText(
                 text = "Main Menu",
+                modelData = modelData,
                 color = ColorPalette.getTextColor(),
                 fontSize = 24.sp,
                 lineHeight = 24.sp,
@@ -231,8 +234,9 @@ class MainMenu (private val modelData: ModelData, private val uiEventHandler: Ui
                 .clickable { callback.invoke() }
                 .padding(16.dp)
         ) {
-            Text(
+            DynamicText(
                 text = text,
+                modelData = modelData,
                 color = ColorPalette.getTextColor(),
                 style = MaterialTheme.typography.body1
             )

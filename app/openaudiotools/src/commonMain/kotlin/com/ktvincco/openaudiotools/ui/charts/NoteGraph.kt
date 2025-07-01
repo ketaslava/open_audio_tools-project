@@ -33,6 +33,8 @@ import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ktvincco.openaudiotools.ColorPalette
+import com.ktvincco.openaudiotools.DynamicText
+import com.ktvincco.openaudiotools.presentation.ModelData
 import openaudiotools.app.openaudiotools.generated.resources.Res
 import openaudiotools.app.openaudiotools.generated.resources.arrow_back_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
 import openaudiotools.app.openaudiotools.generated.resources.arrow_forward_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
@@ -69,6 +71,7 @@ class NoteGraph {
     @Composable
     fun draw(
         data: FloatArray,
+        modelData: ModelData,
         xLabelMin: Float = 0F,
         xLabelMax: Float = 1F,
         pointerPosition: Float = -1F,
@@ -530,8 +533,9 @@ class NoteGraph {
                             .alpha(0.32F)
                     )
 
-                    Text(
+                    DynamicText(
                         text = "Zoom",
+                        modelData = modelData,
                         color = ColorPalette.getTextColor(),
                         modifier = Modifier
                             .alpha(0.5F)

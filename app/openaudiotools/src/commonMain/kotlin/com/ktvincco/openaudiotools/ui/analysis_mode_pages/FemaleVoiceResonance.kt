@@ -62,6 +62,7 @@ class FemaleVoiceResonance (
             graphNameText(modelData, "Loudness")
             Graph().draw(
                 data = loudnessData,
+                modelData = modelData,
                 pointerPosition = pointerPosition,
                 xLabelMax = dataDurationSec,
                 isEnableAutoScroll = recordingState,
@@ -77,6 +78,7 @@ class FemaleVoiceResonance (
             graphNameText(modelData, "Pitch")
             Graph().draw(
                 data = pitchData,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 yLabelMin = 50F,
                 yLabelMax = 500F,

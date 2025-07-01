@@ -32,7 +32,9 @@ import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ktvincco.openaudiotools.ColorPalette
+import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.map
+import com.ktvincco.openaudiotools.presentation.ModelData
 import openaudiotools.app.openaudiotools.generated.resources.Res
 import openaudiotools.app.openaudiotools.generated.resources.arrow_back_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
 import openaudiotools.app.openaudiotools.generated.resources.arrow_forward_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
@@ -66,6 +68,7 @@ class Graph {
     @Composable
     fun draw(
         data: FloatArray,
+        modelData: ModelData,
         isScaleDataByYLabels: Boolean = false,
         yLabelMin: Float = 0F,
         yLabelMax: Float = 1F,
@@ -448,8 +451,9 @@ class Graph {
                             .alpha(0.32F)
                     )
 
-                    Text(
+                    DynamicText(
                         text = "Zoom",
+                        modelData = modelData,
                         color = ColorPalette.getTextColor(),
                         modifier = Modifier
                             .alpha(0.5F)

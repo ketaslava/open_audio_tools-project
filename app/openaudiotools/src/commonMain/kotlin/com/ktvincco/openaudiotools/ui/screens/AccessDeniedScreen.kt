@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import com.ktvincco.openaudiotools.ColorPalette
+import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.presentation.ModelData
 import com.ktvincco.openaudiotools.presentation.UiEventHandler
 
@@ -48,10 +49,11 @@ class AccessDeniedScreen (
                     .weight(1F)
             ) {
 
-                Text(
+                DynamicText(
                     text = "Access denied\n\n" +
                             "To use this application, you need to grant all required permissions.\n\n" +
                             "To grant permissions, OPEN the app permission SETTINGS and PROVIDE all necessary PERMISSIONS, then RESTART the APPLICATION.\n\n",
+                    modelData = modelData,
                     textAlign = TextAlign.Center,
                     lineHeight = TextUnit(28F, TextUnitType.Sp),
                     fontSize = TextUnit(18F, TextUnitType.Sp),
@@ -78,8 +80,9 @@ class AccessDeniedScreen (
                             uiEventHandler.openAppPermissionSettingsButtonClicked()
                         }
                 ) {
-                    Text(
+                    DynamicText(
                         text = "Open Settings",
+                        modelData = modelData,
                         color = ColorPalette.getTextColor(),
                     )
                 }
@@ -98,8 +101,9 @@ class AccessDeniedScreen (
                             uiEventHandler.restartAppButtonClicked()
                         }
                 ) {
-                    Text(
+                    DynamicText(
                         text = "Restart",
+                        modelData = modelData,
                         color = ColorPalette.getTextColor(),
                     )
                 }
