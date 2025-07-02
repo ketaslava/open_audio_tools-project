@@ -5,4 +5,7 @@ interface EnvironmentConnector {
     fun openAppPermissionSettings()
     fun openWebLink(url: String)
     fun restartTheApplication()
+    fun getYYYYMMDDHHMMSSString(): String
+    fun getDefaultLanguageCode(): String
+    fun forceGC()
 }

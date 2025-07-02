@@ -1,6 +1,6 @@
 package com.ktvincco.openaudiotools.data
 
-import com.ktvincco.openaudiotools.Settings
+import com.ktvincco.openaudiotools.Configuration
 import javax.sound.sampled.AudioFormat
 import javax.sound.sampled.AudioSystem
 import javax.sound.sampled.DataLine
@@ -20,7 +20,7 @@ class DesktopAudioRecorder : AudioRecorder {
 
         // Setup recorder
         val format = AudioFormat(
-            Settings.getSampleRate().toFloat(),
+            Configuration.getSampleRate().toFloat(),
             16,
             1,
             true,
@@ -29,7 +29,7 @@ class DesktopAudioRecorder : AudioRecorder {
         val info = DataLine.Info(TargetDataLine::class.java, format)
 
         // Calculate the line buffer size (not the read buffer)
-        val sampleRate = Settings.getSampleRate().toFloat()
+        val sampleRate = Configuration.getSampleRate().toFloat()
         val bytesPerSample = 2F  // 16‑bit = 2 bytes
         val channels       = 1F
         val bufferMs       = 200F
@@ -54,7 +54,7 @@ class DesktopAudioRecorder : AudioRecorder {
 
         // Run listener thread
         Thread {
-            val buffer = ByteArray(Settings.getAudioBufferSize())
+            val buffer = ByteArray(Configuration.getAudioBufferSize())
             while (isRecording) {
                 val bytesRead = line.read(buffer, 0, buffer.size)
                 if (bytesRead > 0) {

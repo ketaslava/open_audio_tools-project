@@ -71,6 +71,7 @@ class Popup (private val modelData: ModelData, private val uiEventHandler: UiEve
             ) {
                 DynamicText(
                     text = popupHeadline,
+                    modelData = modelData,
                     style = MaterialTheme.typography.h6,
                     color = ColorPalette.getTextColor()
                 )
@@ -79,6 +80,7 @@ class Popup (private val modelData: ModelData, private val uiEventHandler: UiEve
 
                 DynamicText(
                     text = popupText,
+                    modelData = modelData,
                     style = MaterialTheme.typography.body1,
                     textAlign = TextAlign.Center,
                     color = ColorPalette.getTextColor()
@@ -103,6 +105,7 @@ class Popup (private val modelData: ModelData, private val uiEventHandler: UiEve
                     ) {
                         DynamicText(
                             text = "Cancel",
+                            modelData = modelData,
                             color = ColorPalette.getTextColor()
                         )
                     }
@@ -123,6 +126,7 @@ class Popup (private val modelData: ModelData, private val uiEventHandler: UiEve
                     ) {
                         DynamicText(
                             text = "Ok",
+                            modelData = modelData,
                             color = ColorPalette.getTextColor()
                         )
                     }
@@ -166,6 +170,7 @@ class Popup (private val modelData: ModelData, private val uiEventHandler: UiEve
             ) {
                 DynamicText(
                     text = popupHeadline,
+                    modelData = modelData,
                     style = MaterialTheme.typography.h6,
                     color = ColorPalette.getTextColor()
                 )
@@ -210,6 +215,7 @@ class Popup (private val modelData: ModelData, private val uiEventHandler: UiEve
                     ) {
                         DynamicText(
                             text = "Cancel",
+                            modelData = modelData,
                             color = ColorPalette.getTextColor()
                         )
                     }
@@ -233,6 +239,7 @@ class Popup (private val modelData: ModelData, private val uiEventHandler: UiEve
                     ) {
                         DynamicText(
                             text = "Ok",
+                            modelData = modelData,
                             color = ColorPalette.getTextColor()
                         )
                     }

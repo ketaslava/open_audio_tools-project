@@ -26,11 +26,11 @@ fun calculateFirstAndSecondFormant(energySpectrumInHz: FloatArray): Pair<Float, 
         return Pair(-1F, -1F)
     }
 
-    // Settings
+    // Configuration
     val searchHzMin = 50
     val minGap = 512
 
-    // Optimization Settings
+    // Optimization Configuration
     val f1Step = 1
     val gapStep = 1
 

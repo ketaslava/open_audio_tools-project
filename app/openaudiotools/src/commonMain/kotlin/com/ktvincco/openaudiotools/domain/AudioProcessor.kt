@@ -3,6 +3,7 @@ package com.ktvincco.openaudiotools.domain
 import com.ktvincco.openaudiotools.data.AudioPlayer
 import com.ktvincco.openaudiotools.data.AudioRecorder
 import com.ktvincco.openaudiotools.data.Database
+import com.ktvincco.openaudiotools.data.EnvironmentConnector
 import com.ktvincco.openaudiotools.data.Logger
 import com.ktvincco.openaudiotools.data.PermissionController
 import com.ktvincco.openaudiotools.data.SoundFile
@@ -43,6 +44,7 @@ class AudioProcessor (
     private val permissionController: PermissionController,
     private val audioRecorder: AudioRecorder,
     private val database: Database,
+    private val environmentConnector: EnvironmentConnector,
     private val soundFile: SoundFile,
     private val audioPlayer: AudioPlayer,
 ) {
@@ -121,7 +123,7 @@ class AudioProcessor (
         modelData.setRecordingQuality(recordingQuality.second)
 
         // Cleanup
-        database.forceGC()
+        environmentConnector.forceGC()
     }
 
 

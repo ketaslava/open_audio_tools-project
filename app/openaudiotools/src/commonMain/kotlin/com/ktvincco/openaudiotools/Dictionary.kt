@@ -51,11 +51,24 @@ class Dictionary (
                 )
             ),
             TranslatableText(
-                originalText = "Settings",
+                originalText = "Configuration",
                 translations = listOf(
                     Translation(
                         languageCode = "ru",
                         text = "Настройки"
+                    )
+                )
+            ),
+            TranslatableText(
+                originalText = "Loudness",
+                translations = listOf(
+                    Translation(
+                        languageCode = "ru",
+                        text = "Громкость"
+                    ),
+                    Translation(
+                        languageCode = "es",
+                        text = "Volumen"
                     )
                 )
             )
@@ -68,6 +81,35 @@ class Dictionary (
                 }
             }
             return null
+        }
+
+        fun getAvailableLanguagesWithLangCodes(): List<Pair<String, String>> {
+            return listOf(
+                Pair("American (Original) (\uD83C\uDFF3\uFE0F\u200D\uD83C\uDF08)", "original"),
+                Pair("AUTO (Follow System)", ""),
+                Pair("Espanol", "es"),
+                Pair("\uD83D\uDDE3\uFE0F\uD83D\uDD24➡\uFE0F\uD83D\uDE00", "emoji"),
+                Pair("Українська", "uk"),
+                Pair("Свободньй Русский", "ru"),
+                Pair("Deutsch", "de"),
+                Pair("Italiano", "it"),
+                Pair("Português (BR)", "pt-BR"),
+                Pair("中文 (简体)", "zh-Hans"),
+                Pair("ไทย (Thai)", "th"),
+                Pair("日本語", "ja"),
+                Pair("한국어", "ko"),
+                Pair("العربية", "ar"),
+                Pair("हिंदी", "hi"),
+                Pair("বাংলা", "bn"),
+                Pair("Bahasa Indonesia", "id"),
+                Pair("اردو", "ur"),
+                Pair("Français", "fr"),
+                Pair("Tiếng Việt", "vi"),
+                Pair("Türkçe", "tr"),
+                Pair("فارسی", "fa"),
+                Pair("Kiswahili", "sw"),
+                Pair("தமிழ்", "ta"),
+            )
         }
     }
 }

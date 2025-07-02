@@ -3,7 +3,7 @@ package com.ktvincco.openaudiotools.data.sound_processing_algorithms
 
 fun calculateHarmonicToNoiseRatio(spectrumInHz: FloatArray): Float {
 
-    // Settings
+    // Configuration
     val voiceHzMin = 50
 
     // Calculate values

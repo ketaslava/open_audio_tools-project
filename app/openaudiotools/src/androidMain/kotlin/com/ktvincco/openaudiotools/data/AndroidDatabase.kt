@@ -78,21 +78,6 @@ class AndroidDatabase (private val activity: Activity, private val appName: Stri
     }
 
 
-    override fun getYYYYMMDDHHMMSSString(): String {
-        val currentMoment = Clock.System.now()
-        val currentDateTime = currentMoment.toLocalDateTime(TimeZone.currentSystemDefault())
-        return " %04d %02d -- %02d %02d-%02d -- %02d ".format(
-            Locale.ENGLISH,
-            currentDateTime.year,
-            currentDateTime.monthNumber,
-            currentDateTime.dayOfMonth,
-            currentDateTime.hour,
-            currentDateTime.minute,
-            currentDateTime.second
-        )
-    }
-
-
     private fun getAppPrivateDirectory(): File {
         val dir = File(activity.filesDir, appName.replace(" ", "").lowercase())
         if (!dir.exists()) {
@@ -113,23 +98,19 @@ class AndroidDatabase (private val activity: Activity, private val appName: Stri
     }
 
 
-    override fun loadString(key: String): String {
+    override fun loadString(key: String): String? {
         return try {
             val file = File(getAppPrivateDirectory(), "$key.txt")
             if (file.exists()) {
                 file.readText()
             } else {
                 Log.w(LOG_TAG, "File for key '$key' does not exist.")
-                ""
+                null
             }
         } catch (e: IOException) {
             Log.e(LOG_TAG, "Failed to load string from file: ${e.message}")
-            ""
+            null
         }
-    }
-
-    override fun forceGC() {
-        // Not used cause no reason
     }
 }
 

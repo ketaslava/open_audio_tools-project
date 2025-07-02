@@ -78,13 +78,6 @@ class DesktopDatabase (private val appName: String): Database {
     }
 
 
-    override fun getYYYYMMDDHHMMSSString(): String {
-        val currentDateTime = LocalDateTime.now()
-        val formatter = DateTimeFormatter.ofPattern(" yyyy MM >> dd HH:mm << ss ", Locale.ENGLISH)
-        return currentDateTime.format(formatter)
-    }
-
-
     private val preferences = java.util.prefs.Preferences.
         userNodeForPackage(DesktopDatabase::class.java)
 
@@ -95,14 +88,10 @@ class DesktopDatabase (private val appName: String): Database {
     }
 
 
-    override fun loadString(key: String): String {
+    override fun loadString(key: String): String? {
         val string = preferences.get(key, "")
         println("By key [$key] loaded string: $string")
-        return string
-    }
-
-    override fun forceGC() {
-        System.gc()
+        return if (string == "") null else string
     }
 }
 

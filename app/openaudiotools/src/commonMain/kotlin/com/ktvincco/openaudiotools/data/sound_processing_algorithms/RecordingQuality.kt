@@ -1,6 +1,6 @@
 package com.ktvincco.openaudiotools.data.sound_processing_algorithms
 
-import com.ktvincco.openaudiotools.Settings
+import com.ktvincco.openaudiotools.Configuration
 
 
 class RecordingQuality (
@@ -54,7 +54,7 @@ fun findIssueByPatternInDataAndThrow(
 fun calculateRecordingQuality(recordingIssueArrayInput: Array<String>,
                               loudness: Float): Pair<Array<String>, RecordingQuality> {
 
-    // Settings
+    // Configuration
     val windowDurationSec = 4
 
     // Add current issue to data
@@ -62,7 +62,7 @@ fun calculateRecordingQuality(recordingIssueArrayInput: Array<String>,
     val recordingIssueArray = recordingIssueArrayInput + recordingIssue
 
     // Process input
-    val windowSize = (1F / Settings.getProcessingSampleDurationSec()).toInt() * windowDurationSec
+    val windowSize = (1F / Configuration.getProcessingSampleDurationSec()).toInt() * windowDurationSec
     val inputLength = recordingIssueArray.size
 
     // Check input

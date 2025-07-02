@@ -12,7 +12,7 @@ import android.util.Log
 class AndroidPermissionController (private val mainActivity: Activity): PermissionController {
 
 
-    // Settings
+    // Configuration
 
 
     companion object {

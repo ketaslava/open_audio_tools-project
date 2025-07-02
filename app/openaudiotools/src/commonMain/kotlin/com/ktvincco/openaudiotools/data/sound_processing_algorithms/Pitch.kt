@@ -6,12 +6,12 @@ fun calculatePitch(spectrumInHz: FloatArray, vad: Float): Float {
     // Check
     if (vad < 0.5F) { return -1F }
 
-    // Settings
+    // Configuration
     val harmonicsCount = 8
     val voiceHzMin = 50
     val voiceHzMax = 500
 
-    // Optimization Settings
+    // Optimization Configuration
     val offsetStep = 4
     val gapStep = 4
 

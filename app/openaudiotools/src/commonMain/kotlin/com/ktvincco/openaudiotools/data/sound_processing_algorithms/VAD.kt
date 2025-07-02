@@ -3,13 +3,13 @@ package com.ktvincco.openaudiotools.data.sound_processing_algorithms
 
 fun calculateVAD(spectrumInHz: FloatArray): Float {
 
-   // Settings
+   // Configuration
    val harmonicsCount = 8
    val voiceHzMin = 50
    val voiceHzMax = 500
    val threshold = 0.42F // Between 0.5 and 0.33
 
-   // Optimization Settings
+   // Optimization Configuration
    val offsetStep = 4
    val gapStep = 4
 

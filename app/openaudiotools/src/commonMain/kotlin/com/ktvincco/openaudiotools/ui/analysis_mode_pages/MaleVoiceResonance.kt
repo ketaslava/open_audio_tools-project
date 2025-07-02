@@ -9,7 +9,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.ktvincco.openaudiotools.ColorPalette
-import com.ktvincco.openaudiotools.Settings
+import com.ktvincco.openaudiotools.Configuration
 import com.ktvincco.openaudiotools.ui.charts.Graph
 import com.ktvincco.openaudiotools.ui.charts.GraphZone
 import com.ktvincco.openaudiotools.presentation.ModelData
@@ -62,10 +62,11 @@ class MaleVoiceResonance (
             graphNameText(modelData, "Loudness")
             Graph().draw(
                 data = loudnessData,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
@@ -77,13 +78,14 @@ class MaleVoiceResonance (
             graphNameText(modelData, "Pitch")
             Graph().draw(
                 data = pitchData,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 yLabelMin = 50F,
                 yLabelMax = 500F,
                 horizontalLinesCount = 9,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 graphZones = listOf(
                     GraphZone(
                         minLabel = 50F,
@@ -102,10 +104,11 @@ class MaleVoiceResonance (
             graphNameText(modelData, "VoiceWeight")
             Graph().draw(
                 data = voiceWeight,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 graphZones = listOf(
                     GraphZone(
                         minLabel = 0.25F,
@@ -147,12 +150,13 @@ class MaleVoiceResonance (
             graphNameText(modelData, "ActiveFirstFormant", nameAddition = " for >>A<< ")
             Graph().draw(
                 data = activeFirstFormantGraph,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 yLabelMax = 4096F,
                 horizontalLinesCount = 16,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 graphZones = listOf(
                     GraphZone(
                         minLabel = 500F,
@@ -170,12 +174,13 @@ class MaleVoiceResonance (
             graphNameText(modelData, "ActiveSecondFormant", nameAddition = " for >>A<< ")
             Graph().draw(
                 data = activeSecondFormantGraph,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 yLabelMax = 4096F,
                 horizontalLinesCount = 16,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 graphZones = listOf(
                     GraphZone(
                         minLabel = 900F,
@@ -213,12 +218,13 @@ class MaleVoiceResonance (
             graphNameText(modelData, "ActiveFirstFormant", nameAddition = " for >>I<< ")
             Graph().draw(
                 data = activeFirstFormantGraph,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 yLabelMax = 4096F,
                 horizontalLinesCount = 16,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 graphZones = listOf(
                     GraphZone(
                         minLabel = 150F,
@@ -236,12 +242,13 @@ class MaleVoiceResonance (
             graphNameText(modelData, "ActiveSecondFormant", nameAddition = " for >>I<< ")
             Graph().draw(
                 data = activeSecondFormantGraph,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 yLabelMax = 4096F,
                 horizontalLinesCount = 16,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 graphZones = listOf(
                     GraphZone(
                         minLabel = 1800F,
@@ -279,12 +286,13 @@ class MaleVoiceResonance (
             graphNameText(modelData, "ActiveFirstFormant", nameAddition = " for >>U<< ")
             Graph().draw(
                 data = activeFirstFormantGraph,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 yLabelMax = 4096F,
                 horizontalLinesCount = 16,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 graphZones = listOf(
                     GraphZone(
                         minLabel = 250F,
@@ -302,12 +310,13 @@ class MaleVoiceResonance (
             graphNameText(modelData, "ActiveSecondFormant", nameAddition = " for >>U<< ")
             Graph().draw(
                 data = activeSecondFormantGraph,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 yLabelMax = 4096F,
                 horizontalLinesCount = 16,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 graphZones = listOf(
                     GraphZone(
                         minLabel = 600F,

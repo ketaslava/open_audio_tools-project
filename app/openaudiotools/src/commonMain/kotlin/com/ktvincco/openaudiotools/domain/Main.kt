@@ -1,7 +1,7 @@
 package com.ktvincco.openaudiotools.domain
 
 import com.ktvincco.openaudiotools.AppInfo
-import com.ktvincco.openaudiotools.Settings
+import com.ktvincco.openaudiotools.Configuration
 import com.ktvincco.openaudiotools.data.AudioPlayer
 import com.ktvincco.openaudiotools.data.AudioRecorder
 import com.ktvincco.openaudiotools.data.Database
@@ -30,7 +30,7 @@ class Main (private val modelData: ModelData,
 
     // Create components
     private val recorder = Recorder(modelData, uiEventHandler, logger,
-        permissionController, audioRecorder, database, soundFile, audioPlayer)
+        permissionController, audioRecorder, database, environmentConnector, soundFile, audioPlayer)
 
 
     fun setup() {
@@ -38,6 +38,22 @@ class Main (private val modelData: ModelData,
         // Info
         modelData.setAppInfo("Name", AppInfo.NAME)
         modelData.setAppInfo("Version", AppInfo.VERSION)
+
+        // Language
+        // null or "" -> follow system
+        // lang code -> specific lang
+        // non lang code (any string) -> original
+        var languageCode = database.loadString("languageCode")
+        if ((languageCode == null) or (languageCode == "")) {
+            languageCode = environmentConnector.getDefaultLanguageCode()
+        }
+        modelData.setLanguageCode(languageCode?: "original")
+
+        // Language selection callback
+        uiEventHandler.assignLanguageSelectedCallback { newLanguageCode ->
+            database.saveString("languageCode", newLanguageCode)
+            modelData.setLanguageCode(newLanguageCode)
+        }
 
         // Callbacks
         uiEventHandler.assignOpenAppPermissionSettingsButtonCallback {
@@ -81,19 +97,19 @@ class Main (private val modelData: ModelData,
 
         // Open dashboard or FirstStartScreen
         val isComplete = database.loadString("IsFirstStartComplete") == "Yes" &&
-                !Settings.getIsAlwaysShowFirstStartScreen() &&
+                !Configuration.getIsAlwaysShowFirstStartScreen() &&
                 database.loadString("AcceptedUserAgreementVersion") ==
-                    Settings.getUserAgreementVersion().toString()
+                    Configuration.getUserAgreementVersion().toString()
 
         if (isComplete) {
             modelData.openAllInfoPage()
             // DEV
-            // modelData.openSpectrumInfoPage()
+            modelData.openSettingsPage()
         } else {
             modelData.openFirstStartScreen {
                 database.saveString("IsFirstStartComplete", "Yes")
                 database.saveString("AcceptedUserAgreementVersion",
-                    Settings.getUserAgreementVersion().toString())
+                    Configuration.getUserAgreementVersion().toString())
                 modelData.openDashboardPage()
             }
         }

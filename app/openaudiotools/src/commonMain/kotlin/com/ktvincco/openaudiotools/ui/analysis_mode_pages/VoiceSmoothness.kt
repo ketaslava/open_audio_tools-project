@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.ktvincco.openaudiotools.Settings
+import com.ktvincco.openaudiotools.Configuration
 import com.ktvincco.openaudiotools.ui.charts.Graph
 import com.ktvincco.openaudiotools.presentation.ModelData
 import com.ktvincco.openaudiotools.presentation.UiEventHandler
@@ -56,10 +56,11 @@ class VoiceSmoothness (
             graphNameText(modelData, "Loudness")
             Graph().draw(
                 data = loudnessData,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
@@ -71,10 +72,11 @@ class VoiceSmoothness (
             graphNameText(modelData, "Jitter")
             Graph().draw(
                 data = jitter,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
@@ -86,10 +88,11 @@ class VoiceSmoothness (
             graphNameText(modelData, "Shimmer")
             Graph().draw(
                 data = shimmer,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
@@ -101,10 +104,11 @@ class VoiceSmoothness (
             graphNameText(modelData, "Clarity")
             Graph().draw(
                 data = clarity,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
@@ -116,10 +120,11 @@ class VoiceSmoothness (
             graphNameText(modelData, "VoiceWeight")
             Graph().draw(
                 data = voiceWeight,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)

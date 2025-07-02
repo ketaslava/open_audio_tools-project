@@ -4,13 +4,13 @@ import android.annotation.SuppressLint
 import android.media.AudioFormat
 import android.media.AudioRecord
 import android.media.MediaRecorder
-import com.ktvincco.openaudiotools.Settings
+import com.ktvincco.openaudiotools.Configuration
 
 
 class AndroidAudioRecorder: AudioRecorder {
 
-    // Settings
-    private val sampleRate = Settings.getSampleRate()
+    // Configuration
+    private val sampleRate = Configuration.getSampleRate()
 
     // Variables
     private var audioRecord: AudioRecord? = null

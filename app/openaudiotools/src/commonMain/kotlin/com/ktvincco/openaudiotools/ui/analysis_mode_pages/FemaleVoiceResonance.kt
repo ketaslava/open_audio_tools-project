@@ -9,7 +9,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.ktvincco.openaudiotools.ColorPalette
-import com.ktvincco.openaudiotools.Settings
+import com.ktvincco.openaudiotools.Configuration
 import com.ktvincco.openaudiotools.ui.charts.Graph
 import com.ktvincco.openaudiotools.ui.charts.GraphZone
 import com.ktvincco.openaudiotools.presentation.ModelData
@@ -66,7 +66,7 @@ class FemaleVoiceResonance (
                 pointerPosition = pointerPosition,
                 xLabelMax = dataDurationSec,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
@@ -85,7 +85,7 @@ class FemaleVoiceResonance (
                 horizontalLinesCount = 9,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 graphZones = listOf(
                     GraphZone(
                         minLabel = 175F,
@@ -104,10 +104,11 @@ class FemaleVoiceResonance (
             graphNameText(modelData, "VoiceWeight")
             Graph().draw(
                 data = voiceWeight,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 graphZones = listOf(
                     GraphZone(
                         minLabel = 0F,
@@ -149,12 +150,13 @@ class FemaleVoiceResonance (
             graphNameText(modelData, "ActiveFirstFormant", nameAddition = " for >>A<< ")
             Graph().draw(
                 data = activeFirstFormantGraph,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 yLabelMax = 4096F,
                 horizontalLinesCount = 16,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 graphZones = listOf(
                     GraphZone(
                         minLabel = 700F,
@@ -172,12 +174,13 @@ class FemaleVoiceResonance (
             graphNameText(modelData, "ActiveSecondFormant", nameAddition = " for >>A<< ")
             Graph().draw(
                 data = activeSecondFormantGraph,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 yLabelMax = 4096F,
                 horizontalLinesCount = 16,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 graphZones = listOf(
                     GraphZone(
                         minLabel = 1200F,
@@ -215,12 +218,13 @@ class FemaleVoiceResonance (
             graphNameText(modelData, "ActiveFirstFormant", nameAddition = " for >>I<< ")
             Graph().draw(
                 data = activeFirstFormantGraph,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 yLabelMax = 4096F,
                 horizontalLinesCount = 16,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 graphZones = listOf(
                     GraphZone(
                         minLabel = 350F,
@@ -238,12 +242,13 @@ class FemaleVoiceResonance (
             graphNameText(modelData, "ActiveSecondFormant", nameAddition = " for >>I<< ")
             Graph().draw(
                 data = activeSecondFormantGraph,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 yLabelMax = 4096F,
                 horizontalLinesCount = 16,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 graphZones = listOf(
                     GraphZone(
                         minLabel = 2200F,
@@ -281,12 +286,13 @@ class FemaleVoiceResonance (
             graphNameText(modelData, "ActiveFirstFormant", nameAddition = " for >>U<< ")
             Graph().draw(
                 data = activeFirstFormantGraph,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 yLabelMax = 4096F,
                 horizontalLinesCount = 16,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 graphZones = listOf(
                     GraphZone(
                         minLabel = 400F,
@@ -304,12 +310,13 @@ class FemaleVoiceResonance (
             graphNameText(modelData, "ActiveSecondFormant", nameAddition = " for >>U<< ")
             Graph().draw(
                 data = activeSecondFormantGraph,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 yLabelMax = 4096F,
                 horizontalLinesCount = 16,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 graphZones = listOf(
                     GraphZone(
                         minLabel = 900F,

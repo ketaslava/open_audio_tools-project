@@ -3,7 +3,7 @@ package com.ktvincco.openaudiotools.data
 import android.media.AudioAttributes
 import android.media.AudioFormat
 import android.media.AudioTrack
-import com.ktvincco.openaudiotools.Settings
+import com.ktvincco.openaudiotools.Configuration
 
 
 class AndroidAudioPlayer : AudioPlayer {
@@ -21,7 +21,7 @@ class AndroidAudioPlayer : AudioPlayer {
         val pcmData = rawData.map { (it * Short.MAX_VALUE).toInt().toShort() }.toShortArray()
 
         // Configure audio
-        val sampleRate = Settings.getSampleRate()
+        val sampleRate = Configuration.getSampleRate()
         val channelConfig = AudioFormat.CHANNEL_OUT_MONO
         val audioFormat = AudioFormat.ENCODING_PCM_16BIT
 
@@ -53,7 +53,7 @@ class AndroidAudioPlayer : AudioPlayer {
         playbackThread = Thread {
 
             // Configure
-            val bufferSize = Settings.getAudioBufferSize()
+            val bufferSize = Configuration.getAudioBufferSize()
             var offset = 0
 
             // Write data

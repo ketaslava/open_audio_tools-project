@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -21,7 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.DynamicText
-import com.ktvincco.openaudiotools.Settings
+import com.ktvincco.openaudiotools.Configuration
 import com.ktvincco.openaudiotools.presentation.ModelData
 import com.ktvincco.openaudiotools.presentation.UiEventHandler
 import com.ktvincco.openaudiotools.ui.basics.BaseComponents
@@ -71,6 +70,7 @@ class LegalInfoScreen (
 
             DynamicText(
                 text = "Legal Info",
+                isTranslatable = false,
                 modelData = modelData,
                 color = ColorPalette.getTextColor(),
                 fontSize = 28.sp,
@@ -84,6 +84,7 @@ class LegalInfoScreen (
 
             DynamicText(
                 text = "DISCLAIMER",
+                isTranslatable = false,
                 modelData = modelData,
                 color = ColorPalette.getTextColor(),
                 fontSize = 20.sp,
@@ -94,6 +95,7 @@ class LegalInfoScreen (
 
             DynamicText(
                 text = "This application is provided \"AS IS\" and does not provide any guarantees. The authors of the application does not bear any responsibility for its use. The application does not provide any medical advice",
+                isTranslatable = false,
                 modelData = modelData,
                 color = ColorPalette.getTextColor(),
                 fontSize = 16.sp,
@@ -108,6 +110,7 @@ class LegalInfoScreen (
 
             DynamicText(
                 text = "Contact Us",
+                isTranslatable = false,
                 modelData = modelData,
                 color = ColorPalette.getTextColor(),
                 fontSize = 20.sp,
@@ -119,6 +122,7 @@ class LegalInfoScreen (
             DynamicText(
                 text = "Official Communication:\n\n" +
                         "   * Email: ktvincco@gmail.com",
+                isTranslatable = false,
                 modelData = modelData,
                 color = ColorPalette.getTextColor(),
                 fontSize = 16.sp,
@@ -133,6 +137,7 @@ class LegalInfoScreen (
 
             DynamicText(
                 text = "User agreement",
+                isTranslatable = false,
                 modelData = modelData,
                 textAlign = TextAlign.Center,
                 fontSize = 20.sp,
@@ -144,6 +149,7 @@ class LegalInfoScreen (
 
             DynamicText(
                 text = "By using this application, you agree with our Terms Of Use and Privacy Policy",
+                isTranslatable = false,
                 modelData = modelData,
                 color = ColorPalette.getTextColor(),
                 fontSize = 16.sp,
@@ -155,6 +161,7 @@ class LegalInfoScreen (
 
             DynamicText(
                 text = "[Terms Of Use]",
+                isTranslatable = false,
                 modelData = modelData,
                 textAlign = TextAlign.Start,
                 fontSize = 16.sp,
@@ -163,11 +170,12 @@ class LegalInfoScreen (
                 modifier = Modifier
                     .fillMaxWidth()
                     .clickable { uiEventHandler.openWebLinkButtonCallbackClicked(
-                        Settings.getTermsOfUseWebLink()) }
+                        Configuration.getTermsOfUseWebLink()) }
                     .padding(horizontal = 16.dp, vertical = 12.dp)
             )
             DynamicText(
                 text = "[Privacy Policy]",
+                isTranslatable = false,
                 modelData = modelData,
                 textAlign = TextAlign.Start,
                 fontSize = 16.sp,
@@ -176,7 +184,7 @@ class LegalInfoScreen (
                 modifier = Modifier
                     .fillMaxWidth()
                     .clickable { uiEventHandler.openWebLinkButtonCallbackClicked(
-                        Settings.getPrivacyPolicyWebLink()) }
+                        Configuration.getPrivacyPolicyWebLink()) }
                     .padding(horizontal = 16.dp, vertical = 12.dp)
             )
 
@@ -187,6 +195,7 @@ class LegalInfoScreen (
 
             DynamicText(
                 text = "License NOTICE",
+                isTranslatable = false,
                 modelData = modelData,
                 color = ColorPalette.getTextColor(),
                 fontSize = 20.sp,
@@ -198,6 +207,7 @@ class LegalInfoScreen (
             DynamicText(
                 text = "This application was developed by Ketaslava Ket and KTVINCCO Team\n\n" +
                         "The application is distributed under GNU GENERAL PUBLIC LICENSE Version 3.0",
+                isTranslatable = false,
                 modelData = modelData,
                 color = ColorPalette.getTextColor(),
                 fontSize = 16.sp,
@@ -209,6 +219,7 @@ class LegalInfoScreen (
 
             DynamicText(
                 text = "[License]",
+                isTranslatable = false,
                 modelData = modelData,
                 textAlign = TextAlign.Start,
                 fontSize = 16.sp,
@@ -217,12 +228,13 @@ class LegalInfoScreen (
                 modifier = Modifier
                     .fillMaxWidth()
                     .clickable { uiEventHandler.openWebLinkButtonCallbackClicked(
-                        Settings.getLicenseWebLink()) }
+                        Configuration.getLicenseWebLink()) }
                     .padding(horizontal = 16.dp, vertical = 12.dp)
             )
 
             DynamicText(
                 text = "[Source Code]",
+                isTranslatable = false,
                 modelData = modelData,
                 textAlign = TextAlign.Start,
                 fontSize = 16.sp,
@@ -231,13 +243,14 @@ class LegalInfoScreen (
                 modifier = Modifier
                     .fillMaxWidth()
                     .clickable { uiEventHandler.openWebLinkButtonCallbackClicked(
-                        Settings.getSourceCodeWebLink()) }
+                        Configuration.getSourceCodeWebLink()) }
                     .padding(horizontal = 16.dp, vertical = 12.dp)
             )
 
             DynamicText(
                 text = "This app contains:\n\n" +
                     "    * Google icons (Apache License Version 2.0)",
+                isTranslatable = false,
                 modelData = modelData,
                 color = ColorPalette.getTextColor(),
                 fontSize = 16.sp,

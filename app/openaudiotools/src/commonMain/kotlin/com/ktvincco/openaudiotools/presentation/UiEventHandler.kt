@@ -2,6 +2,14 @@ package com.ktvincco.openaudiotools.presentation
 
 class UiEventHandler {
 
+
+    // Language was selected
+    private var languageSelectedCallback: (languageCode: String) -> Unit = {}
+    fun assignLanguageSelectedCallback(callback: (languageCode: String) -> Unit) {
+        languageSelectedCallback = callback }
+    fun languageSelected(languageCode: String) { languageSelectedCallback(languageCode) }
+
+
     // Record Button
     private var recordButtonCallback: () -> Unit = {}
     fun assignRecordButtonCallback(callback: () -> Unit) {
@@ -74,11 +82,11 @@ class UiEventHandler {
     fun rewindCallback(pointerPosition: Float) { rewind.invoke(pointerPosition) }
 
 
-    // Open App Permission Settings Button
-    private var openAppPermissionSettingsButtonCallback: () -> Unit = {}
+    // Open App Permission Configuration Button
+    private var openAppPermissionConfigurationButtonCallback: () -> Unit = {}
     fun assignOpenAppPermissionSettingsButtonCallback(callback: () -> Unit) {
-        openAppPermissionSettingsButtonCallback = callback }
-    fun openAppPermissionSettingsButtonClicked() { openAppPermissionSettingsButtonCallback() }
+        openAppPermissionConfigurationButtonCallback = callback }
+    fun openAppPermissionSettingsButtonClicked() { openAppPermissionConfigurationButtonCallback() }
 
 
     // Restart App Button

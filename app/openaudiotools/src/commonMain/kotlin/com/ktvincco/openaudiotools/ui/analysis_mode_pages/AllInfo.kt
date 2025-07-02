@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.ktvincco.openaudiotools.Settings
+import com.ktvincco.openaudiotools.Configuration
 import com.ktvincco.openaudiotools.ui.charts.Graph
 import com.ktvincco.openaudiotools.presentation.ModelData
 import com.ktvincco.openaudiotools.presentation.UiEventHandler
@@ -96,7 +96,7 @@ class AllInfo (
                 pointerPosition = pointerPosition,
                 xLabelMax = dataDurationSec,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
@@ -115,7 +115,7 @@ class AllInfo (
                 horizontalLinesCount = 9,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
@@ -133,7 +133,7 @@ class AllInfo (
                 horizontalLinesCount = 16,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(500.dp)
@@ -151,7 +151,7 @@ class AllInfo (
                 horizontalLinesCount = 16,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(500.dp)
@@ -169,7 +169,7 @@ class AllInfo (
                 horizontalLinesCount = 16,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(500.dp)
@@ -187,7 +187,7 @@ class AllInfo (
                 horizontalLinesCount = 16,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(500.dp)
@@ -203,7 +203,7 @@ class AllInfo (
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
@@ -221,7 +221,7 @@ class AllInfo (
                 yLabelMax = 1F,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
@@ -237,7 +237,7 @@ class AllInfo (
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
@@ -253,7 +253,7 @@ class AllInfo (
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
@@ -271,7 +271,7 @@ class AllInfo (
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
@@ -289,7 +289,7 @@ class AllInfo (
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
@@ -306,7 +306,7 @@ class AllInfo (
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
@@ -332,7 +332,7 @@ class AllInfo (
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
@@ -351,7 +351,7 @@ class AllInfo (
                 horizontalLinesCount = 16,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(400.dp)
@@ -369,7 +369,7 @@ class AllInfo (
                 yLabelMax = 1F,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
@@ -385,7 +385,7 @@ class AllInfo (
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
@@ -401,7 +401,7 @@ class AllInfo (
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
@@ -417,7 +417,7 @@ class AllInfo (
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
@@ -433,7 +433,7 @@ class AllInfo (
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
@@ -452,7 +452,7 @@ class AllInfo (
                 horizontalLinesCount = 30,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(500.dp)
@@ -468,7 +468,7 @@ class AllInfo (
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
@@ -484,7 +484,7 @@ class AllInfo (
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)

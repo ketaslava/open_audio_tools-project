@@ -67,7 +67,7 @@ class Spectrogram {
         modifier: Modifier = Modifier
     ) {
 
-        // Settings
+        // Configuration
 
         // Sensitivity
         val gestureZoomAcceleration = 0.002F

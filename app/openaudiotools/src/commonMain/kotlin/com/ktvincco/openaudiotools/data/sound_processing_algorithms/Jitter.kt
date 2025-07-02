@@ -5,7 +5,7 @@ import kotlin.math.abs
 
 fun calculateVoiceJitter(pitchGraphRaw: FloatArray): Float {
 
-    // Settings
+    // Configuration
     val searchLength = 32
 
     // Crop data

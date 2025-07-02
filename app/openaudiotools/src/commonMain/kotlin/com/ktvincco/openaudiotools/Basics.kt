@@ -118,7 +118,7 @@ fun DynamicText(
 
         // Get translation for each part
         for (i in parts.indices) {
-            val translation = Dictionary.getTextTranslation(parts[i], "ru")
+            val translation = Dictionary.getTextTranslation(parts[i], languageCode)
             if (translation != null) {
                 parts[i] = translation
             }
@@ -126,7 +126,7 @@ fun DynamicText(
     }
 
     // Join text
-    val joinedText = parts.joinToString()
+    val joinedText = parts.joinToString("")
 
     // Draw text
     Text(

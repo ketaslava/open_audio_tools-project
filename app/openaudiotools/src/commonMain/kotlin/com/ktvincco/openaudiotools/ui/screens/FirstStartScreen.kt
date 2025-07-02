@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -30,7 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.DynamicText
-import com.ktvincco.openaudiotools.Settings
+import com.ktvincco.openaudiotools.Configuration
 import com.ktvincco.openaudiotools.presentation.ModelData
 import com.ktvincco.openaudiotools.presentation.UiEventHandler
 import com.ktvincco.openaudiotools.ui.basics.BaseComponents
@@ -75,6 +74,7 @@ class FirstStartScreen (
                     ) {
                         DynamicText(
                             text = "Open Audio Tools",
+                            isTranslatable = false,
                             modelData = modelData,
                             color = ColorPalette.getTextColor(),
                             fontSize = 24.sp,
@@ -90,6 +90,7 @@ class FirstStartScreen (
                             text = "To use this application\n" +
                                     "you need to read and agree with our\n" +
                                     "Terms Of Use and Privacy Policy",
+                            isTranslatable = false,
                             modelData = modelData,
                             textAlign = TextAlign.Center,
                             lineHeight = TextUnit(24F, TextUnitType.Sp),
@@ -106,6 +107,7 @@ class FirstStartScreen (
 
                         DynamicText(
                             text = "Terms Of Use",
+                            isTranslatable = false,
                             modelData = modelData,
                             textAlign = TextAlign.Start,
                             fontSize = 16.sp,
@@ -114,11 +116,12 @@ class FirstStartScreen (
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .clickable { uiEventHandler.openWebLinkButtonCallbackClicked(
-                                        Settings.getTermsOfUseWebLink()) }
+                                        Configuration.getTermsOfUseWebLink()) }
                                 .padding(horizontal = 16.dp, vertical = 12.dp)
                         )
                         DynamicText(
                             text = "Privacy Policy",
+                            isTranslatable = false,
                             modelData = modelData,
                             textAlign = TextAlign.Start,
                             fontSize = 16.sp,
@@ -127,11 +130,12 @@ class FirstStartScreen (
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .clickable { uiEventHandler.openWebLinkButtonCallbackClicked(
-                                    Settings.getPrivacyPolicyWebLink()) }
+                                    Configuration.getPrivacyPolicyWebLink()) }
                                 .padding(horizontal = 16.dp, vertical = 12.dp)
                         )
                         DynamicText(
                             text = "Legal Info",
+                            isTranslatable = false,
                             modelData = modelData,
                             textAlign = TextAlign.Start,
                             fontSize = 16.sp,
@@ -151,14 +155,16 @@ class FirstStartScreen (
                         Spacer(modifier = Modifier.height(24.dp))
 
                         BaseComponents().Checkbox(
-                            "I have read and accept the Terms of Use", Modifier) { state ->
+                            "I have read and accept the Terms of Use",
+                            modelData = modelData, Modifier) { state ->
                             isCheckboxTermsOfUseChecked = state
                         }
 
                         Spacer(modifier = Modifier.height(24.dp))
 
                         BaseComponents().Checkbox(
-                            "I have read and accept the Privacy Policy", Modifier) { state ->
+                            "I have read and accept the Privacy Policy",
+                            modelData = modelData, Modifier) { state ->
                             isCheckboxPrivacyPolicyChecked = state
                         }
 
@@ -190,6 +196,7 @@ class FirstStartScreen (
                 ) {
                     DynamicText(
                         text = "Continue",
+                        isTranslatable = false,
                         modelData = modelData,
                         color = textColor,
                     )

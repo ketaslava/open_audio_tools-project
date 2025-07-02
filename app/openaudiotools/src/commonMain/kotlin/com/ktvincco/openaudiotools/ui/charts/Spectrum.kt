@@ -56,7 +56,7 @@ class Spectrum {
         modifier: Modifier = Modifier
     ) {
 
-        // Settings
+        // Configuration
 
         // Colors
         val backgroundColor = Color.hsv(0F, 0F, 0.15F)

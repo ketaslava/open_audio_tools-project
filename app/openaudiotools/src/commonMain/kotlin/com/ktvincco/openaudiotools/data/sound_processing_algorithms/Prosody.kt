@@ -1,11 +1,11 @@
 package com.ktvincco.openaudiotools.data.sound_processing_algorithms
 
-import com.ktvincco.openaudiotools.Settings
+import com.ktvincco.openaudiotools.Configuration
 
 
 fun calculateVoiceProsody(pitchGraph: FloatArray): Float {
 
-    // Settings
+    // Configuration
     val processingWindowDurationSec = 8
     val minDataSize = 8
 
@@ -13,7 +13,7 @@ fun calculateVoiceProsody(pitchGraph: FloatArray): Float {
     if (pitchGraph.isEmpty()) { return -1F }
 
     // Calculate window size
-    var processingWindowSize = ((1F / Settings.getProcessingSampleDurationSec()) *
+    var processingWindowSize = ((1F / Configuration.getProcessingSampleDurationSec()) *
             processingWindowDurationSec).toInt() - 1
     if (pitchGraph.size <= processingWindowSize) {
         processingWindowSize = pitchGraph.size - 1

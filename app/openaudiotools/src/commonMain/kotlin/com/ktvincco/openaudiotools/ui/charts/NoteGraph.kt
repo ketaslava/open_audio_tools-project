@@ -80,7 +80,7 @@ class NoteGraph {
         modifier: Modifier = Modifier
     ) {
 
-        // Settings
+        // Configuration
 
         // Base
         val horizontalElementHeightProportion = 0.04F

@@ -1,15 +1,15 @@
 package com.ktvincco.openaudiotools.data.sound_processing_algorithms
 
-import com.ktvincco.openaudiotools.Settings
+import com.ktvincco.openaudiotools.Configuration
 
 
 fun calculateVoiceClarity(loudnessGraph: FloatArray, vadGraph: FloatArray): Float {
 
-    // Settings
+    // Configuration
     val processingWindowDurationSec = 16
 
     // Calculate window size
-    var processingWindowSize = ((1F / Settings.getProcessingSampleDurationSec()) *
+    var processingWindowSize = ((1F / Configuration.getProcessingSampleDurationSec()) *
             processingWindowDurationSec).toInt() - 1
     if (loudnessGraph.size <= processingWindowSize) {
         processingWindowSize = loudnessGraph.size - 1

@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.DynamicText
+import com.ktvincco.openaudiotools.presentation.ModelData
 import openaudiotools.app.openaudiotools.generated.resources.Res
 import openaudiotools.app.openaudiotools.generated.resources.check_box_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
 import openaudiotools.app.openaudiotools.generated.resources.check_box_outline_blank_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
@@ -35,7 +36,8 @@ class BaseComponents {
 
 
     @Composable
-    fun Checkbox(text: String, modifier: Modifier, callback: (state: Boolean) -> Unit) {
+    fun Checkbox(text: String, modelData: ModelData,
+                 modifier: Modifier, callback: (state: Boolean) -> Unit) {
 
         var isCheckboxChecked by remember { mutableStateOf(false) }
 
@@ -70,6 +72,7 @@ class BaseComponents {
             Spacer(modifier = Modifier.width(5.dp))
             DynamicText(
                 text = text,
+                modelData = modelData,
                 color = ColorPalette.getTextColor()
             )
         }

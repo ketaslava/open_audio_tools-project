@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.ktvincco.openaudiotools.Settings
+import com.ktvincco.openaudiotools.Configuration
 import com.ktvincco.openaudiotools.ui.charts.Graph
 import com.ktvincco.openaudiotools.presentation.ModelData
 import com.ktvincco.openaudiotools.presentation.UiEventHandler
@@ -61,10 +61,11 @@ class SpeakerVoice (
             graphNameText(modelData, "Loudness")
             Graph().draw(
                 data = loudnessData,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
@@ -76,13 +77,14 @@ class SpeakerVoice (
             graphNameText(modelData, "Pitch")
             Graph().draw(
                 data = pitchData,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 yLabelMin = 50F,
                 yLabelMax = 500F,
                 horizontalLinesCount = 9,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
@@ -94,10 +96,11 @@ class SpeakerVoice (
             graphNameText(modelData, "Prosody")
             Graph().draw(
                 data = prosody,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
@@ -109,13 +112,14 @@ class SpeakerVoice (
             graphNameText(modelData, "Rythm")
             Graph().draw(
                 data = rythm,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 yLabelMin = 0F,
                 yLabelMax = 600F,
                 horizontalLinesCount = 30,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(500.dp)
@@ -127,10 +131,11 @@ class SpeakerVoice (
             graphNameText(modelData, "Clarity")
             Graph().draw(
                 data = clarity,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
@@ -142,10 +147,11 @@ class SpeakerVoice (
             graphNameText(modelData, "PausesDuration")
             Graph().draw(
                 data = pausesDuration,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)

@@ -81,7 +81,7 @@ class AccessDeniedScreen (
                         }
                 ) {
                     DynamicText(
-                        text = "Open Settings",
+                        text = "Open Configuration",
                         modelData = modelData,
                         color = ColorPalette.getTextColor(),
                     )

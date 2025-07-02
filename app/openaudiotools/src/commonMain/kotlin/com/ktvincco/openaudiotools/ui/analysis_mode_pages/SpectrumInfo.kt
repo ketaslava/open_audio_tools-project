@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.ktvincco.openaudiotools.Settings
+import com.ktvincco.openaudiotools.Configuration
 import com.ktvincco.openaudiotools.ui.charts.Graph
 import com.ktvincco.openaudiotools.ui.charts.Spectrogram
 import com.ktvincco.openaudiotools.ui.charts.Spectrum
@@ -44,10 +44,11 @@ class SpectrumInfo (
 
             Graph().draw(
                 data = loudnessData,
+                modelData = modelData,
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
@@ -62,6 +63,7 @@ class SpectrumInfo (
 
             Spectrogram().Spectrogram(
                 data = spectrogramData,
+                modelData = modelData,
                 multiplyValue = 24F,
                 xLabelMin = 0F,
                 xLabelMax = dataDurationSec,
@@ -70,7 +72,7 @@ class SpectrumInfo (
                 horizontalLinesCount = 8,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(500.dp)
@@ -85,6 +87,7 @@ class SpectrumInfo (
 
             Spectrogram().Spectrogram(
                 data = formantSpectrogramData,
+                modelData = modelData,
                 xLabelMin = 0F,
                 xLabelMax = dataDurationSec,
                 yLabelMin = 0F,
@@ -92,7 +95,7 @@ class SpectrumInfo (
                 horizontalLinesCount = 16,
                 pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Settings.getAutoScrollXWindowSize(),
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(500.dp)
@@ -104,6 +107,7 @@ class SpectrumInfo (
 
             Spectrum().Spectrum(
                 inputData = spectrogramData,
+                modelData = modelData,
                 isUseLogScale = true,
                 xLabelMax = 4096F,
                 pointerPosition = pointerPosition,

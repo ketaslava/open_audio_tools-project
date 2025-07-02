@@ -1,11 +1,11 @@
 package com.ktvincco.openaudiotools.data.sound_processing_algorithms
 
-import com.ktvincco.openaudiotools.Settings
+import com.ktvincco.openaudiotools.Configuration
 
 
 fun calculateVoiceRythm(vadGraph: FloatArray): Float {
 
-    // Settings
+    // Configuration
     val processingWindowDurationSec = 8
     val minDataSize = 8
 
@@ -13,7 +13,7 @@ fun calculateVoiceRythm(vadGraph: FloatArray): Float {
     if (vadGraph.isEmpty()) { return -1F }
 
     // Calculate window size
-    var processingWindowSize = ((1F / Settings.getProcessingSampleDurationSec()) *
+    var processingWindowSize = ((1F / Configuration.getProcessingSampleDurationSec()) *
             processingWindowDurationSec).toInt() - 1
     if (vadGraph.size <= processingWindowSize) {
         processingWindowSize = vadGraph.size - 1
@@ -38,6 +38,6 @@ fun calculateVoiceRythm(vadGraph: FloatArray): Float {
     }
 
     // Calculate BPM
-    val time = (processingWindowSize * Settings.getProcessingSampleDurationSec()) / 60F
+    val time = (processingWindowSize * Configuration.getProcessingSampleDurationSec()) / 60F
     return bits.toFloat() / time
 }

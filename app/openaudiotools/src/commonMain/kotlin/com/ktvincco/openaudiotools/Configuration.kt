@@ -3,7 +3,7 @@ package com.ktvincco.openaudiotools
 import androidx.compose.ui.graphics.Color
 
 
-class Settings {
+class Configuration {
 
     companion object {
 

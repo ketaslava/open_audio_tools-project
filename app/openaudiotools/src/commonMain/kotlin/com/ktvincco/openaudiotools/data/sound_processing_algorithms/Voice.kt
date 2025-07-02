@@ -1,6 +1,6 @@
 package com.ktvincco.openaudiotools.data.sound_processing_algorithms
 
-import com.ktvincco.openaudiotools.Settings
+import com.ktvincco.openaudiotools.Configuration
 
 
 const val maxVoiceFreqHz = 4096
@@ -12,7 +12,7 @@ fun getVoiceSpectrumInHz(currentSample: FloatArray): FloatArray {
     val magnitudes = fastFourierTransform(currentSample)
 
     // Transform FFT to HzFFT
-    val frequencyResolution = (Settings.getSampleRate() / magnitudes.size.toDouble()) / 2
+    val frequencyResolution = (Configuration.getSampleRate() / magnitudes.size.toDouble()) / 2
 
     var fftHz: FloatArray = floatArrayOf()
     for (hz in 0..maxVoiceFreqHz) {

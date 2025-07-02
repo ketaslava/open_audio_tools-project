@@ -1,9 +1,10 @@
 package com.ktvincco.openaudiotools.domain
 
-import com.ktvincco.openaudiotools.Settings
+import com.ktvincco.openaudiotools.Configuration
 import com.ktvincco.openaudiotools.data.AudioPlayer
 import com.ktvincco.openaudiotools.data.AudioRecorder
 import com.ktvincco.openaudiotools.data.Database
+import com.ktvincco.openaudiotools.data.EnvironmentConnector
 import com.ktvincco.openaudiotools.data.Logger
 import com.ktvincco.openaudiotools.data.PermissionController
 import com.ktvincco.openaudiotools.data.SoundFile
@@ -22,6 +23,7 @@ class Recorder (
     private val permissionController: PermissionController,
     private val audioRecorder: AudioRecorder,
     private val database: Database,
+    private val environmentConnector: EnvironmentConnector,
     private val soundFile: SoundFile,
     private val audioPlayer: AudioPlayer,
 ) {
@@ -32,14 +34,14 @@ class Recorder (
     }
 
 
-    // Settings
-    private val sampleLength = Settings.getProcessingSampleLength()
+    // Configuration
+    private val sampleLength = Configuration.getProcessingSampleLength()
 
 
     // Components
     private val audioProcessor = AudioProcessor(
         modelData, uiEventHandler, logger, permissionController,
-        audioRecorder, database, soundFile, audioPlayer)
+        audioRecorder, database, environmentConnector, soundFile, audioPlayer)
 
 
     // Recording State
@@ -179,7 +181,7 @@ class Recorder (
 
         // Update data duration
         val processedDataDurationSec = (processedLength / sampleLength) *
-                Settings.getProcessingSampleDurationSec()
+                Configuration.getProcessingSampleDurationSec()
         modelData.setDataDurationSec(processedDataDurationSec)
     }
 
@@ -220,7 +222,7 @@ class Recorder (
         modelData.setRecordingState(false)
 
         // Check if data is too short (< 2s) -> reset
-        if (rawData.size < Settings.getSampleRate() * 2) {
+        if (rawData.size < Configuration.getSampleRate() * 2) {
 
             // Reset all data
             reset()
@@ -236,9 +238,9 @@ class Recorder (
 
 
     private fun saveData() {
-        val fileName = "/REC" + database.getYYYYMMDDHHMMSSString() + ".wav"
+        val fileName = "/REC" + environmentConnector.getYYYYMMDDHHMMSSString() + ".wav"
         val filePath = database.getSoundFileDirectoryPath() + fileName
-        soundFile.writeSoundToFile(filePath, rawData, Settings.getSampleRate())
+        soundFile.writeSoundToFile(filePath, rawData, Configuration.getSampleRate())
         updateSoundFilesList()
         modelData.setRecordingControlLayoutAsPlayer()
     }
@@ -299,7 +301,7 @@ class Recorder (
             // Lod data from the file
             val filePath = database.getSoundFileDirectoryPath() + "/" + fileName
             recordingPreviewRawData = soundFile.readSoundFromFile(
-                filePath, Settings.getSampleRate())
+                filePath, Configuration.getSampleRate())
 
             // Set state
             recordingPreviewFileName = fileName
@@ -351,7 +353,7 @@ class Recorder (
 
             // Lod data from the file
             val filePath = database.getSoundFileDirectoryPath() + "/" + fileName
-            rawData = soundFile.readSoundFromFile(filePath,Settings.getSampleRate())
+            rawData = soundFile.readSoundFromFile(filePath,Configuration.getSampleRate())
 
             // Process all loaded data
             processRawData()

@@ -1,6 +1,6 @@
 package com.ktvincco.openaudiotools.data
 
-import com.ktvincco.openaudiotools.Settings
+import com.ktvincco.openaudiotools.Configuration
 import javax.sound.sampled.AudioFormat
 import javax.sound.sampled.AudioSystem
 import javax.sound.sampled.DataLine
@@ -23,7 +23,7 @@ class DesktopAudioPlayer: AudioPlayer {
         val pcmData = rawData.map { (it * Short.MAX_VALUE).toInt().toShort() }.toShortArray()
 
         // Configure audio
-        val sampleRate = Settings.getSampleRate()
+        val sampleRate = Configuration.getSampleRate()
         val channels = 1 // Mono
         val sampleSizeInBits = 16 // PCM 16-bit
         val bigEndian = false // Little-endian
@@ -44,7 +44,7 @@ class DesktopAudioPlayer: AudioPlayer {
         }
 
         // Set state
-        val buffer = ByteArray(Settings.getAudioBufferSize()) // Data translation buffer
+        val buffer = ByteArray(Configuration.getAudioBufferSize()) // Data translation buffer
         isPlaying = true
 
         // Launch playback thread

@@ -140,6 +140,11 @@ class MainMenu (private val modelData: ModelData, private val uiEventHandler: Ui
                     modelData.setMainMenuState(false)
                 }
 
+                menuItem("Settings") {
+                    modelData.openSettingsPage()
+                    modelData.setMainMenuState(false)
+                }
+
                 menuItem("Voice Change Guidelines") {
                     modelData.openVoiceChangeGuidelinesPage()
                     modelData.setMainMenuState(false)

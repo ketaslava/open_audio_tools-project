@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -22,7 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.DynamicText
-import com.ktvincco.openaudiotools.Settings
+import com.ktvincco.openaudiotools.Configuration
 import com.ktvincco.openaudiotools.presentation.ModelData
 import com.ktvincco.openaudiotools.presentation.UiEventHandler
 import com.ktvincco.openaudiotools.ui.basics.BaseComponents
@@ -269,10 +268,9 @@ class Dashboard (
                 )
 
                 DynamicText(
-                    text = "Official Communication:\n\n" +
-                            "   * Email: ktvincco@gmail.com\n\n" +
-                            "Preferred Communication:\n\n" +
-                            "   * BlueSky: @ketaslava.bsky.social\n\n" +
+                    text = "Communication:\n\n" +
+                            "   * Email: ktvincco@gmail.com\n" +
+                            "   * BlueSky: @ketaslava.bsky.social  (Preferred)\n\n" +
                             "Join the Community:\n\n" +
                             "   * YouTube: @ketaslava, @ktvincco_production\n" +
                             "   * Instagram: @ketaslava, @ktvincco\n" +
@@ -289,32 +287,10 @@ class Dashboard (
                 BaseComponents().HorizontalDivider(
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
-                DynamicText(
-                    text = "DISCLAIMER",
-                    modelData = modelData,
-                    color = ColorPalette.getTextColor(),
-                    fontSize = 20.sp,
-                    lineHeight = 30.sp,
-                    modifier = Modifier
-                        .padding(horizontal = 16.dp, vertical = 24.dp)
-                )
 
                 DynamicText(
-                    text = "This application is provided \"AS IS\" and does not provide any guarantees. The authors of the application does not bear any responsibility for its use. The application does not provide any medical advice",
-                    modelData = modelData,
-                    color = ColorPalette.getTextColor(),
-                    fontSize = 16.sp,
-                    lineHeight = 24.sp,
-                    modifier = Modifier
-                        .padding(start = 16.dp, end = 16.dp, bottom = 24.dp)
-                        .fillMaxWidth()
-                )
-
-                BaseComponents().HorizontalDivider(
-                    color = ColorPalette.getMarkupColor(), thickness = 1.dp)
-
-                DynamicText(
-                    text = "User agreement",
+                    text = "Legal Info",
+                    isTranslatable = false,
                     modelData = modelData,
                     textAlign = TextAlign.Center,
                     fontSize = 20.sp,
@@ -324,45 +300,10 @@ class Dashboard (
                         .padding(horizontal = 16.dp, vertical = 24.dp)
                 )
 
-                DynamicText(
-                    text = "By using this application, you agree with our Terms Of Use and Privacy Policy",
-                    modelData = modelData,
-                    color = ColorPalette.getTextColor(),
-                    fontSize = 16.sp,
-                    lineHeight = 24.sp,
-                    modifier = Modifier
-                        .padding(start = 16.dp, end = 16.dp, bottom = 12.dp)
-                        .fillMaxWidth()
-                )
 
                 DynamicText(
-                    text = "[Terms Of Use]",
-                    modelData = modelData,
-                    textAlign = TextAlign.Start,
-                    fontSize = 16.sp,
-                    lineHeight = 16.sp,
-                    color = ColorPalette.getTextColor(),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .clickable { uiEventHandler.openWebLinkButtonCallbackClicked(
-                            Settings.getTermsOfUseWebLink()) }
-                        .padding(horizontal = 16.dp, vertical = 12.dp)
-                )
-                DynamicText(
-                    text = "[Privacy Policy]",
-                    modelData = modelData,
-                    textAlign = TextAlign.Start,
-                    fontSize = 16.sp,
-                    lineHeight = 16.sp,
-                    color = ColorPalette.getTextColor(),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .clickable { uiEventHandler.openWebLinkButtonCallbackClicked(
-                            Settings.getPrivacyPolicyWebLink()) }
-                        .padding(horizontal = 16.dp, vertical = 12.dp)
-                )
-                DynamicText(
                     text = "[Legal Info]",
+                    isTranslatable = false,
                     modelData = modelData,
                     textAlign = TextAlign.Start,
                     fontSize = 16.sp,

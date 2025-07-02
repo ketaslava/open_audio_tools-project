@@ -8,7 +8,7 @@ fun calculateVoiceShimmer(
     spectrogramInHz: Array<FloatArray>
 ): Float {
 
-    // Settings
+    // Configuration
     val searchLength = 32
 
     // Check sufficient length

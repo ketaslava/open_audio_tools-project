@@ -62,6 +62,7 @@ class ModelData {
 
     // Default pages
     fun openDashboardPage() { _currentPage.value = "Dashboard" }
+    fun openSettingsPage() { _currentPage.value = "Settings" }
     fun openRecordingsPage() { _currentPage.value = "Recordings" }
     fun openAccessDeniedScreen() { _currentPage.value = "AccessDeniedScreen" }
 

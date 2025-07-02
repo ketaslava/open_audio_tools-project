@@ -41,6 +41,7 @@ import com.ktvincco.openaudiotools.ui.components.HelpMenu
 import com.ktvincco.openaudiotools.ui.components.MainMenu
 import com.ktvincco.openaudiotools.ui.components.PageWithBottomControls
 import com.ktvincco.openaudiotools.ui.pages.Reading
+import com.ktvincco.openaudiotools.ui.pages.SettingsPage
 import com.ktvincco.openaudiotools.ui.pages.VoiceChangeGuidelines
 
 
@@ -135,6 +136,9 @@ class UserInterface (
 
                         if (currentPage == "Dashboard") {
                             Dashboard(modelData, uiEventHandler).draw()
+                        }
+                        if (currentPage == "Settings") {
+                            SettingsPage(modelData, uiEventHandler).draw()
                         }
                         if (currentPage == "VoiceChangeGuidelines") {
                             PageWithBottomControls(
