@@ -24,6 +24,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -47,9 +48,15 @@ class SettingsPage (
     @Composable
     fun draw() {
 
-        var isOpenTextSelectionMenu by remember { mutableStateOf(false) }
-        var currentTextId by remember { mutableStateOf(0) }
+        var isOpenLanguageSelectionMenu by remember { mutableStateOf(false) }
         val availableLanguages = Dictionary.getAvailableLanguagesWithLangCodes()
+        var currentLanguage = "Original"
+        val currentLanguageCode = modelData.languageCode.collectAsState().value
+        for (language in availableLanguages) {
+            if (language.second == currentLanguageCode) {
+                currentLanguage = language.first
+            }
+        }
 
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -67,6 +74,7 @@ class SettingsPage (
                     .fillMaxWidth()
                     .verticalScroll(state = scrollState)
             ) {
+
                 DynamicText(
                     text = "Settings",
                     modelData = modelData,
@@ -81,36 +89,29 @@ class SettingsPage (
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
                 DynamicText(
-                    text = "Language",
-                    modelData = modelData,
-                    color = ColorPalette.getTextColor(),
-                    fontSize = 20.sp,
-                    lineHeight = 30.sp,
-                    modifier = Modifier
-                        .padding(horizontal = 16.dp, vertical = 24.dp)
-                )
-
-                DynamicText(
-                    text = "Settings",
+                    textByParts = listOf("Language", ":", " ", currentLanguage),
                     modelData = modelData,
                     color = ColorPalette.getTextColor(),
                     fontSize = 16.sp,
                     lineHeight = 24.sp,
                     modifier = Modifier
-                        .padding(start = 16.dp, end = 16.dp, bottom = 24.dp)
+                        .clickable { isOpenLanguageSelectionMenu = true }
+                        .padding(start = 16.dp, end = 16.dp, top = 24.dp, bottom = 24.dp)
                         .fillMaxWidth()
-                        .clickable { isOpenTextSelectionMenu = true }
                 )
+
+                BaseComponents().HorizontalDivider(
+                    color = ColorPalette.getMarkupColor(), thickness = 1.dp)
             }
         }
         AnimatedVisibility(
-            isOpenTextSelectionMenu,
+            isOpenLanguageSelectionMenu,
             enter = slideInVertically(initialOffsetY = {it * 2}) + fadeIn(),
             exit = slideOutVertically(targetOffsetY = {it}) + fadeOut()
         ) {
             languageSelectionMenu (availableLanguages) { selectedLanguageCode ->
                 modelData.languageSelected(selectedLanguageCode)
-                isOpenTextSelectionMenu = false
+                isOpenLanguageSelectionMenu = false
             }
         }
     }

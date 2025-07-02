@@ -32,7 +32,8 @@ import org.jetbrains.compose.resources.painterResource
 
 
 @Composable
-fun graphNameText(modelData: ModelData, parameterId: String, nameAddition: String = "") {
+fun graphNameText(modelData: ModelData, parameterId: String,
+                  nameAdditions: List<String> = listOf()) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -49,7 +50,8 @@ fun graphNameText(modelData: ModelData, parameterId: String, nameAddition: Strin
             .padding(horizontal = 24.dp, vertical = 24.dp)
     ) {
         DynamicText(
-            text = Texts.getParameterDescription(parameterId).getParameterName() + nameAddition,
+            textByParts = listOf(Texts.getParameterDescription(parameterId).getParameterName()) +
+                    nameAdditions,
             modelData = modelData,
             color = ColorPalette.getTextColor(),
             fontSize = 22.sp,

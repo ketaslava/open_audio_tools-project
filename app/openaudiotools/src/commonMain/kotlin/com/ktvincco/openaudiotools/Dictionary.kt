@@ -1,5 +1,7 @@
 package com.ktvincco.openaudiotools
 
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import com.ktvincco.openaudiotools.presentation.ModelData
 import openaudiotools.app.openaudiotools.generated.resources.Res
 import kotlinx.coroutines.*
@@ -15,6 +17,7 @@ class Dictionary {
         // Outer map key = original English text
         // Inner map key = language code, value = translated text
         private var translationsDictionary: Map<String, Map<String, String>> = mapOf()
+        private var isTranslationsDictionaryLoaded = false
 
         /**
          * Reads the raw bytes of the CSV resource and decodes them as a UTF-8 string.
@@ -114,13 +117,22 @@ class Dictionary {
          * If the dictionary is not yet loaded or the key is missing, returns null.
          * If logging of missing translations is enabled in Configuration, report it via modelData.
          */
+        @Composable
         fun getTextTranslation(
             originalText: String,
-            languageCode: String,
             modelData: ModelData
         ): String? {
+
             // If dictionary is still the empty default, consider it "not loaded" yet
+            // Update previously untranslated texts when it gonna be loaded
             if (translationsDictionary.isEmpty()) return null
+            if (!isTranslationsDictionaryLoaded) {
+                isTranslationsDictionaryLoaded = true
+                modelData.updateUi() // Update
+            }
+
+            // Get language code
+            val languageCode = modelData.languageCode.collectAsState().value
 
             // Look up the row for this key
             val row = translationsDictionary[originalText]
@@ -151,6 +163,7 @@ class Dictionary {
                 Pair("Свободньй Русский", "ru"),
                 Pair("Deutsch", "de"),
                 Pair("Italiano", "it"),
+                Pair("Français", "fr"),
                 Pair("Português (BR)", "pt-BR"),
                 Pair("中文 (简体)", "zh-Hans"),
                 Pair("ไทย (Thai)", "th"),
@@ -161,7 +174,6 @@ class Dictionary {
                 Pair("বাংলা", "bn"),
                 Pair("Bahasa Indonesia", "id"),
                 Pair("اردو", "ur"),
-                Pair("Français", "fr"),
                 Pair("Tiếng Việt", "vi"),
                 Pair("Türkçe", "tr"),
                 Pair("فارسی", "fa"),

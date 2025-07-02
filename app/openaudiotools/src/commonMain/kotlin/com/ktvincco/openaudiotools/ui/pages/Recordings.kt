@@ -18,7 +18,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -33,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.DynamicText
+import com.ktvincco.openaudiotools.dynamicTextString
 import com.ktvincco.openaudiotools.presentation.ModelData
 import com.ktvincco.openaudiotools.ui.basics.BaseComponents
 import openaudiotools.app.openaudiotools.generated.resources.Res
@@ -146,6 +146,7 @@ class Recordings (private val modelData: ModelData) {
     // Screen bottom action bar to manipulate recordings
     @Composable
     fun actionBar(selectedFileName: String, resetSelection: () -> Unit) {
+
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
@@ -218,6 +219,8 @@ class Recordings (private val modelData: ModelData) {
                     .height(64.dp)
             ) {
                 // Delete button
+                val warningText = dynamicTextString("Warning", modelData)
+                val deleteText = dynamicTextString("Delete", modelData)
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.Center,
@@ -227,8 +230,8 @@ class Recordings (private val modelData: ModelData) {
                         .background(ColorPalette.getSoftRedColor())
                         .clickable { // Open popup before deletion
                             modelData.openPopup(
-                                "Warning",
-                                "Delete $selectedFileName ?"
+                                warningText,
+                                "$deleteText $selectedFileName ?"
                             ) { exitButtonType ->
                                 if (exitButtonType == "Ok") {
                                     modelData.deleteRecordingFile(selectedFileName)
@@ -248,6 +251,7 @@ class Recordings (private val modelData: ModelData) {
                     )
                 }
                 // Rename button
+                val renameText = dynamicTextString("Rename", modelData)
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.Center,
@@ -257,7 +261,7 @@ class Recordings (private val modelData: ModelData) {
                         .background(ColorPalette.getSoftYellowColor())
                         .clickable {
                             modelData.openPopupWithTextInput(
-                                "Rename"
+                                renameText
                             ) { exitButtonType, inputText ->
                                 if (exitButtonType == "Ok") {
                                     modelData.renameRecordingFile(selectedFileName, inputText)

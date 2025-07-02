@@ -107,7 +107,7 @@ class Main (private val modelData: ModelData,
         if (isComplete) {
             modelData.openAllInfoPage()
             // DEV
-            modelData.openSettingsPage()
+            // modelData.openSettingsPage()
         } else {
             modelData.openFirstStartScreen {
                 database.saveString("IsFirstStartComplete", "Yes")

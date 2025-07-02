@@ -17,6 +17,15 @@ class ModelData {
     }
 
 
+    // Refresh UI
+    private val _refreshKey = MutableStateFlow(0)
+    val refreshKey: StateFlow<Int> = _refreshKey
+    fun updateUi() {
+        println("refreshKey: ${_refreshKey.value}")
+        _refreshKey.value += 1
+    }
+
+
     // App Info
     private val _appInfo = mutableStateMapOf<String, String>()
     fun setAppInfo(key: String, value: String) {

@@ -145,7 +145,8 @@ class MaleVoiceResonance (
 
             // ======= Active First Formant ======= //
 
-            graphNameText(modelData, "ActiveFirstFormant", nameAddition = " for >>A<< ")
+            graphNameText(modelData, "ActiveFirstFormant",
+                nameAdditions = listOf(" ", "for", " ", "--", "A", "--"))
             Graph().draw(
                 data = activeFirstFormantGraph,
                 modelData = modelData,
@@ -169,7 +170,8 @@ class MaleVoiceResonance (
 
             // ======= Active Second Formant ======= //
 
-            graphNameText(modelData, "ActiveSecondFormant", nameAddition = " for >>A<< ")
+            graphNameText(modelData, "ActiveSecondFormant",
+                nameAdditions = listOf(" ", "for", " ", "--", "A", "--"))
             Graph().draw(
                 data = activeSecondFormantGraph,
                 modelData = modelData,
@@ -213,7 +215,8 @@ class MaleVoiceResonance (
 
             // ======= Active First Formant ======= //
 
-            graphNameText(modelData, "ActiveFirstFormant", nameAddition = " for >>I<< ")
+            graphNameText(modelData, "ActiveFirstFormant",
+                nameAdditions = listOf(" ", "for", " ", "--", "I", "--"))
             Graph().draw(
                 data = activeFirstFormantGraph,
                 modelData = modelData,
@@ -237,7 +240,8 @@ class MaleVoiceResonance (
 
             // ======= Active Second Formant ======= //
 
-            graphNameText(modelData, "ActiveSecondFormant", nameAddition = " for >>I<< ")
+            graphNameText(modelData, "ActiveSecondFormant",
+                nameAdditions = listOf(" ", "for", " ", "--", "I", "--"))
             Graph().draw(
                 data = activeSecondFormantGraph,
                 modelData = modelData,
@@ -281,7 +285,8 @@ class MaleVoiceResonance (
 
             // ======= Active First Formant ======= //
 
-            graphNameText(modelData, "ActiveFirstFormant", nameAddition = " for >>U<< ")
+            graphNameText(modelData, "ActiveFirstFormant",
+                nameAdditions = listOf(" ", "for", " ", "--", "U", "--"))
             Graph().draw(
                 data = activeFirstFormantGraph,
                 modelData = modelData,
@@ -305,7 +310,8 @@ class MaleVoiceResonance (
 
             // ======= Active Second Formant ======= //
 
-            graphNameText(modelData, "ActiveSecondFormant", nameAddition = " for >>U<< ")
+            graphNameText(modelData, "ActiveSecondFormant",
+                nameAdditions = listOf(" ", "for", " ", "--", "U", "--"))
             Graph().draw(
                 data = activeSecondFormantGraph,
                 modelData = modelData,

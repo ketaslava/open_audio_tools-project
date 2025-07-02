@@ -95,6 +95,7 @@ class Reading (
                     ) {
                         DynamicText(
                             text = texts[currentTextId].getHeadline(),
+                            isTranslatable = false,
                             modelData = modelData,
                             color = ColorPalette.getTextColor(),
                             modifier = Modifier
@@ -122,6 +123,7 @@ class Reading (
                     ) {
                         DynamicText(
                             text = texts[currentTextId].getText(),
+                            isTranslatable = false,
                             modelData = modelData,
                             color = ColorPalette.getTextColor(),
                             fontSize = 16.sp,
@@ -209,6 +211,7 @@ class Reading (
         ) {
             DynamicText(
                 text = text,
+                isTranslatable = false,
                 modelData = modelData,
                 color = ColorPalette.getTextColor(),
                 style = MaterialTheme.typography.body1

@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.key
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.ktvincco.openaudiotools.ColorPalette
@@ -51,52 +52,58 @@ class UserInterface (
 
     @Composable
     fun draw() {
-        MainApplicationTheme {
-            Box (
-                Modifier
-                    .fillMaxHeight()
-                    .fillMaxWidth()
-                    .background(ColorPalette.getBackgroundColor()),
-            ) {
-                // UI switch
-                val isShowUi = modelData.isShowUi.collectAsState().value
-                if (!isShowUi) { return@Box }
-
-                // Front screens
-
-                if (modelData.legalInfoScreenState.collectAsState().value) {
-                    LegalInfoScreen(modelData).draw()
-                    return@Box
-                }
-
-                // Draw pages
-                val currentPage = modelData.currentPage.collectAsState().value
-
-                when (currentPage) {
-                    "FirstStartScreen" -> FirstStartScreen(modelData).draw()
-                    "AccessDeniedScreen" -> AccessDeniedScreen(modelData).draw()
-
-                    else -> mainScreen()
-                }
-
-                // Overlays
-
-                // Loading screen overlay
-                AnimatedVisibility (
-                    modelData.isShowLoadingScreenOverlay.collectAsState().value,
-                    enter = fadeIn(),
-                    exit = fadeOut()
+        // UI refresh
+        val refreshKey = modelData.refreshKey.collectAsState().value
+        key(refreshKey) {
+            MainApplicationTheme {
+                Box(
+                    Modifier
+                        .fillMaxHeight()
+                        .fillMaxWidth()
+                        .background(ColorPalette.getBackgroundColor()),
                 ) {
-                    LoadingScreenOverlay(modelData).draw()
-                }
+                    // UI switch
+                    val isShowUi = modelData.isShowUi.collectAsState().value
+                    if (!isShowUi) {
+                        return@Box
+                    }
 
-                // Help Menu overlay
-                AnimatedVisibility (
-                    modelData.helpMenuState.collectAsState().value,
-                    enter = fadeIn(),
-                    exit = fadeOut()
-                ) {
-                    HelpMenu(modelData).draw()
+                    // Front screens
+
+                    if (modelData.legalInfoScreenState.collectAsState().value) {
+                        LegalInfoScreen(modelData).draw()
+                        return@Box
+                    }
+
+                    // Draw pages
+                    val currentPage = modelData.currentPage.collectAsState().value
+
+                    when (currentPage) {
+                        "FirstStartScreen" -> FirstStartScreen(modelData).draw()
+                        "AccessDeniedScreen" -> AccessDeniedScreen(modelData).draw()
+
+                        else -> mainScreen()
+                    }
+
+                    // Overlays
+
+                    // Loading screen overlay
+                    AnimatedVisibility(
+                        modelData.isShowLoadingScreenOverlay.collectAsState().value,
+                        enter = fadeIn(),
+                        exit = fadeOut()
+                    ) {
+                        LoadingScreenOverlay(modelData).draw()
+                    }
+
+                    // Help Menu overlay
+                    AnimatedVisibility(
+                        modelData.helpMenuState.collectAsState().value,
+                        enter = fadeIn(),
+                        exit = fadeOut()
+                    ) {
+                        HelpMenu(modelData).draw()
+                    }
                 }
             }
         }
