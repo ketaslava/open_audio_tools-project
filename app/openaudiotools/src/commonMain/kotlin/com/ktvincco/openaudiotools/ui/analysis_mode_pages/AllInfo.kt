@@ -11,14 +11,12 @@ import androidx.compose.ui.unit.dp
 import com.ktvincco.openaudiotools.Configuration
 import com.ktvincco.openaudiotools.ui.charts.Graph
 import com.ktvincco.openaudiotools.presentation.ModelData
-import com.ktvincco.openaudiotools.presentation.UiEventHandler
 import com.ktvincco.openaudiotools.ui.components.graphNameText
 import com.ktvincco.openaudiotools.ui.components.miniDisplayBox
 
 
 class AllInfo (
-    private val modelData: ModelData,
-    private val uiEventHandler: UiEventHandler
+    private val modelData: ModelData
 ) {
 
     @Composable
@@ -29,53 +27,53 @@ class AllInfo (
 
             // ####### Displays ####### //
 
-            miniDisplayBox(modelData, uiEventHandler,
+            miniDisplayBox(modelData,
                 parameterId = "Loudness",
                 d2ParameterId = "Pitch", d2NormalRangeMax = 500F)
 
-            miniDisplayBox(modelData, uiEventHandler,
+            miniDisplayBox(modelData,
                 parameterId = "FirstFormant", normalRangeMax = 4096F,
                 d2ParameterId = "SecondFormant", d2NormalRangeMax = 4096F)
 
-            miniDisplayBox(modelData, uiEventHandler,
+            miniDisplayBox(modelData,
                 parameterId = "ActiveFirstFormant", normalRangeMax = 4096F,
                 d2ParameterId = "ActiveSecondFormant", d2NormalRangeMax = 4096F)
 
-            miniDisplayBox(modelData, uiEventHandler,
+            miniDisplayBox(modelData,
                 parameterId = "Energy",
                 d2ParameterId = "H1H2EnergyBalance",
                 d2IsEnableNegativeValues = true, d2NormalRangeMin = -1F)
 
-            miniDisplayBox(modelData, uiEventHandler,
+            miniDisplayBox(modelData,
                 parameterId = "VoiceWeight",
                 d2ParameterId = "HarmonicToNoiseRatio")
 
-            miniDisplayBox(modelData, uiEventHandler,
+            miniDisplayBox(modelData,
                 parameterId = "BandEnergyRatioLow",
                 d2ParameterId = "BandEnergyRatioMedium")
 
-            miniDisplayBox(modelData, uiEventHandler,
+            miniDisplayBox(modelData,
                 parameterId = "BandEnergyRatioHigh",
                 d2ParameterId = "HLRatio", d2IsEnableNegativeValues = true)
 
-            miniDisplayBox(modelData, uiEventHandler,
+            miniDisplayBox(modelData,
                 parameterId = "VAD",
                 d2ParameterId = "SpectralCentroid", d2NormalRangeMax = 4096F)
 
-            miniDisplayBox(modelData, uiEventHandler,
+            miniDisplayBox(modelData,
                 parameterId = "SpectralTilt",
                 isEnableNegativeValues = true, normalRangeMin = -1F,
                 d2ParameterId = "SpectralSpread")
 
-            miniDisplayBox(modelData, uiEventHandler,
+            miniDisplayBox(modelData,
                 parameterId = "Jitter",
                 d2ParameterId = "Shimmer")
 
-            miniDisplayBox(modelData, uiEventHandler,
+            miniDisplayBox(modelData,
                 parameterId = "Prosody",
                 d2ParameterId = "Rythm", d2NormalRangeMax = 600F)
 
-            miniDisplayBox(modelData, uiEventHandler,
+            miniDisplayBox(modelData,
                 parameterId = "Clarity",
                 d2ParameterId = "PausesDuration")
 

@@ -9,7 +9,6 @@ import com.ktvincco.openaudiotools.data.Logger
 import com.ktvincco.openaudiotools.data.PermissionController
 import com.ktvincco.openaudiotools.data.SoundFile
 import com.ktvincco.openaudiotools.presentation.ModelData
-import com.ktvincco.openaudiotools.presentation.UiEventHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -18,7 +17,6 @@ import kotlinx.coroutines.launch
 
 class Recorder (
     private val modelData: ModelData,
-    private val uiEventHandler: UiEventHandler,
     private val logger: Logger,
     private val permissionController: PermissionController,
     private val audioRecorder: AudioRecorder,
@@ -40,7 +38,7 @@ class Recorder (
 
     // Components
     private val audioProcessor = AudioProcessor(
-        modelData, uiEventHandler, logger, permissionController,
+        modelData, logger, permissionController,
         audioRecorder, database, environmentConnector, soundFile, audioPlayer)
 
 
@@ -109,36 +107,36 @@ class Recorder (
         }
 
         // Rewind callback
-        uiEventHandler.assignRewindCallback { newPointerPosition ->
+        modelData.assignRewindCallback { newPointerPosition ->
             rewindTo(newPointerPosition)
         }
 
         // Rename callback
-        uiEventHandler.assignRenameRecordingFileCallback { fileName, newNameInput ->
+        modelData.assignRenameRecordingFileCallback { fileName, newNameInput ->
             renameRecordingFile(fileName, newNameInput)
         }
 
         // Delete callback
-        uiEventHandler.assignDeleteRecordingFileCallback { fileName ->
+        modelData.assignDeleteRecordingFileCallback { fileName ->
             deleteRecordingFile(fileName)
         }
 
         // Buttons callbacks
-        uiEventHandler.assignRecordButtonCallback {
+        modelData.assignRecordButtonCallback {
             if (isRecordingNow) {
                 stop()
             } else {
                 start()
             }
         }
-        uiEventHandler.assignPlayButtonCallback {
+        modelData.assignPlayButtonCallback {
             if (isPlayingNow) {
                 stopPlaying()
             } else {
                 play()
             }
         }
-        uiEventHandler.assignPlayFileButtonCallback { fileName ->
+        modelData.assignPlayFileButtonCallback { fileName ->
             // One way realization cause it used only in recording preview controls
             if (isPlayingNow) {
                 stopPlaying()
@@ -146,17 +144,17 @@ class Recorder (
                 playRecordingPreview(fileName)
             }
         }
-        uiEventHandler.assignRewindToStartButtonCallback {
+        modelData.assignRewindToStartButtonCallback {
             // One way realization cause it used only in recording preview controls
             rewindRecordingPreviewToStart()
         }
-        uiEventHandler.assignResetButtonCallback {
+        modelData.assignResetButtonCallback {
             reset()
         }
-        uiEventHandler.assignSaveButtonCallback {
+        modelData.assignSaveButtonCallback {
             saveData()
         }
-        uiEventHandler.assignLoadRecordingButtonCallback { fileName ->
+        modelData.assignLoadRecordingButtonCallback { fileName ->
             loadFromFile(fileName)
         }
 

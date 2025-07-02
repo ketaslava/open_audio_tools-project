@@ -26,7 +26,6 @@ import com.ktvincco.openaudiotools.ui.screens.FirstStartScreen
 import com.ktvincco.openaudiotools.ui.screens.LegalInfoScreen
 import com.ktvincco.openaudiotools.ui.screens.LoadingScreenOverlay
 import com.ktvincco.openaudiotools.presentation.ModelData
-import com.ktvincco.openaudiotools.presentation.UiEventHandler
 import com.ktvincco.openaudiotools.ui.analysis_mode_pages.AllInfo
 import com.ktvincco.openaudiotools.ui.analysis_mode_pages.FemaleVoice
 import com.ktvincco.openaudiotools.ui.analysis_mode_pages.FemaleVoiceResonance
@@ -47,7 +46,6 @@ import com.ktvincco.openaudiotools.ui.pages.VoiceChangeGuidelines
 
 class UserInterface (
     private val modelData: ModelData,
-    private val uiEventHandler: UiEventHandler
 ) {
 
 
@@ -67,7 +65,7 @@ class UserInterface (
                 // Front screens
 
                 if (modelData.legalInfoScreenState.collectAsState().value) {
-                    LegalInfoScreen(modelData, uiEventHandler).draw()
+                    LegalInfoScreen(modelData).draw()
                     return@Box
                 }
 
@@ -75,8 +73,8 @@ class UserInterface (
                 val currentPage = modelData.currentPage.collectAsState().value
 
                 when (currentPage) {
-                    "FirstStartScreen" -> FirstStartScreen(modelData, uiEventHandler).draw()
-                    "AccessDeniedScreen" -> AccessDeniedScreen(modelData, uiEventHandler).draw()
+                    "FirstStartScreen" -> FirstStartScreen(modelData).draw()
+                    "AccessDeniedScreen" -> AccessDeniedScreen(modelData).draw()
 
                     else -> mainScreen()
                 }
@@ -89,7 +87,7 @@ class UserInterface (
                     enter = fadeIn(),
                     exit = fadeOut()
                 ) {
-                    LoadingScreenOverlay(modelData, uiEventHandler).draw()
+                    LoadingScreenOverlay(modelData).draw()
                 }
 
                 // Help Menu overlay
@@ -98,7 +96,7 @@ class UserInterface (
                     enter = fadeIn(),
                     exit = fadeOut()
                 ) {
-                    HelpMenu(modelData, uiEventHandler).draw()
+                    HelpMenu(modelData).draw()
                 }
             }
         }
@@ -135,66 +133,66 @@ class UserInterface (
                         val currentPage = modelData.currentPage.collectAsState().value
 
                         if (currentPage == "Dashboard") {
-                            Dashboard(modelData, uiEventHandler).draw()
+                            Dashboard(modelData).draw()
                         }
                         if (currentPage == "Settings") {
-                            SettingsPage(modelData, uiEventHandler).draw()
+                            SettingsPage(modelData).draw()
                         }
                         if (currentPage == "VoiceChangeGuidelines") {
                             PageWithBottomControls(
-                                modelData, uiEventHandler).draw(VoiceChangeGuidelines
-                                (modelData, uiEventHandler).content(), false)
+                                modelData).draw(VoiceChangeGuidelines
+                                (modelData).content(), false)
                         }
 
                         if (currentPage == "AllInfo") {
-                            PageWithBottomControls(modelData, uiEventHandler).draw(
-                                AllInfo(modelData, uiEventHandler).content())
+                            PageWithBottomControls(modelData).draw(
+                                AllInfo(modelData).content())
                         }
                         if (currentPage == "SpectrumInfo") {
-                            PageWithBottomControls(modelData, uiEventHandler).draw(
-                                SpectrumInfo(modelData, uiEventHandler).content())
+                            PageWithBottomControls(modelData).draw(
+                                SpectrumInfo(modelData).content())
                         }
                         if (currentPage == "Reading") {
-                            Reading(modelData, uiEventHandler).draw()
+                            Reading(modelData).draw()
                         }
                         if (currentPage == "Recordings") {
-                            Recordings(modelData, uiEventHandler).draw()
+                            Recordings(modelData).draw()
                         }
 
                         if (currentPage == "SpeakerVoice") {
-                            PageWithBottomControls(modelData, uiEventHandler).draw(
-                                SpeakerVoice(modelData, uiEventHandler).content())
+                            PageWithBottomControls(modelData).draw(
+                                SpeakerVoice(modelData).content())
                         }
 
                         if (currentPage == "Singing") {
-                            PageWithBottomControls(modelData, uiEventHandler).draw(
-                                Singing(modelData, uiEventHandler).content())
+                            PageWithBottomControls(modelData).draw(
+                                Singing(modelData).content())
                         }
 
                         if (currentPage == "PitchAndResonance") {
-                            PageWithBottomControls(modelData, uiEventHandler).draw(
-                                PitchAndResonance(modelData, uiEventHandler).content())
+                            PageWithBottomControls(modelData).draw(
+                                PitchAndResonance(modelData).content())
                         }
                         if (currentPage == "VoiceSmoothness") {
-                            PageWithBottomControls(modelData, uiEventHandler).draw(
-                                VoiceSmoothness(modelData, uiEventHandler).content())
+                            PageWithBottomControls(modelData).draw(
+                                VoiceSmoothness(modelData).content())
                         }
 
                         if (currentPage == "FemaleVoice") {
-                            PageWithBottomControls(modelData, uiEventHandler).draw(
-                                FemaleVoice(modelData, uiEventHandler).content())
+                            PageWithBottomControls(modelData).draw(
+                                FemaleVoice(modelData).content())
                         }
                         if (currentPage == "FemaleVoiceResonance") {
-                            PageWithBottomControls(modelData, uiEventHandler).draw(
-                                FemaleVoiceResonance(modelData, uiEventHandler).content())
+                            PageWithBottomControls(modelData).draw(
+                                FemaleVoiceResonance(modelData).content())
                         }
                         if (currentPage == "MaleVoice") {
-                            PageWithBottomControls(modelData, uiEventHandler).draw(
-                                MaleVoice(modelData, uiEventHandler).content())
+                            PageWithBottomControls(modelData).draw(
+                                MaleVoice(modelData).content())
                         }
                         if (currentPage == "MaleVoiceResonance") {
-                            PageWithBottomControls(modelData, uiEventHandler).draw(
-                                MaleVoiceResonance(modelData, uiEventHandler).content())
+                            PageWithBottomControls(modelData).draw(
+                                MaleVoiceResonance(modelData).content())
                         }
 
                         // Main Menu
@@ -210,17 +208,17 @@ class UserInterface (
                                 enter = slideInVertically(initialOffsetY = {it * 2}) + fadeIn(),
                                 exit = slideOutVertically(targetOffsetY = {it}) + fadeOut()
                             ) {
-                                MainMenu(modelData, uiEventHandler).draw()
+                                MainMenu(modelData).draw()
                             }
                         }
                     }
                 }
                 // Main Menu Bottom Bar
-                MainMenu(modelData, uiEventHandler).openMainMenuButton()
+                MainMenu(modelData).openMainMenuButton()
             }
 
-            Popup(modelData, uiEventHandler).Popup()
-            Popup(modelData, uiEventHandler).PopupWithTextInput()
+            Popup(modelData).Popup()
+            Popup(modelData).PopupWithTextInput()
         }
     }
 }

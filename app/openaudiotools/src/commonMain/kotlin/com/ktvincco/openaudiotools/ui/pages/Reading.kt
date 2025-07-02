@@ -38,7 +38,6 @@ import com.ktvincco.openaudiotools.TextForReading
 import com.ktvincco.openaudiotools.Texts
 import com.ktvincco.openaudiotools.ui.basics.BaseComponents
 import com.ktvincco.openaudiotools.presentation.ModelData
-import com.ktvincco.openaudiotools.presentation.UiEventHandler
 import com.ktvincco.openaudiotools.ui.components.RecordingControl
 import openaudiotools.app.openaudiotools.generated.resources.Res
 import openaudiotools.app.openaudiotools.generated.resources.menu_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
@@ -46,8 +45,7 @@ import org.jetbrains.compose.resources.painterResource
 
 
 class Reading (
-    private val modelData: ModelData,
-    private val uiEventHandler: UiEventHandler
+    private val modelData: ModelData
 ) {
     @Composable
     fun draw() {
@@ -131,7 +129,7 @@ class Reading (
                         )
                     }
                 }
-                RecordingControl(modelData, uiEventHandler).draw()
+                RecordingControl(modelData).draw()
             }
             AnimatedVisibility(isOpenTextSelectionMenu) {
                 textSelectionMenu (texts) { selectedTextId ->

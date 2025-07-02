@@ -13,14 +13,12 @@ import com.ktvincco.openaudiotools.Configuration
 import com.ktvincco.openaudiotools.ui.charts.Graph
 import com.ktvincco.openaudiotools.ui.charts.GraphZone
 import com.ktvincco.openaudiotools.presentation.ModelData
-import com.ktvincco.openaudiotools.presentation.UiEventHandler
 import com.ktvincco.openaudiotools.ui.components.graphNameText
 import com.ktvincco.openaudiotools.ui.components.miniDisplayBox
 
 
 class FemaleVoice (
-    private val modelData: ModelData,
-    private val uiEventHandler: UiEventHandler
+    private val modelData: ModelData
 ) {
 
     // Loudness
@@ -38,19 +36,19 @@ class FemaleVoice (
 
             // ####### Displays ####### //
 
-            miniDisplayBox(modelData, uiEventHandler,
+            miniDisplayBox(modelData,
                 parameterId = "Loudness",
                 d2ParameterId = "Pitch",
                 d2NormalRangeMin = 175F, d2NormalRangeMax = 350F,
                 d2IsEnableDeadZoneLow = true, d2IsEnableDeadZoneHigh = true)
 
-            miniDisplayBox(modelData, uiEventHandler,
+            miniDisplayBox(modelData,
                 parameterId = "Prosody", normalRangeMin = 0.25F, normalRangeMax = 0.75F,
                 isEnableDeadZoneLow = true,
                 d2ParameterId = "HarmonicToNoiseRatio",
                 d2NormalRangeMin = 0.8F, d2IsEnableDeadZoneLow = true)
 
-            miniDisplayBox(modelData, uiEventHandler,
+            miniDisplayBox(modelData,
                 parameterId = "Rythm", normalRangeMax = 600F,
                 d2ParameterId = "PausesDuration")
 

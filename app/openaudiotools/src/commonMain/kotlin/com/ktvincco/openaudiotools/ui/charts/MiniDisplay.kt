@@ -31,15 +31,13 @@ import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.map
 import com.ktvincco.openaudiotools.presentation.ModelData
-import com.ktvincco.openaudiotools.presentation.UiEventHandler
 import openaudiotools.app.openaudiotools.generated.resources.Res
 import openaudiotools.app.openaudiotools.generated.resources.triangle_pointer
 import org.jetbrains.compose.resources.painterResource
 import kotlin.math.abs
 
 class MiniDisplay (
-    private val modelData: ModelData,
-    private val uiEventHandler: UiEventHandler
+    private val modelData: ModelData
 ) {
 
     @Composable

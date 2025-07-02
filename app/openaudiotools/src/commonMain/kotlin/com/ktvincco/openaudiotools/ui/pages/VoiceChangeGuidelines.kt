@@ -19,12 +19,10 @@ import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.ui.basics.BaseComponents
 import com.ktvincco.openaudiotools.presentation.ModelData
-import com.ktvincco.openaudiotools.presentation.UiEventHandler
 
 
 class VoiceChangeGuidelines (
-    private val modelData: ModelData,
-    private val uiEventHandler: UiEventHandler
+    private val modelData: ModelData
 ) {
 
     @Composable

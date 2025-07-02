@@ -80,7 +80,7 @@ fun getPlasmaColor(value: Float): Color {
 @Composable
 fun dynamicTextString(textString: String, modelData: ModelData): String {
     val languageCode = modelData.languageCode.collectAsState().value
-    return Dictionary.getTextTranslation(textString, languageCode) ?: textString
+    return Dictionary.getTextTranslation(textString, languageCode, modelData) ?: textString
 }
 
 
@@ -118,7 +118,7 @@ fun DynamicText(
 
         // Get translation for each part
         for (i in parts.indices) {
-            val translation = Dictionary.getTextTranslation(parts[i], languageCode)
+            val translation = Dictionary.getTextTranslation(parts[i], languageCode, modelData)
             if (translation != null) {
                 parts[i] = translation
             }

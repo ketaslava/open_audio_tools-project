@@ -7,6 +7,18 @@ class Configuration {
 
     companion object {
 
+        // Debug
+
+        fun getIsAlwaysShowFirstStartScreen(): Boolean {
+            return false // false
+        }
+
+        fun getIsEnableAbsentTranslationLogging(): Boolean {
+            return false // false
+        }
+
+        // Audio processing
+
         fun getSampleRate(): Int {
             return 48000 // 48000
         }
@@ -21,10 +33,6 @@ class Configuration {
 
         fun getProcessingSampleLength(): Int {
             return (getSampleRate().toFloat() * getProcessingSampleDurationSec()).toInt()
-        }
-
-        fun getIsAlwaysShowFirstStartScreen(): Boolean {
-            return false // false
         }
 
         fun getAutoScrollXWindowSize(): Float {

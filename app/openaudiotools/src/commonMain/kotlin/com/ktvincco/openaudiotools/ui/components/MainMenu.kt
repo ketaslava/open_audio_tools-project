@@ -26,12 +26,11 @@ import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.ui.basics.BaseComponents
 import com.ktvincco.openaudiotools.presentation.ModelData
-import com.ktvincco.openaudiotools.presentation.UiEventHandler
 import openaudiotools.app.openaudiotools.generated.resources.Res
 import openaudiotools.app.openaudiotools.generated.resources.menu_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
 import org.jetbrains.compose.resources.painterResource
 
-class MainMenu (private val modelData: ModelData, private val uiEventHandler: UiEventHandler) {
+class MainMenu (private val modelData: ModelData) {
 
 
     @Composable

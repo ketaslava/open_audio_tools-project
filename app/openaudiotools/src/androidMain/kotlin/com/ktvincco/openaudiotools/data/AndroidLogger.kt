@@ -16,4 +16,8 @@ class AndroidLogger: Logger {
     override fun logE(logTag: String, message: String) {
         Log.e(logTag, message)
     }
+
+    override fun logUniqueString(string: String, fileName: String) {
+        //TODO ("Not yet implemented")
+    }
 }

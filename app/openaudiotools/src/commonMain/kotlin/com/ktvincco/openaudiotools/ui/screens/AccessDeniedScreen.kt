@@ -23,12 +23,10 @@ import androidx.compose.ui.unit.dp
 import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.presentation.ModelData
-import com.ktvincco.openaudiotools.presentation.UiEventHandler
 
 
 class AccessDeniedScreen (
-    private val modelData: ModelData,
-    private val uiEventHandler: UiEventHandler
+    private val modelData: ModelData
 ) {
 
     @Composable
@@ -77,7 +75,7 @@ class AccessDeniedScreen (
                         .clip(shape = RoundedCornerShape(10.dp))
                         .background(ColorPalette.getButtonColor())
                         .clickable {
-                            uiEventHandler.openAppPermissionSettingsButtonClicked()
+                            modelData.openAppPermissionSettingsButtonClicked()
                         }
                 ) {
                     DynamicText(
@@ -98,7 +96,7 @@ class AccessDeniedScreen (
                         .clip(shape = RoundedCornerShape(10.dp))
                         .background(ColorPalette.getButtonColor())
                         .clickable {
-                            uiEventHandler.restartAppButtonClicked()
+                            modelData.restartAppButtonClicked()
                         }
                 ) {
                     DynamicText(

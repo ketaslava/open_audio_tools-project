@@ -11,14 +11,12 @@ import androidx.compose.ui.unit.dp
 import com.ktvincco.openaudiotools.Configuration
 import com.ktvincco.openaudiotools.ui.charts.Graph
 import com.ktvincco.openaudiotools.presentation.ModelData
-import com.ktvincco.openaudiotools.presentation.UiEventHandler
 import com.ktvincco.openaudiotools.ui.components.graphNameText
 import com.ktvincco.openaudiotools.ui.components.miniDisplayBox
 
 
 class VoiceSmoothness (
-    private val modelData: ModelData,
-    private val uiEventHandler: UiEventHandler
+    private val modelData: ModelData
 ) {
 
     // Loudness
@@ -35,12 +33,12 @@ class VoiceSmoothness (
 
             // ####### Displays ####### //
 
-            miniDisplayBox(modelData, uiEventHandler, parameterId = "Loudness")
+            miniDisplayBox(modelData, parameterId = "Loudness")
 
-            miniDisplayBox(modelData, uiEventHandler,
+            miniDisplayBox(modelData,
                 parameterId = "Jitter", d2ParameterId = "Shimmer")
 
-            miniDisplayBox(modelData, uiEventHandler,
+            miniDisplayBox(modelData,
                 parameterId = "Clarity", d2ParameterId = "VoiceWeight")
 
             // ####### Graphs ####### //

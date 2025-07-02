@@ -22,7 +22,6 @@ import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.Configuration
 import com.ktvincco.openaudiotools.presentation.ModelData
-import com.ktvincco.openaudiotools.presentation.UiEventHandler
 import com.ktvincco.openaudiotools.ui.basics.BaseComponents
 import openaudiotools.app.openaudiotools.generated.resources.Res
 import openaudiotools.app.openaudiotools.generated.resources.arrow_back_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
@@ -31,7 +30,6 @@ import org.jetbrains.compose.resources.painterResource
 
 class LegalInfoScreen (
     private val modelData: ModelData,
-    private val uiEventHandler: UiEventHandler
 ) {
 
     @Composable
@@ -169,7 +167,7 @@ class LegalInfoScreen (
                 color = ColorPalette.getTextColor(),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clickable { uiEventHandler.openWebLinkButtonCallbackClicked(
+                    .clickable { modelData.openWebLinkButtonCallbackClicked(
                         Configuration.getTermsOfUseWebLink()) }
                     .padding(horizontal = 16.dp, vertical = 12.dp)
             )
@@ -183,7 +181,7 @@ class LegalInfoScreen (
                 color = ColorPalette.getTextColor(),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clickable { uiEventHandler.openWebLinkButtonCallbackClicked(
+                    .clickable { modelData.openWebLinkButtonCallbackClicked(
                         Configuration.getPrivacyPolicyWebLink()) }
                     .padding(horizontal = 16.dp, vertical = 12.dp)
             )
@@ -227,7 +225,7 @@ class LegalInfoScreen (
                 color = ColorPalette.getTextColor(),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clickable { uiEventHandler.openWebLinkButtonCallbackClicked(
+                    .clickable { modelData.openWebLinkButtonCallbackClicked(
                         Configuration.getLicenseWebLink()) }
                     .padding(horizontal = 16.dp, vertical = 12.dp)
             )
@@ -242,7 +240,7 @@ class LegalInfoScreen (
                 color = ColorPalette.getTextColor(),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .clickable { uiEventHandler.openWebLinkButtonCallbackClicked(
+                    .clickable { modelData.openWebLinkButtonCallbackClicked(
                         Configuration.getSourceCodeWebLink()) }
                     .padding(horizontal = 16.dp, vertical = 12.dp)
             )

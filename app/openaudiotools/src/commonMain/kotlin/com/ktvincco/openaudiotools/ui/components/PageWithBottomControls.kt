@@ -10,12 +10,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.ktvincco.openaudiotools.presentation.ModelData
-import com.ktvincco.openaudiotools.presentation.UiEventHandler
 
 
 class PageWithBottomControls (
-    private val modelData: ModelData,
-    private val uiEventHandler: UiEventHandler
+    private val modelData: ModelData
 ) {
 
     @Composable
@@ -44,7 +42,7 @@ class PageWithBottomControls (
             )
 
             if(isEnableRecordingControl) {
-                RecordingControl(modelData, uiEventHandler).draw()
+                RecordingControl(modelData).draw()
             }
         }
     }

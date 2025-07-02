@@ -34,12 +34,10 @@ import com.ktvincco.openaudiotools.data.sound_processing_algorithms.calculateVoi
 import com.ktvincco.openaudiotools.data.sound_processing_algorithms.calculateVoiceWeight
 import com.ktvincco.openaudiotools.data.sound_processing_algorithms.getVoiceSpectrumInHz
 import com.ktvincco.openaudiotools.presentation.ModelData
-import com.ktvincco.openaudiotools.presentation.UiEventHandler
 
 
 class AudioProcessor (
     private val modelData: ModelData,
-    private val uiEventHandler: UiEventHandler,
     private val logger: Logger,
     private val permissionController: PermissionController,
     private val audioRecorder: AudioRecorder,

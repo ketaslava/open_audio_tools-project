@@ -13,14 +13,12 @@ import com.ktvincco.openaudiotools.Configuration
 import com.ktvincco.openaudiotools.ui.charts.Graph
 import com.ktvincco.openaudiotools.ui.charts.GraphZone
 import com.ktvincco.openaudiotools.presentation.ModelData
-import com.ktvincco.openaudiotools.presentation.UiEventHandler
 import com.ktvincco.openaudiotools.ui.components.graphNameText
 import com.ktvincco.openaudiotools.ui.components.miniDisplayBox
 
 
 class MaleVoiceResonance (
-    private val modelData: ModelData,
-    private val uiEventHandler: UiEventHandler
+    private val modelData: ModelData
 ) {
 
     // Loudness
@@ -41,9 +39,9 @@ class MaleVoiceResonance (
 
             // ####### Displays ####### //
 
-            miniDisplayBox(modelData, uiEventHandler, parameterId = "Loudness")
+            miniDisplayBox(modelData, parameterId = "Loudness")
 
-            miniDisplayBox(modelData, uiEventHandler,
+            miniDisplayBox(modelData,
                 parameterId = "Pitch", normalRangeMin = 50F,
                 normalRangeMax = 150F, isEnableDeadZoneLow = true, isEnableDeadZoneHigh = true,
                 d2ParameterId = "VoiceWeight",
@@ -131,12 +129,12 @@ class MaleVoiceResonance (
 
             Spacer(Modifier.height(15.dp))
 
-            miniDisplayBox(modelData, uiEventHandler,
+            miniDisplayBox(modelData,
                 parameterId = "Pitch",
                 normalRangeMin = 50F, normalRangeMax = 150F,
                 isEnableDeadZoneLow = true, isEnableDeadZoneHigh = true)
 
-            miniDisplayBox(modelData, uiEventHandler,
+            miniDisplayBox(modelData,
                 parameterId = "ActiveFirstFormant",
                 normalRangeMin = 500F, normalRangeMax = 700F,
                 isEnableDeadZoneLow = true, isEnableDeadZoneHigh = true,
@@ -199,12 +197,12 @@ class MaleVoiceResonance (
 
             Spacer(Modifier.height(15.dp))
 
-            miniDisplayBox(modelData, uiEventHandler,
+            miniDisplayBox(modelData,
                 parameterId = "Pitch",
                 normalRangeMin = 50F, normalRangeMax = 150F,
                 isEnableDeadZoneLow = true, isEnableDeadZoneHigh = true)
 
-            miniDisplayBox(modelData, uiEventHandler,
+            miniDisplayBox(modelData,
                 parameterId = "ActiveFirstFormant",
                 normalRangeMin = 150F, normalRangeMax = 350F,
                 isEnableDeadZoneLow = true, isEnableDeadZoneHigh = true,
@@ -267,12 +265,12 @@ class MaleVoiceResonance (
 
             Spacer(Modifier.height(15.dp))
 
-            miniDisplayBox(modelData, uiEventHandler,
+            miniDisplayBox(modelData,
                 parameterId = "Pitch",
                 normalRangeMin = 50F, normalRangeMax = 150F,
                 isEnableDeadZoneLow = true, isEnableDeadZoneHigh = true)
 
-            miniDisplayBox(modelData, uiEventHandler,
+            miniDisplayBox(modelData,
                 parameterId = "ActiveFirstFormant",
                 normalRangeMin = 250F, normalRangeMax = 400F,
                 isEnableDeadZoneLow = true, isEnableDeadZoneHigh = true,

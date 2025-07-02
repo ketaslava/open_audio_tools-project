@@ -35,7 +35,6 @@ import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.getScreenSizeInPx
 import com.ktvincco.openaudiotools.presentation.ModelData
-import com.ktvincco.openaudiotools.presentation.UiEventHandler
 import openaudiotools.app.openaudiotools.generated.resources.Res
 import openaudiotools.app.openaudiotools.generated.resources.arrow_back_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
 import openaudiotools.app.openaudiotools.generated.resources.arrow_forward_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
@@ -48,8 +47,7 @@ import org.jetbrains.compose.resources.painterResource
 
 
 class RecordingControl (
-    private val modelData: ModelData,
-    private val uiEventHandler: UiEventHandler
+    private val modelData: ModelData
 ) {
 
 
@@ -76,7 +74,7 @@ class RecordingControl (
                         .fillMaxWidth()
                         .height(64.dp)
                         .background(ColorPalette.getSoftGreenColor())
-                        .clickable { uiEventHandler.recordButtonClicked() }
+                        .clickable { modelData.recordButtonClicked() }
                 ) {
                     DynamicText(
                         text = "Start recording",
@@ -112,7 +110,7 @@ class RecordingControl (
                         .fillMaxWidth()
                         .height(64.dp)
                         .background(buttonColor)
-                        .clickable { uiEventHandler.recordButtonClicked() }
+                        .clickable { modelData.recordButtonClicked() }
                 ) {
                     DynamicText(
                         text = text,
@@ -143,7 +141,7 @@ class RecordingControl (
                             .fillMaxHeight()
                             .background(ColorPalette.getSoftRedColor())
                             .clickable {
-                                uiEventHandler.resetButtonClicked()
+                                modelData.resetButtonClicked()
                             }
                     ) {
                         Image(
@@ -162,7 +160,7 @@ class RecordingControl (
                             .weight(1F)
                             .fillMaxHeight()
                             .background(ColorPalette.getSoftBlueColor())
-                            .clickable { uiEventHandler.saveButtonClicked() }
+                            .clickable { modelData.saveButtonClicked() }
                     ) {
                         Image(
                             painterResource(
@@ -180,7 +178,7 @@ class RecordingControl (
                             .weight(1F)
                             .fillMaxHeight()
                             .background(ColorPalette.getSoftGreenColor())
-                            .clickable { uiEventHandler.playButtonClicked() }
+                            .clickable { modelData.playButtonClicked() }
                     ) {
                         // Play-Pause
                         val playbackState = modelData.playbackState.collectAsState().value
@@ -219,7 +217,7 @@ class RecordingControl (
                             .weight(1F)
                             .fillMaxHeight()
                             .background(ColorPalette.getSoftYellowColor())
-                            .clickable { uiEventHandler.resetButtonClicked() }
+                            .clickable { modelData.resetButtonClicked() }
                     ) {
                         Image(
                             painterResource(
@@ -237,7 +235,7 @@ class RecordingControl (
                             .weight(1F)
                             .fillMaxHeight()
                             .background(ColorPalette.getSoftGreenColor())
-                            .clickable { uiEventHandler.playButtonClicked() }
+                            .clickable { modelData.playButtonClicked() }
                     ) {
                         // Play-Pause
                         val playbackState = modelData.playbackState.collectAsState().value
@@ -292,7 +290,7 @@ class RecordingControl (
                                     0F,
                                     1F
                                 )
-                                uiEventHandler.rewindCallback(lastPointerPosition)
+                                modelData.rewindCallback(lastPointerPosition)
                             }
                         )
                     }
@@ -321,7 +319,7 @@ class RecordingControl (
                             change.consume()
                             lastPointerPosition = (lastPointerPosition + (dragAmount /
                                     screenWidth)).coerceIn(0F, 1F)
-                            uiEventHandler.rewindCallback(lastPointerPosition)
+                            modelData.rewindCallback(lastPointerPosition)
                         }
                     )
                 }

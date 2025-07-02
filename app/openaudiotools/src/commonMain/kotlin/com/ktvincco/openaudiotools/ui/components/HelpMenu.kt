@@ -29,11 +29,10 @@ import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.Texts
 import com.ktvincco.openaudiotools.presentation.ModelData
-import com.ktvincco.openaudiotools.presentation.UiEventHandler
+
 
 class HelpMenu (
     private val modelData: ModelData,
-    private val uiEventHandler: UiEventHandler
 ) {
 
     @Composable

@@ -34,10 +34,9 @@ import androidx.compose.ui.unit.dp
 import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.presentation.ModelData
-import com.ktvincco.openaudiotools.presentation.UiEventHandler
 
 
-class Popup (private val modelData: ModelData, private val uiEventHandler: UiEventHandler) {
+class Popup (private val modelData: ModelData) {
 
     @Composable
     fun Popup() {

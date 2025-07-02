@@ -27,7 +27,7 @@ fun main() = application {
         onCloseRequest = ::exitApplication,
     ) {
         // Create platform components
-        val desktopLogger = DesktopLogger()
+        val desktopLogger = DesktopLogger(AppInfo.NAME)
         val desktopPermissionController = DesktopPermissionController()
         val desktopAudioRecorder = DesktopAudioRecorder()
         val desktopDatabase = DesktopDatabase(AppInfo.NAME)

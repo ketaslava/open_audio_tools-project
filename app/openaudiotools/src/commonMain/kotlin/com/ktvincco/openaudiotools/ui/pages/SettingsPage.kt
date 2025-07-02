@@ -37,13 +37,11 @@ import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.Dictionary
 import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.presentation.ModelData
-import com.ktvincco.openaudiotools.presentation.UiEventHandler
 import com.ktvincco.openaudiotools.ui.basics.BaseComponents
 
 
 class SettingsPage (
-    private val modelData: ModelData,
-    private val uiEventHandler: UiEventHandler
+    private val modelData: ModelData
 ) {
 
     @Composable
@@ -111,7 +109,7 @@ class SettingsPage (
             exit = slideOutVertically(targetOffsetY = {it}) + fadeOut()
         ) {
             languageSelectionMenu (availableLanguages) { selectedLanguageCode ->
-                uiEventHandler.languageSelected(selectedLanguageCode)
+                modelData.languageSelected(selectedLanguageCode)
                 isOpenTextSelectionMenu = false
             }
         }

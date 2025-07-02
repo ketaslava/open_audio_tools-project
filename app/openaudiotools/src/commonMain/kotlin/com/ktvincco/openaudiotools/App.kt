@@ -11,7 +11,6 @@ import com.ktvincco.openaudiotools.data.PermissionController
 import com.ktvincco.openaudiotools.data.SoundFile
 import com.ktvincco.openaudiotools.domain.Main
 import com.ktvincco.openaudiotools.presentation.ModelData
-import com.ktvincco.openaudiotools.presentation.UiEventHandler
 import com.ktvincco.openaudiotools.ui.UserInterface
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
@@ -30,10 +29,9 @@ fun App(
 
     // Create components
     val modelData = ModelData()
-    val uiEventHandler = UiEventHandler()
-    val domainMain = Main(modelData, uiEventHandler, logger, permissionController,
+    val domainMain = Main(modelData, logger, permissionController,
         audioRecorder, database, soundFile, audioPlayer, environmentConnector)
-    val userInterface = UserInterface(modelData, uiEventHandler)
+    val userInterface = UserInterface(modelData)
 
     // Run actions
     domainMain.setup()

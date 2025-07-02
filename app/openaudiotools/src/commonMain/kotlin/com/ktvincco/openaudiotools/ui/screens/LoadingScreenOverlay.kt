@@ -16,11 +16,9 @@ import androidx.compose.ui.graphics.Color
 import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.presentation.ModelData
-import com.ktvincco.openaudiotools.presentation.UiEventHandler
 
 
-class LoadingScreenOverlay (
-    private val modelData: ModelData, private val uiEventHandler: UiEventHandler) {
+class LoadingScreenOverlay (private val modelData: ModelData) {
 
     @Composable
     fun draw() {

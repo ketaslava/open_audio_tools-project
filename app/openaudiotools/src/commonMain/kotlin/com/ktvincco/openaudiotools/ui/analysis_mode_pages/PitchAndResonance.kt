@@ -11,14 +11,12 @@ import androidx.compose.ui.unit.dp
 import com.ktvincco.openaudiotools.Configuration
 import com.ktvincco.openaudiotools.ui.charts.Graph
 import com.ktvincco.openaudiotools.presentation.ModelData
-import com.ktvincco.openaudiotools.presentation.UiEventHandler
 import com.ktvincco.openaudiotools.ui.components.graphNameText
 import com.ktvincco.openaudiotools.ui.components.miniDisplayBox
 
 
 class PitchAndResonance (
-    private val modelData: ModelData,
-    private val uiEventHandler: UiEventHandler
+    private val modelData: ModelData
 ) {
 
     // Loudness
@@ -35,13 +33,13 @@ class PitchAndResonance (
 
             // ####### Displays ####### //
 
-            miniDisplayBox(modelData, uiEventHandler, parameterId = "Loudness")
+            miniDisplayBox(modelData, parameterId = "Loudness")
 
-            miniDisplayBox(modelData, uiEventHandler,
+            miniDisplayBox(modelData,
                 parameterId = "VoiceWeight",
                 d2ParameterId = "Pitch", d2NormalRangeMax = 500F)
 
-            miniDisplayBox(modelData, uiEventHandler,
+            miniDisplayBox(modelData,
                 parameterId = "FirstFormant", normalRangeMax = 4096F,
                 d2ParameterId = "SecondFormant", d2NormalRangeMax = 4096F)
 

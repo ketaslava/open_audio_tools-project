@@ -26,7 +26,6 @@ import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.Texts
 import com.ktvincco.openaudiotools.ui.charts.MiniDisplay
 import com.ktvincco.openaudiotools.presentation.ModelData
-import com.ktvincco.openaudiotools.presentation.UiEventHandler
 import openaudiotools.app.openaudiotools.generated.resources.Res
 import openaudiotools.app.openaudiotools.generated.resources.developer_guide_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
 import org.jetbrains.compose.resources.painterResource
@@ -106,7 +105,6 @@ fun graphColorDescriptionBlock(color: Color, text: String, modelData: ModelData)
 @Composable
 fun miniDisplayBox(
     modelData: ModelData,
-    uiEventHandler: UiEventHandler,
     parameterId: String,
     nameAddition: String = "",
     isEnableNegativeValues: Boolean = false,
@@ -136,7 +134,7 @@ fun miniDisplayBox(
             .padding(horizontal = 24.dp, vertical = 12.dp)
     ) {
         // Draw display 1
-        MiniDisplay(modelData, uiEventHandler).miniDisplay(
+        MiniDisplay(modelData).miniDisplay(
             display1Name, display1Value, isEnableNegativeValues, normalRangeMin,
             normalRangeMax, isEnableDeadZoneLow, isEnableDeadZoneHigh, Modifier.weight(1F))
 
@@ -145,7 +143,7 @@ fun miniDisplayBox(
             Spacer(Modifier.width(24.dp))
 
             // Draw display 2
-            MiniDisplay(modelData, uiEventHandler).miniDisplay(
+            MiniDisplay(modelData).miniDisplay(
                 display2Name, display2Value, d2IsEnableNegativeValues,
                 d2NormalRangeMin, d2NormalRangeMax, d2IsEnableDeadZoneLow,
                 d2IsEnableDeadZoneHigh, Modifier.weight(1F)

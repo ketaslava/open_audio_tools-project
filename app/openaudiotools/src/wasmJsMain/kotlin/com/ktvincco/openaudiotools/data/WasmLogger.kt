@@ -15,4 +15,7 @@ class WasmLogger: Logger {
         TODO("Not yet implemented")
     }
 
+    override fun logUniqueString(string: String, fileName: String) {
+        TODO("Not yet implemented")
+    }
 }

@@ -10,10 +10,8 @@ import com.ktvincco.openaudiotools.data.Logger
 import com.ktvincco.openaudiotools.data.PermissionController
 import com.ktvincco.openaudiotools.data.SoundFile
 import com.ktvincco.openaudiotools.presentation.ModelData
-import com.ktvincco.openaudiotools.presentation.UiEventHandler
 
 class Main (private val modelData: ModelData,
-            private val uiEventHandler: UiEventHandler,
             private val logger: Logger,
             private val permissionController: PermissionController,
             private val audioRecorder: AudioRecorder,
@@ -29,7 +27,7 @@ class Main (private val modelData: ModelData,
 
 
     // Create components
-    private val recorder = Recorder(modelData, uiEventHandler, logger,
+    private val recorder = Recorder(modelData, logger,
         permissionController, audioRecorder, database, environmentConnector, soundFile, audioPlayer)
 
 
@@ -49,20 +47,25 @@ class Main (private val modelData: ModelData,
         }
         modelData.setLanguageCode(languageCode?: "original")
 
+        // Translation
+        modelData.assignReportAbsenceOfTranslationCallback{ originalText ->
+            logger.logUniqueString(originalText, "to_translation")
+        }
+
         // Language selection callback
-        uiEventHandler.assignLanguageSelectedCallback { newLanguageCode ->
+        modelData.assignLanguageSelectedCallback { newLanguageCode ->
             database.saveString("languageCode", newLanguageCode)
             modelData.setLanguageCode(newLanguageCode)
         }
 
         // Callbacks
-        uiEventHandler.assignOpenAppPermissionSettingsButtonCallback {
+        modelData.assignOpenAppPermissionSettingsButtonCallback {
             environmentConnector.openAppPermissionSettings()
         }
-        uiEventHandler.assignRestartAppButtonCallback {
+        modelData.assignRestartAppButtonCallback {
             environmentConnector.restartTheApplication()
         }
-        uiEventHandler.assignOpenWebLinkButtonCallback { url ->
+        modelData.assignOpenWebLinkButtonCallback { url ->
             environmentConnector.openWebLink(url)
         }
 

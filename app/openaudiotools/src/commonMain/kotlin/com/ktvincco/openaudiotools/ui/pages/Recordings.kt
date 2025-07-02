@@ -34,7 +34,6 @@ import androidx.compose.ui.unit.sp
 import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.presentation.ModelData
-import com.ktvincco.openaudiotools.presentation.UiEventHandler
 import com.ktvincco.openaudiotools.ui.basics.BaseComponents
 import openaudiotools.app.openaudiotools.generated.resources.Res
 import openaudiotools.app.openaudiotools.generated.resources.data_thresholding_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
@@ -46,7 +45,7 @@ import openaudiotools.app.openaudiotools.generated.resources.save_as_24dp_E8EAED
 import org.jetbrains.compose.resources.painterResource
 
 
-class Recordings (private val modelData: ModelData, private val uiEventHandler: UiEventHandler) {
+class Recordings (private val modelData: ModelData) {
 
 
     @Composable
@@ -136,6 +135,7 @@ class Recordings (private val modelData: ModelData, private val uiEventHandler: 
         ) {
             DynamicText(
                 text = text,
+                isTranslatable = false,
                 modelData = modelData,
                 color = ColorPalette.getTextColor()
             )
@@ -168,7 +168,7 @@ class Recordings (private val modelData: ModelData, private val uiEventHandler: 
                         .fillMaxHeight()
                         .background(ColorPalette.getSoftCyanColor())
                         .clickable {
-                            uiEventHandler.rewindToStartButtonClicked()
+                            modelData.rewindToStartButtonClicked()
                         }
                 ) {
                     Image(
@@ -190,7 +190,7 @@ class Recordings (private val modelData: ModelData, private val uiEventHandler: 
                         .fillMaxHeight()
                         .background(ColorPalette.getSoftMagentaColor())
                         .clickable {
-                            uiEventHandler.playFileButtonClicked(selectedFileName)
+                            modelData.playFileButtonClicked(selectedFileName)
                         }
                 ) {
                     // Play-Pause
@@ -231,7 +231,7 @@ class Recordings (private val modelData: ModelData, private val uiEventHandler: 
                                 "Delete $selectedFileName ?"
                             ) { exitButtonType ->
                                 if (exitButtonType == "Ok") {
-                                    uiEventHandler.deleteRecordingFile(selectedFileName)
+                                    modelData.deleteRecordingFile(selectedFileName)
                                     resetSelection.invoke()
                                 }
                             }
@@ -260,7 +260,7 @@ class Recordings (private val modelData: ModelData, private val uiEventHandler: 
                                 "Rename"
                             ) { exitButtonType, inputText ->
                                 if (exitButtonType == "Ok") {
-                                    uiEventHandler.renameRecordingFile(selectedFileName, inputText)
+                                    modelData.renameRecordingFile(selectedFileName, inputText)
                                     resetSelection()
                                 }
                             }
@@ -285,7 +285,7 @@ class Recordings (private val modelData: ModelData, private val uiEventHandler: 
                         .fillMaxHeight()
                         .background(ColorPalette.getSoftGreenColor())
                         .clickable {
-                            uiEventHandler.loadRecordingButtonClicked(selectedFileName)
+                            modelData.loadRecordingButtonClicked(selectedFileName)
                         }
                 ) {
                     Image(

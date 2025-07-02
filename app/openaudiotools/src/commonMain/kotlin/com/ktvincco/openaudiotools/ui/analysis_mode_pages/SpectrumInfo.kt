@@ -13,13 +13,11 @@ import com.ktvincco.openaudiotools.ui.charts.Graph
 import com.ktvincco.openaudiotools.ui.charts.Spectrogram
 import com.ktvincco.openaudiotools.ui.charts.Spectrum
 import com.ktvincco.openaudiotools.presentation.ModelData
-import com.ktvincco.openaudiotools.presentation.UiEventHandler
 import com.ktvincco.openaudiotools.ui.components.graphNameText
 
 
 class SpectrumInfo (
-    private val modelData: ModelData,
-    private val uiEventHandler: UiEventHandler
+    private val modelData: ModelData
 ) {
 
     // Loudness

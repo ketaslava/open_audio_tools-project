@@ -12,13 +12,11 @@ import com.ktvincco.openaudiotools.Configuration
 import com.ktvincco.openaudiotools.ui.charts.Graph
 import com.ktvincco.openaudiotools.ui.charts.NoteGraph
 import com.ktvincco.openaudiotools.presentation.ModelData
-import com.ktvincco.openaudiotools.presentation.UiEventHandler
 import com.ktvincco.openaudiotools.ui.components.graphNameText
 
 
 class Singing (
     private val modelData: ModelData,
-    private val uiEventHandler: UiEventHandler
 ) {
 
     // NoteGraph
