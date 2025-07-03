@@ -144,6 +144,10 @@ class Dictionary {
                 return null
             }
 
+            // Check if translation is valid
+            if (languageCode !in row) { return null }
+            if (row[languageCode] == "") { return null }
+
             // Return the translation for the specified language code (or null)
             return row[languageCode]
         }
@@ -164,8 +168,8 @@ class Dictionary {
                 Pair("Deutsch", "de"),
                 Pair("Italiano", "it"),
                 Pair("Français", "fr"),
-                Pair("Português (BR)", "pt-BR"),
-                Pair("中文 (简体)", "zh-Hans"),
+                Pair("Português", "pt"),
+                Pair("中文 (简体)", "zh-cn"),
                 Pair("ไทย (Thai)", "th"),
                 Pair("日本語", "ja"),
                 Pair("한국어", "ko"),
