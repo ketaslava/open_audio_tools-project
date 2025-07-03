@@ -32,72 +32,78 @@ class Dictionary {
         }
 
         /**
-         * Parses the CSV text into a nested map structure.
-         *
-         * CSV format assumptions:
-         * - The first non-blank, trimmed line is the header row.
-         * - Header row columns: "key,lang1,lang2,lang3,..."
-         *   where "key" is the original text, and subsequent columns are language codes.
-         * - Each following non-blank line is a data row:
-         *   - First column = original English text (the lookup key).
-         *   - Columns 2...N = translated text for each language in header order.
-         *
-         * Steps:
-         * 1. Split the input text into lines.
-         * 2. Trim whitespace and ignore blank lines.
-         * 3. If fewer than 2 lines remain, return an empty map (no data).
-         * 4. Split the header row on commas to extract language codes.
-         * 5. For each subsequent line:
-         *    a. Split on commas to get columns.
-         *    b. The first column is the lookup key.
-         *    c. Zip each remaining column with its corresponding language code.
-         *    d. Ignore empty translation cells.
-         *    e. Build a map of languageCode -> translation.
-         * 6. Return a map of originalText -> (languageCode -> translation).
+         * Parse CSV text into a nested map:
+         * - Handles quoted fields with commas and escaped quotes.
+         * - First row is header: key,lang1,lang2,...
+         * - Subsequent rows: first field is original text, rest are translations.
          */
         private fun parseCsv(csvText: String): Map<String, Map<String, String>> {
-            // 1–2. Split into non-blank, trimmed lines
+            // Split input into non-blank lines
             val lines = csvText.lineSequence()
-                .map { it.trim() }          // remove leading/trailing spaces
-                .filter { it.isNotEmpty() } // skip empty lines
+                .map { it.trim() }
+                .filter { it.isNotEmpty() }
                 .toList()
 
-            // 3. If no header or only header, nothing to parse
+            // Require at least header + one data row
             if (lines.size < 2) return emptyMap()
 
-            // 4. Parse header row, splitting on comma to get column names
-            val headers = lines[0].split(',').map { it.trim() }
-            // Drop the first header ("key") to get just the language codes
+            // Parse header, using robust CSV splitting
+            val headers = splitCsvLine(lines[0])
             val langCodes = headers.drop(1)
 
-            // 5. Process each data row
-            return lines
-                .drop(1) // skip header row
+            // Parse each subsequent row
+            return lines.drop(1)
                 .mapNotNull { line ->
-                    // Split the row into columns on comma
-                    val cols = line.split(',').map { it.trim() }
+                    val cols = splitCsvLine(line)
                     if (cols.isEmpty()) return@mapNotNull null
 
-                    // a. First column is the lookup key
                     val key = cols[0]
+                    val translations = langCodes.mapIndexedNotNull { idx, lang ->
+                        cols.getOrNull(idx + 1)
+                            ?.takeIf { it.isNotEmpty() }
+                            ?.let { lang to it }
+                    }.toMap()
 
-                    // b–e. Build language->translation map for this row
-                    val translationsForRow = langCodes
-                        .mapIndexedNotNull { idx, lang ->
-                            // Attempt to get the corresponding column value
-                            cols.getOrNull(idx + 1)
-                                // Only include non-empty translations
-                                ?.takeIf { it.isNotEmpty() }
-                                // Pair the language code with its translation
-                                ?.let { lang to it }
-                        }
-                        .toMap()
-
-                    // Return a pair of key -> translations
-                    key to translationsForRow
+                    key to translations
                 }
-                // Convert list of pairs into a Map for fast lookup
                 .toMap()
+        }
+
+        /**
+         * Splits a single CSV line into fields according to RFC4180:
+         * - Fields may be quoted with double quotes.
+         * - Inside quoted fields, a pair of double quotes represents a literal quote.
+         * - Commas inside quotes are not separators.
+         */
+        private fun splitCsvLine(line: String): List<String> {
+            val result = mutableListOf<String>()
+            val current = StringBuilder()
+            var inQuotes = false
+            var i = 0
+
+            while (i < line.length) {
+                val c = line[i]
+                when {
+                    c == '"' -> {
+                        // If we're in quotes and next char is also a quote => escaped quote
+                        if (inQuotes && i + 1 < line.length && line[i + 1] == '"') {
+                            current.append('"')
+                            i++
+                        } else {
+                            inQuotes = !inQuotes
+                        }
+                    }
+                    c == ',' && !inQuotes -> {
+                        // Comma outside quotes -> new field
+                        result.add(current.toString())
+                        current.clear()
+                    }
+                    else -> current.append(c)
+                }
+                i++
+            }
+            result.add(current.toString())
+            return result
         }
 
         /**
@@ -131,11 +137,14 @@ class Dictionary {
                 modelData.updateUi() // Update
             }
 
+            // Sanitize original text (to make it similar to key in the dictionary)
+            val sanitizedString = originalText.replace("\n", "\\n")
+
             // Get language code
             val languageCode = modelData.languageCode.collectAsState().value
 
             // Look up the row for this key
-            val row = translationsDictionary[originalText]
+            val row = translationsDictionary[sanitizedString]
             if (row == null) {
                 // Log missing translation for further processing
                 if (Configuration.getIsEnableAbsentTranslationLogging()) {
@@ -146,10 +155,14 @@ class Dictionary {
 
             // Check if translation is valid
             if (languageCode !in row) { return null }
-            if (row[languageCode] == "") { return null }
+            if (row[languageCode] == "" || row[languageCode] == null) { return null }
+            val translation = row[languageCode]!!
 
-            // Return the translation for the specified language code (or null)
-            return row[languageCode]
+            // Desanitize translation
+            val desanitizedTranslation = translation.replace("\\n", "\n")
+
+            // Return translation
+            return desanitizedTranslation
         }
 
         /**
