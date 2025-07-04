@@ -17,6 +17,10 @@ class Configuration {
             return false // false
         }
 
+        fun getIsEnableTelemetryLogs(): Boolean {
+            return true
+        }
+
         // Audio processing
 
         fun getSampleRate(): Int {
@@ -37,6 +41,16 @@ class Configuration {
 
         fun getAutoScrollXWindowSize(): Float {
             return 4F // Use as seconds
+        }
+
+        // Telemetry
+
+        fun getIsEnableTelemetry(): Boolean {
+            return true
+        }
+
+        fun getTelemetryApiEndpointUrl(): String {
+            return "https://ktvincco.com/services/universal_telemetry/api.php"
         }
 
         // Legal info

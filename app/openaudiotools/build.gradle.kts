@@ -36,8 +36,8 @@ dependencies {
 val appName = "OpenAudioTools"
 
 // Configs
-val version = "2.0.7" // == CHANGE BEFORE RELEASE (1/2) == //
-val androidVersionCode = 7 // == CHANGE BEFORE RELEASE (2/2) == //
+val version = "2.1.4" // == CHANGE BEFORE RELEASE (1/2) == //
+val androidVersionCode = 8 // == CHANGE BEFORE RELEASE (2/2) == //
 
 kotlin {
 
@@ -88,6 +88,7 @@ kotlin {
                 implementation(compose.components.uiToolingPreview)
                 implementation(libs.androidx.lifecycle.viewmodel)
                 implementation(libs.androidx.lifecycle.runtime.compose)
+                implementation(libs.kotlinx.serialization.json)
             }
         }
         val desktopMain by getting {
@@ -123,11 +124,7 @@ android {
         release {
 
             // Mapping
-            isMinifyEnabled = true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+            isMinifyEnabled = false
 
             // Debug symbols
             ndk {

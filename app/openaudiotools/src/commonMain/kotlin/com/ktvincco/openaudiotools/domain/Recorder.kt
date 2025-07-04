@@ -24,6 +24,7 @@ class Recorder (
     private val environmentConnector: EnvironmentConnector,
     private val soundFile: SoundFile,
     private val audioPlayer: AudioPlayer,
+    private val telemetry: Telemetry,
 ) {
 
 
@@ -241,6 +242,9 @@ class Recorder (
         soundFile.writeSoundToFile(filePath, rawData, Configuration.getSampleRate())
         updateSoundFilesList()
         modelData.setRecordingControlLayoutAsPlayer()
+
+        // Telemetry checkpoint
+        telemetry.usageReportByCheckpoint("recordingSaved")
     }
 
 
@@ -325,6 +329,9 @@ class Recorder (
         isPlayingNow = true
         isPlayingRecordingPreviewNow = true
         modelData.setPlaybackState(true)
+
+        // Telemetry checkpoint
+        telemetry.usageReportByCheckpoint("playingRecordingPreview")
     }
 
 
@@ -367,6 +374,10 @@ class Recorder (
             // Close loading screen overlay
             modelData.setIsShowLoadingScreenOverlay(false)
         }
+
+        // Telemetry checkpoint
+        telemetry.usageReportByCheckpoint("recordingLoaded")
+        telemetry.usageReportByFunction("recordingLoaded")
     }
 
 

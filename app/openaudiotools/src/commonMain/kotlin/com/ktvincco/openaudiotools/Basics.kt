@@ -145,3 +145,60 @@ fun DynamicText(
         style = style
     )
 }
+
+
+// Pass true only X times in Y time period
+fun timeGate(
+    gateName: String,
+    timePeriodSeconds: Long,
+    maxRequestsCount: Int,
+    database: Database
+): Boolean {
+
+    // Get gate data
+    val nowSec = System.currentTimeMillis() / 1000
+    val start = database.loadString(
+        "${gateName}_PeriodStart")
+    val requestsCount = database.loadString(
+        "${gateName}_RequestsCount")?.toIntOrNull() ?: 0
+
+    // Manage period
+    if (start == null || (nowSec - start.toLong()) > timePeriodSeconds) {
+        // New period
+        database.saveString(
+            "${gateName}_PeriodStart", nowSec.toString())
+    }
+
+    // Check requests count
+    if (requestsCount < maxRequestsCount) {
+
+        // Save a new count
+        database.saveString("${gateName}_RequestsCount",
+            (requestsCount + 1).toString())
+    } else {
+
+        // Don't pass
+        return false
+    }
+
+    // Pass
+    return true
+}
+
+
+// Passes only when checkpoint is not passed
+fun checkpointGate(gateName: String, database: Database): Boolean {
+    return !database.loadString("${gateName}_IsCheckpointPassed").toBoolean()
+}
+
+
+// Pass checkpoint
+fun passCheckpointGate(gateName: String, database: Database) {
+    database.saveString("${gateName}_IsCheckpointPassed", true.toString())
+}
+
+
+// Reset checkpoint
+fun resetCheckpointGate(gateName: String, database: Database) {
+    database.saveString("${gateName}_IsCheckpointPassed", false.toString())
+}

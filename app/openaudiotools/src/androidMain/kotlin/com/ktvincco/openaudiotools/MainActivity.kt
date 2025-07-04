@@ -6,6 +6,7 @@ import android.view.View
 import android.view.WindowInsets
 import android.view.WindowInsetsController
 import androidx.activity.ComponentActivity
+import androidx.activity.addCallback
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
@@ -67,8 +68,12 @@ class MainActivity : ComponentActivity() {
             App(androidLogger, permissionController, audioRecorder, androidDatabase,
                 androidSoundFile, androidAudioPlayer, environmentConnector)
         }
-    }
 
+        // Process system "back" event
+        onBackPressedDispatcher.addCallback(this) {
+            // Do nothing
+        }
+    }
 
     // Permissions request callback
     @Deprecated("Deprecated in Java (Today don't have a Kotlin solution)")
@@ -79,15 +84,6 @@ class MainActivity : ComponentActivity() {
         // Process in domainController
         permissionController.requestPermissionsResultCallback(
             requestCode, permissions, grantResults)
-    }
-
-
-    // Handle system "back" event
-    @Deprecated("Deprecated in Java (Today don't have a Kotlin solution)",
-        level = DeprecationLevel.HIDDEN)
-    override fun onBackPressed() {
-        // super.onBackPressed() <- close App
-        // Do nothing
     }
 }
 

@@ -27,8 +27,9 @@ class Main (private val modelData: ModelData,
 
 
     // Create components
-    private val recorder = Recorder(modelData, logger,
-        permissionController, audioRecorder, database, environmentConnector, soundFile, audioPlayer)
+    private val telemetry = Telemetry(database, environmentConnector)
+    private val recorder = Recorder(modelData, logger, permissionController, audioRecorder,
+        database, environmentConnector, soundFile, audioPlayer, telemetry)
 
 
     fun setup() {
@@ -98,24 +99,49 @@ class Main (private val modelData: ModelData,
         // Show UI
         modelData.setIsShowUi(true)
 
-        // Open dashboard or FirstStartScreen
+        // Get first start status
         val isComplete = database.loadString("IsFirstStartComplete") == "Yes" &&
                 !Configuration.getIsAlwaysShowFirstStartScreen() &&
                 database.loadString("AcceptedUserAgreementVersion") ==
                     Configuration.getUserAgreementVersion().toString()
 
+        // Open dashboard or FirstStartScreen
         if (isComplete) {
+
+            // Open page
             modelData.openAllInfoPage()
             // DEV
             // modelData.openSettingsPage()
+
+            // Setup next
+            setup3()
+
+            // Telemetry checkpoint
+            telemetry.usageReportByCheckpoint("secondLaunchReport")
         } else {
             modelData.openFirstStartScreen {
                 database.saveString("IsFirstStartComplete", "Yes")
                 database.saveString("AcceptedUserAgreementVersion",
                     Configuration.getUserAgreementVersion().toString())
+
+                // Open page
                 modelData.openDashboardPage()
+
+                // Setup next
+                setup3()
             }
         }
+    }
+
+
+    private fun setup3() {
+
+        // Enable telemetry
+        telemetry.enable()
+
+        // Telemetry events
+        telemetry.newInstallationLaunchReport()
+        telemetry.sixHoursActivityReport()
     }
 
 }
