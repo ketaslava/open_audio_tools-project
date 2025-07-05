@@ -7,7 +7,6 @@ import com.ktvincco.openaudiotools.data.Database
 import com.ktvincco.openaudiotools.data.EnvironmentConnector
 import com.ktvincco.openaudiotools.passCheckpointGate
 import com.ktvincco.openaudiotools.timeGate
-import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.*
 import java.security.SecureRandom
 
@@ -105,12 +104,33 @@ class Telemetry (private val database: Database,
     }
 
 
+    // Information about passed checkpoints in application
+    fun usageReportByCheckpoint(checkpointName: String) {
+
+        // One time gate
+        if (!checkpointGate(checkpointName, database)) { return }
+
+        // Combine
+        val statement = mapOf (
+            "statementType" to "usageReportByCheckpoint",
+            "checkpointName" to checkpointName,
+        )
+
+        // Send
+        sendStandardStatement(statement) { result ->
+            if (result) {
+                passCheckpointGate(checkpointName, database)
+            }
+        }
+    }
+
+
     // 6 Hours activity report
     fun sixHoursActivityReport() {
 
         // Six hours gate
         if (!timeGate("sixHoursActivityReport",
-            21600, 1, database)) { return }
+                21600, 1, database)) { return }
 
         // Combine
         val statement = mapOf (
@@ -137,26 +157,5 @@ class Telemetry (private val database: Database,
 
         // Send
         sendStandardStatement(statement)
-    }
-
-
-    // Information about passed checkpoints in application
-    fun usageReportByCheckpoint(checkpointName: String) {
-
-        // One time gate
-        if (!checkpointGate(checkpointName, database)) { return }
-
-        // Combine
-        val statement = mapOf (
-            "statementType" to "usageReportByCheckpoint",
-            "checkpointName" to checkpointName,
-        )
-
-        // Send
-        sendStandardStatement(statement) { result ->
-            if (result) {
-                passCheckpointGate(checkpointName, database)
-            }
-        }
     }
 }

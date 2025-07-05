@@ -244,7 +244,8 @@ class Recorder (
         modelData.setRecordingControlLayoutAsPlayer()
 
         // Telemetry checkpoint
-        telemetry.usageReportByCheckpoint("recordingSaved")
+        telemetry.usageReportByCheckpoint("recordingSavedFirstTime")
+        telemetry.usageReportByFunction("recordingSaved")
     }
 
 
@@ -331,7 +332,8 @@ class Recorder (
         modelData.setPlaybackState(true)
 
         // Telemetry checkpoint
-        telemetry.usageReportByCheckpoint("playingRecordingPreview")
+        telemetry.usageReportByCheckpoint("recordingPreviewPlayedFirstTime")
+        telemetry.usageReportByFunction("recordingPreviewPlayed")
     }
 
 
@@ -376,7 +378,7 @@ class Recorder (
         }
 
         // Telemetry checkpoint
-        telemetry.usageReportByCheckpoint("recordingLoaded")
+        telemetry.usageReportByCheckpoint("recordingLoadedFirstTime")
         telemetry.usageReportByFunction("recordingLoaded")
     }
 

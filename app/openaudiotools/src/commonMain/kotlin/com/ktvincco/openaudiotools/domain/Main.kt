@@ -117,7 +117,7 @@ class Main (private val modelData: ModelData,
             setup3()
 
             // Telemetry checkpoint
-            telemetry.usageReportByCheckpoint("secondLaunchReport")
+            telemetry.usageReportByCheckpoint("secondLaunch")
         } else {
             modelData.openFirstStartScreen {
                 database.saveString("IsFirstStartComplete", "Yes")
