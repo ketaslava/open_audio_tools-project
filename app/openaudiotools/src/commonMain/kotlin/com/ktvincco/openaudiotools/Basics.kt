@@ -159,7 +159,7 @@ fun timeGate(
     val nowSec = System.currentTimeMillis() / 1000
     val start = database.loadString(
         "${gateName}_PeriodStart")
-    val requestsCount = database.loadString(
+    var requestsCount = database.loadString(
         "${gateName}_RequestsCount")?.toIntOrNull() ?: 0
 
     // Manage period
@@ -167,6 +167,7 @@ fun timeGate(
         // New period
         database.saveString(
             "${gateName}_PeriodStart", nowSec.toString())
+        requestsCount = 0
     }
 
     // Check requests count
