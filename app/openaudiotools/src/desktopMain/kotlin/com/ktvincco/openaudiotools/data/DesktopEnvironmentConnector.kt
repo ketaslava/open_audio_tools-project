@@ -23,34 +23,38 @@ class DesktopEnvironmentConnector: EnvironmentConnector {
         payload: String,
         onResult: (success: Boolean, responseBody: String?) -> Unit
     ) {
-        // Create a shared HttpClient (you could reuse this across calls)
-        val client = HttpClient.newBuilder()
-            .connectTimeout(Duration.ofSeconds(10))
-            .build()
+        try {
+            // Create a shared HttpClient (you could reuse this across calls)
+            val client = HttpClient.newBuilder()
+                .connectTimeout(Duration.ofSeconds(10))
+                .build()
 
-        // Build the POST request with plain-text body
-        val request = HttpRequest.newBuilder()
-            .uri(URI.create(url))
-            .timeout(Duration.ofSeconds(15))
-            .header("Content-Type", "text/plain; charset=UTF-8")
-            .POST(HttpRequest.BodyPublishers.ofString(payload))
-            .build()
+            // Build the POST request with plain-text body
+            val request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .timeout(Duration.ofSeconds(15))
+                .header("Content-Type", "text/plain; charset=UTF-8")
+                .POST(HttpRequest.BodyPublishers.ofString(payload))
+                .build()
 
-        // Send asynchronously
-        client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
-            .whenComplete { response, error ->
-                if (error != null) {
-                    // Network / I/O exception
-                    onResult(false, error.message)
-                } else {
-                    // Got a response—report success if 2xx, otherwise false
-                    val code = response.statusCode()
-                    onResult(
-                        code in 200..299,
-                        response.body()
-                    )
+            // Send asynchronously
+            client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+                .whenComplete { response, error ->
+                    if (error != null) {
+                        // Network / I/O exception
+                        onResult(false, error.message)
+                    } else {
+                        // Got a response—report success if 2xx, otherwise false
+                        val code = response.statusCode()
+                        onResult(
+                            code in 200..299,
+                            response.body()
+                        )
+                    }
                 }
-            }
+        } catch (e: Exception) {
+            onResult(false, e.message)
+        }
     }
 
 

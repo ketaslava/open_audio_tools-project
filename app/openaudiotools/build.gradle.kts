@@ -36,7 +36,7 @@ dependencies {
 val appName = "OpenAudioTools"
 
 // Configs
-val version = "2.2.0" // == CHANGE BEFORE RELEASE (1/2) == //
+val version = "2.2.1" // == CHANGE BEFORE RELEASE (1/2) == //
 val androidVersionCode = 10 // == CHANGE BEFORE RELEASE (2/2) == //
 
 kotlin {
