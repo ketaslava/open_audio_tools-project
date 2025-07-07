@@ -39,18 +39,16 @@ class DesktopEnvironmentConnector: EnvironmentConnector {
 
             // Send asynchronously
             client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
-                .whenComplete { response, error ->
-                    if (error != null) {
-                        // Network / I/O exception
-                        onResult(false, error.message)
+                .handle { response, throwable ->
+                    if (throwable != null) {
+                        // Catches network errors, timeouts, etc.
+                        onResult(false, throwable.message)
                     } else {
-                        // Got a response—report success if 2xx, otherwise false
-                        val code = response.statusCode()
-                        onResult(
-                            code in 200..299,
-                            response.body()
-                        )
+                        val success = response.statusCode() in 200..299
+                        onResult(success, response.body())
                     }
+                    // Return the empty value
+                    null
                 }
         } catch (e: Exception) {
             onResult(false, e.message)

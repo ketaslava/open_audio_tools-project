@@ -155,6 +155,7 @@ compose.desktop {
             packageName = appName
             packageVersion = version
             jvmArgs.addAll(jvmArgsList)
+            modules.addAll(arrayListOf("java.base", "java.net.http"))
             linux {
                 iconFile.set(project.file("src/commonMain/composeResources/drawable/icon.png"))
             }
